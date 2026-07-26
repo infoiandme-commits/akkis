@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us – Akki's Healthy Baking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --honey:#D4780A;--honey-light:#F5A623;--honey-pale:#FEF3E2;
+  --brown-dark:#3B1F0A;--brown-mid:#7A4010;--cream:#FFFBF4;
+  --white:#fff;--text:#2C1810;--text-muted:#6B4C3B;
+  --green:#3B6E2A;--green-pale:#EFF7EA;--border:#E8D5B0;
+  --r:12px;--rlg:20px;--error:#C0392B;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 4%;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:38px;width:38px;border-radius:50%;object-fit:cover}
+.nav-logo-text span:first-child{display:block;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--brown-dark);line-height:1.2}
+.nav-logo-text span:last-child{display:block;font-size:10px;color:var(--honey);font-weight:500}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--honey)}
+.nav-cta{background:var(--honey);color:#fff;padding:8px 18px;border-radius:50px;text-decoration:none;font-size:12px;font-weight:600;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--brown-mid)}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);padding:16px 4%;z-index:99;flex-direction:column;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{text-decoration:none;font-size:15px;font-weight:500;color:var(--text-muted);padding:12px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--honey)}
+.mobile-menu .m-cta{background:var(--honey);color:#fff;padding:12px;border-radius:50px;text-align:center;font-weight:600;margin-top:8px;border-bottom:none}
+
+/* HERO */
+.page-hero{min-height:300px;background:linear-gradient(150deg,#3B1F0A,#7A4010);display:flex;align-items:flex-end;padding:88px 4% 48px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('images/store.jpg') center/cover no-repeat;opacity:.18}
+.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:20px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-inner{max-width:1100px;width:100%;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:10px}
+.breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:700;color:#fff;line-height:1.15}
+.page-hero h1 em{font-style:italic;color:#F5A623}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.65);margin-top:8px;max-width:460px}
+
+/* QUICK CONTACT STRIP */
+.quick-strip{background:var(--honey);padding:0}
+.quick-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:center;flex-wrap:wrap}
+.quick-item{
+  display:flex;align-items:center;gap:12px;
+  padding:18px 32px;flex:1;min-width:200px;
+  text-decoration:none;color:#fff;
+  border-right:1px solid rgba(255,255,255,.2);
+  transition:background .2s;
+}
+.quick-item:last-child{border-right:none}
+.quick-item:hover{background:rgba(255,255,255,.1)}
+.quick-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.quick-text strong{display:block;font-size:13px;font-weight:600}
+.quick-text span{font-size:11px;opacity:.8}
+
+/* MAIN LAYOUT */
+.contact-layout{max-width:1100px;margin:0 auto;padding:56px 4% 80px;display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:start}
+
+/* LEFT: FORM */
+.form-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);padding:36px 36px 40px}
+.form-card-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--brown-dark);margin-bottom:6px}
+.form-card-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.6}
+
+/* ENQUIRY TYPE TABS */
+.enquiry-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.etab{
+  flex:1;min-width:120px;
+  background:var(--cream);border:1.5px solid var(--border);
+  border-radius:var(--r);padding:12px 10px;
+  text-align:center;cursor:pointer;
+  transition:all .2s;
+}
+.etab:hover{border-color:var(--honey)}
+.etab.active{background:var(--honey-pale);border-color:var(--honey)}
+.etab-icon{font-size:22px;margin-bottom:4px}
+.etab-label{font-size:12px;font-weight:600;color:var(--brown-dark)}
+.etab.active .etab-label{color:var(--honey)}
+
+/* FIELDS */
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--brown-dark);margin-bottom:7px}
+.req{color:var(--error)}
+.field input,.field textarea,.field select{
+  width:100%;border:1.5px solid var(--border);border-radius:var(--r);
+  padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;
+  color:var(--text);background:var(--cream);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--honey);box-shadow:0 0 0 3px rgba(212,120,10,.1)
+}
+.field input.err,.field textarea.err{border-color:var(--error)}
+.err-msg{font-size:12px;color:var(--error);margin-top:5px;display:none}
+.err-msg.show{display:block}
+.field textarea{resize:vertical;min-height:100px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field-hint{font-size:12px;color:var(--text-muted);margin-top:5px}
+
+/* SUBMIT */
+.submit-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.btn-wa{
+  flex:1;min-width:160px;
+  background:#25D366;color:#fff;border:none;cursor:pointer;
+  padding:14px 20px;border-radius:50px;font-size:14px;font-weight:600;
+  font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .2s,transform .15s;
+}
+.btn-wa:hover{background:#1ebe5d;transform:translateY(-1px)}
+.btn-email{
+  flex:1;min-width:160px;
+  background:var(--honey);color:#fff;border:none;cursor:pointer;
+  padding:14px 20px;border-radius:50px;font-size:14px;font-weight:600;
+  font-family:'DM Sans',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:background .2s,transform .15s;
+}
+.btn-email:hover{background:var(--brown-mid);transform:translateY(-1px)}
+
+/* SUCCESS TOAST */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(100px);
+  background:var(--green);color:#fff;
+  padding:14px 28px;border-radius:50px;
+  font-size:14px;font-weight:600;
+  box-shadow:0 8px 28px rgba(0,0,0,.2);
+  z-index:500;transition:transform .4s ease;
+  display:flex;align-items:center;gap:8px;
+  white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* RIGHT SIDEBAR */
+.contact-sidebar{display:flex;flex-direction:column;gap:18px;position:sticky;top:80px}
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);overflow:hidden}
+.info-card-head{background:linear-gradient(135deg,var(--brown-dark),var(--brown-mid));padding:20px 22px}
+.info-card-head h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:600}
+.info-card-head p{font-size:12px;color:rgba(255,255,255,.65);margin-top:4px}
+.info-list{padding:8px 0}
+.info-item{display:flex;gap:14px;align-items:flex-start;padding:14px 22px;border-bottom:1px solid var(--border);transition:background .2s;text-decoration:none;color:inherit}
+.info-item:last-child{border-bottom:none}
+.info-item:hover{background:var(--honey-pale)}
+.info-icon{width:40px;height:40px;border-radius:12px;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.info-text h4{font-size:13px;font-weight:600;color:var(--brown-dark);margin-bottom:2px}
+.info-text p,.info-text a{font-size:13px;color:var(--text-muted);text-decoration:none;line-height:1.5}
+.info-text a:hover{color:var(--honey)}
+
+/* HOURS CARD */
+.hours-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);padding:22px}
+.hours-title{font-size:11px;font-weight:700;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.hours-row:last-child{border-bottom:none}
+.hours-day{color:var(--text-muted);font-weight:500}
+.hours-time{color:var(--brown-dark);font-weight:600}
+.hours-open{color:var(--green);font-size:11px;font-weight:700;background:var(--green-pale);padding:2px 8px;border-radius:50px}
+.delivery-note{background:var(--honey-pale);border:1px solid rgba(212,120,10,.2);border-radius:var(--r);padding:12px 14px;margin-top:14px;font-size:12px;color:var(--text-muted);line-height:1.6}
+.delivery-note strong{color:var(--honey)}
+
+/* MAP CARD */
+.map-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);overflow:hidden}
+.map-placeholder{
+  height:200px;background:linear-gradient(135deg,#FEF0D4,#F5D9A8);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;cursor:pointer;transition:background .2s;
+}
+.map-placeholder:hover{background:linear-gradient(135deg,#F5D9A8,#E8B85A)}
+.map-placeholder div:first-child{font-size:40px}
+.map-placeholder p{font-size:13px;font-weight:600;color:var(--brown-dark)}
+.map-placeholder span{font-size:11px;color:var(--text-muted)}
+.map-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--honey);color:#fff;padding:13px;
+  font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;
+  border:none;cursor:pointer;width:100%;
+  transition:background .2s;text-decoration:none;
+}
+.map-btn:hover{background:var(--brown-mid)}
+
+/* SOCIAL CARD */
+.social-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);padding:22px}
+.social-title{font-size:11px;font-weight:700;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.social-links{display:flex;flex-direction:column;gap:10px}
+.social-item{
+  display:flex;align-items:center;gap:12px;
+  padding:12px 14px;border-radius:var(--r);border:1.5px solid var(--border);
+  text-decoration:none;color:var(--text-muted);font-size:13px;font-weight:500;
+  transition:all .2s;
+}
+.social-item:hover{border-color:var(--honey);color:var(--honey);background:var(--honey-pale)}
+.social-item-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+
+/* FAQ SECTION */
+.faq-section{background:var(--white);padding:70px 4%}
+.faq-inner{max-width:1100px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:48px}
+.faq-header h2{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,36px);font-weight:700;color:var(--brown-dark);margin-bottom:8px}
+.faq-header p{font-size:15px;color:var(--text-muted)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.faq-item{background:var(--cream);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.faq-q{
+  width:100%;background:none;border:none;cursor:pointer;
+  padding:16px 20px;text-align:left;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--brown-dark);
+  transition:background .2s;
+}
+.faq-q:hover{background:var(--honey-pale)}
+.faq-q.open{color:var(--honey);background:var(--honey-pale)}
+.faq-arrow{font-size:16px;flex-shrink:0;transition:transform .3s;color:var(--honey)}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s ease;padding:0 20px;font-size:13px;color:var(--text-muted);line-height:1.7}
+.faq-a.open{max-height:200px;padding:0 20px 16px}
+
+/* BOTTOM CTA */
+.bottom-cta{background:linear-gradient(135deg,var(--honey),var(--brown-mid));padding:64px 4%;text-align:center}
+.bottom-cta h2{font-family:'Playfair Display',serif;font-size:clamp(24px,3.5vw,40px);color:#fff;font-weight:700;margin-bottom:10px}
+.bottom-cta p{font-size:15px;color:rgba(255,255,255,.8);max-width:440px;margin:0 auto 28px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--honey);padding:13px 30px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:700;transition:transform .15s,box-shadow .15s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-ghost{border:2px solid rgba(255,255,255,.6);color:#fff;padding:12px 28px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+/* FOOTER */
+footer{background:#2C1810;padding:44px 4% 28px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:10px;max-width:240px}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo img{height:38px;width:38px;border-radius:50%}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff}
+footer h4{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
+footer ul{list-style:none}
+footer ul li{margin-bottom:9px}
+footer ul a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
+footer ul a:hover{color:#F5A623}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.35)}
+.footer-social-wrap{display:flex;gap:10px}
+.fsocial{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;transition:border-color .2s,color .2s}
+.fsocial:hover{border-color:#F5A623;color:#F5A623}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .contact-layout{grid-template-columns:1fr;gap:32px;padding:40px 4% 60px}
+  .contact-sidebar{position:static}
+  .faq-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+  .quick-item{min-width:140px;padding:14px 16px}
+}
+@media(max-width:600px){
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:block}
+  nav{height:56px}
+  .page-hero{min-height:210px;padding:76px 4% 36px}
+  .page-hero h1{font-size:24px}
+  .quick-item{min-width:100%;border-right:none;border-bottom:1px solid rgba(255,255,255,.2)}
+  .quick-item:last-child{border-bottom:none}
+  .contact-layout{padding:24px 4% 60px}
+  .form-card{padding:22px 18px 26px}
+  .etab{min-width:calc(50% - 4px)}
+  .field-row{grid-template-columns:1fr}
+  .submit-row{flex-direction:column}
+  .btn-wa,.btn-email{width:100%}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .footer-brand p{max-width:100%}
+  .cta-btns{flex-direction:column;align-items:center}
+  .btn-white,.btn-ghost{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Message sent via WhatsApp!</div>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      <span>Akki's Healthy Baking</span>
+      <span>The Secret is Love</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="custom-cake.html">Custom Cakes</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+  <a href="custom-cake.html" class="nav-cta">Order a Cake</a>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="menu.html">Menu</a>
+  <a href="products.html">Products</a>
+  <a href="custom-cake.html">Custom Cakes</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html" class="active">Contact</a>
+  <a href="custom-cake.html" class="m-cta">🎂 Order a Cake</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Contact</div>
+    <h1>Let's Talk —<br><em>We'd Love to Hear from You</em></h1>
+    <p class="hero-sub">Order a cake, ask a question, or just say hello. We're always happy to chat — usually reply within 2 hours!</p>
+  </div>
+</div>
+
+<!-- QUICK CONTACT STRIP -->
+<div class="quick-strip">
+  <div class="quick-inner">
+    <a href="tel:+917795076412" class="quick-item">
+      <div class="quick-icon">📞</div>
+      <div class="quick-text"><strong>Call Us</strong><span>+91 77950 76412</span></div>
+    </a>
+    <a href="https://wa.me/917795076412" target="_blank" class="quick-item">
+      <div class="quick-icon">💬</div>
+      <div class="quick-text"><strong>WhatsApp</strong><span>Chat instantly</span></div>
+    </a>
+    <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="quick-item">
+      <div class="quick-icon">📸</div>
+      <div class="quick-text"><strong>Instagram</strong><span>@akkis.healthy.baking</span></div>
+    </a>
+    <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="quick-item">
+      <div class="quick-icon">📍</div>
+      <div class="quick-text"><strong>Visit Us</strong><span>Hinjawadi Phase II, Pune</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="contact-layout">
+
+  <!-- LEFT: CONTACT FORM -->
+  <div>
+    <div class="form-card reveal">
+      <div class="form-card-title">Send Us a Message</div>
+      <div class="form-card-sub">Fill the form below — your message will be sent directly to us via WhatsApp so we can reply fast.</div>
+
+      <!-- ENQUIRY TYPE -->
+      <div class="enquiry-tabs" id="enquiryTabs">
+        <div class="etab active" onclick="setEnquiry(this,'🎂 Custom Cake Order')">
+          <div class="etab-icon">🎂</div>
+          <div class="etab-label">Custom Cake</div>
+        </div>
+        <div class="etab" onclick="setEnquiry(this,'🛍️ Product Enquiry')">
+          <div class="etab-icon">🛍️</div>
+          <div class="etab-label">Product Enquiry</div>
+        </div>
+        <div class="etab" onclick="setEnquiry(this,'🚚 Delivery Query')">
+          <div class="etab-icon">🚚</div>
+          <div class="etab-label">Delivery</div>
+        </div>
+        <div class="etab" onclick="setEnquiry(this,'💬 General Query')">
+          <div class="etab-icon">💬</div>
+          <div class="etab-label">General</div>
+        </div>
+        <div class="etab" onclick="setEnquiry(this,'🏢 Bulk / Corporate')">
+          <div class="etab-icon">🏢</div>
+          <div class="etab-label">Bulk Order</div>
+        </div>
+      </div>
+
+      <!-- FORM FIELDS -->
+      <div class="field-row">
+        <div class="field">
+          <label>Your Name <span class="req">*</span></label>
+          <input type="text" id="cName" placeholder="Full name">
+          <div class="err-msg" id="err-name">Please enter your name</div>
+        </div>
+        <div class="field">
+          <label>WhatsApp Number <span class="req">*</span></label>
+          <input type="tel" id="cPhone" placeholder="+91 9876543210">
+          <div class="err-msg" id="err-phone">Please enter your phone number</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email Address</label>
+        <input type="email" id="cEmail" placeholder="your@email.com">
+        <div class="field-hint">Optional — for email replies</div>
+      </div>
+
+      <div class="field">
+        <label>Subject <span class="req">*</span></label>
+        <input type="text" id="cSubject" placeholder="e.g. Custom cake for birthday on 15th August">
+        <div class="err-msg" id="err-subject">Please enter a subject</div>
+      </div>
+
+      <div class="field">
+        <label>Your Message <span class="req">*</span></label>
+        <textarea id="cMessage" placeholder="Tell us what you need — cake design, delivery area, budget, date, or any question you have…" style="min-height:120px"></textarea>
+        <div class="err-msg" id="err-message">Please enter your message</div>
+      </div>
+
+      <div class="field">
+        <label>How did you hear about us?</label>
+        <select id="cSource">
+          <option value="">Select (optional)</option>
+          <option>Instagram</option>
+          <option>WhatsApp / Friend Referral</option>
+          <option>Google Search</option>
+          <option>Walked past our store</option>
+          <option>Word of mouth</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="submit-row">
+        <button class="btn-wa" onclick="sendWhatsApp()">
+          <span style="font-size:18px">💬</span> Send via WhatsApp
+        </button>
+        <button class="btn-email" onclick="sendEmail()">
+          <span style="font-size:16px">📧</span> Send via Email
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="contact-sidebar">
+
+    <!-- CONTACT INFO -->
+    <div class="info-card reveal">
+      <div class="info-card-head">
+        <h3>Contact Information</h3>
+        <p>Multiple ways to reach us</p>
+      </div>
+      <div class="info-list">
+        <a href="tel:+917795076412" class="info-item">
+          <div class="info-icon">📞</div>
+          <div class="info-text">
+            <h4>Phone / WhatsApp</h4>
+            <p>+91 77950 76412</p>
+          </div>
+        </a>
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="info-item">
+          <div class="info-icon">📸</div>
+          <div class="info-text">
+            <h4>Instagram</h4>
+            <p>@akkis.healthy.baking</p>
+          </div>
+        </a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="info-item">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <h4>Bakery Address</h4>
+            <p>Bhanuse Wasti, Marunji Rd, opp. Global E Homes, behind WIPRO Technologies, Hinjawadi Phase II, Pune 411057</p>
+          </div>
+        </a>
+        <div class="info-item">
+          <div class="info-icon">⏱</div>
+          <div class="info-text">
+            <h4>Response Time</h4>
+            <p>Usually within 2 hours on WhatsApp</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOURS -->
+    <div class="hours-card reveal">
+      <div class="hours-title">Store Hours</div>
+      <div class="hours-row">
+        <span class="hours-day">Monday – Friday</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="hours-time">9:00 AM – 9:00 PM</span>
+          <span class="hours-open">OPEN</span>
+        </div>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Saturday</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="hours-time">9:00 AM – 9:00 PM</span>
+          <span class="hours-open">OPEN</span>
+        </div>
+      </div>
+      <div class="hours-row">
+        <span class="hours-day">Sunday</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="hours-time">10:00 AM – 7:00 PM</span>
+          <span class="hours-open">OPEN</span>
+        </div>
+      </div>
+      <div class="delivery-note">
+        🚚 <strong>Home Delivery:</strong> Available across Hinjawadi, Wakad, Baner, Balewadi & nearby areas. Call or WhatsApp to check your pincode.
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="map-card reveal">
+      <div class="map-placeholder" onclick="window.open('https://maps.app.goo.gl/Lsqre9ApSAATwPhP6','_blank')">
+        <div>🗺️</div>
+        <p>Akki's Healthy Baking</p>
+        <span>Hinjawadi Phase II, Pune</span>
+        <span style="font-size:11px;color:var(--honey);font-weight:600;margin-top:4px">Click to open in Google Maps →</span>
+      </div>
+      <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="map-btn">
+        📍 Get Directions on Google Maps
+      </a>
+    </div>
+
+    <!-- SOCIAL -->
+    <div class="social-card reveal">
+      <div class="social-title">Follow Us</div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-item">
+          <div class="social-item-icon" style="background:#FCEEF8">📸</div>
+          Instagram — @akkis.healthy.baking
+        </a>
+        <a href="https://wa.me/917795076412" target="_blank" class="social-item">
+          <div class="social-item-icon" style="background:#E8F8EE">💬</div>
+          WhatsApp — +91 77950 76412
+        </a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-item">
+          <div class="social-item-icon" style="background:#FEF3E2">📍</div>
+          Find us on Google Maps
+        </a>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <h2>Frequently Asked Questions</h2>
+      <p>Quick answers to the questions we hear most often</p>
+    </div>
+    <div class="faq-grid reveal">
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do you really use no maida and no refined sugar?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Yes — absolutely. Every single product at Akki's is made with whole wheat or ragi flour, sweetened only with jaggery, organic honey, or natural fruit sugars. No refined flour, no white sugar, ever. This is our founding promise.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How much advance notice do you need for a custom cake?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">We need a minimum of 2 days notice for custom cakes. For elaborate multi-tier or highly detailed designs, 4–5 days is ideal. For large orders (10+ items), please contact us at least a week in advance.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do you deliver to my area?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">We deliver across Hinjawadi, Wakad, Baner, Balewadi, Aundh, Kothrud, and most of Pune. WhatsApp us your pincode and we'll confirm availability and delivery charges.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Are your products safe for diabetics?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Our products use jaggery instead of refined sugar, which has a lower glycemic index. However, jaggery still contains carbohydrates and calories. We recommend consulting your doctor before consuming if you have diabetes. Many of our customers with mild sugar sensitivity enjoy our products in moderation.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I walk in to buy or do I need to order in advance?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">You're welcome to walk into our Hinjawadi store anytime during store hours. We keep freshly baked pastries, desserts, jars, and loaves available daily. For cakes (especially custom cakes), advance ordering is required.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do you do bulk orders for corporate gifting?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Yes! We do bulk orders for corporate events, office gifting, baby showers, and other occasions. WhatsApp or call us with your requirements — quantity, budget, and delivery date — and we'll put together a custom quote.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long do your products stay fresh?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">Since we use no preservatives, our products are best consumed within 1–2 days at room temperature, or 4–5 days if refrigerated. Cakes and pastries should be refrigerated and consumed within 3 days. Loaves can last 4–5 days refrigerated.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What payment methods do you accept?
+          <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">We accept UPI (GPay, PhonePe, Paytm), bank transfer, and cash. For custom cake orders, we typically ask for a 50% advance at the time of booking and the remaining amount on delivery.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>Ready to place an order?</h2>
+  <p>Design a custom cake, browse our products, or just walk into our store — we're always happy to help.</p>
+  <div class="cta-btns">
+    <a href="custom-cake.html" class="btn-white">🎂 Design Your Cake</a>
+    <a href="https://wa.me/917795076412" target="_blank" class="btn-ghost">💬 WhatsApp Now</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
+          <span class="footer-logo-text">Akki's Healthy Baking</span>
+        </div>
+        <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
+      </div>
+      <div><h4>Pages</h4><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="custom-cake.html">Custom Cakes</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="blog.html">Blog / Health Tips</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="tel:+917795076412">+91 77950 76412</a></li>
+        <li><a href="https://wa.me/917795076412" target="_blank">WhatsApp Us</a></li>
+        <li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li>
+        <li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Hinjawadi Phase II, Pune</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Akki's Healthy Baking. All rights reserved.</p>
+      <div class="footer-social-wrap">
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="fsocial">📸</a>
+        <a href="https://wa.me/917795076412" target="_blank" class="fsocial">💬</a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="fsocial">📍</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── ENQUIRY TYPE ── */
+let enquiryType = '🎂 Custom Cake Order';
+function setEnquiry(el, type){
+  document.querySelectorAll('.etab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  enquiryType = type;
+}
+
+/* ── VALIDATION ── */
+function validate(){
+  let ok = true;
+  const checks = [
+    {id:'cName',    err:'err-name',    label:'name'},
+    {id:'cPhone',   err:'err-phone',   label:'phone'},
+    {id:'cSubject', err:'err-subject', label:'subject'},
+    {id:'cMessage', err:'err-message', label:'message'},
+  ];
+  checks.forEach(c=>{
+    const el=document.getElementById(c.id);
+    const em=document.getElementById(c.err);
+    if(!el.value.trim()){el.classList.add('err');em.classList.add('show');ok=false;}
+    else{el.classList.remove('err');em.classList.remove('show');}
+  });
+  return ok;
+}
+
+/* ── SEND WHATSAPP ── */
+function sendWhatsApp(){
+  if(!validate()) return;
+  const name    = document.getElementById('cName').value.trim();
+  const phone   = document.getElementById('cPhone').value.trim();
+  const email   = document.getElementById('cEmail').value.trim();
+  const subject = document.getElementById('cSubject').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+  const source  = document.getElementById('cSource').value;
+
+  let msg = `Hello Akki! I have a query.%0A%0A`;
+  msg += `📋 *Enquiry Type:* ${enquiryType}%0A`;
+  msg += `👤 *Name:* ${name}%0A`;
+  msg += `📞 *Phone:* ${phone}%0A`;
+  if(email) msg += `📧 *Email:* ${email}%0A`;
+  msg += `📌 *Subject:* ${subject}%0A`;
+  msg += `💬 *Message:* ${message}%0A`;
+  if(source) msg += `🔍 *Found us via:* ${source}%0A`;
+
+  window.open(`https://wa.me/917795076412?text=${msg}`, '_blank');
+  showToast('✅ Opening WhatsApp — message ready to send!');
+}
+
+/* ── SEND EMAIL ── */
+function sendEmail(){
+  if(!validate()) return;
+  const name    = document.getElementById('cName').value.trim();
+  const subject = document.getElementById('cSubject').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+  const phone   = document.getElementById('cPhone').value.trim();
+  const email   = document.getElementById('cEmail').value.trim();
+
+  const body = `Name: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AEnquiry Type: ${enquiryType}%0A%0AMessage:%0A${message}`;
+  window.location.href = `mailto:akkis.healthy.baking@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+  showToast('📧 Opening email client…');
+}
+
+/* ── TOAST ── */
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+
+/* ── FAQ ── */
+function toggleFaq(btn){
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-a').forEach(a=>a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(b=>b.classList.remove('open'));
+  // Open clicked if it was closed
+  if(!isOpen){ answer.classList.add('open'); btn.classList.add('open'); }
+}
+
+/* ── REVEAL ── */
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── HAMBURGER ── */
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+</script>
+</body>
+</html>

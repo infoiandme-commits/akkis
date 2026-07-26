@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery – Akkis Healthy Baking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --honey:#D4780A;--honey-light:#F5A623;--honey-pale:#FEF3E2;
+  --brown-dark:#3B1F0A;--brown-mid:#7A4010;--cream:#FFFBF4;
+  --white:#FFFFFF;--text:#2C1810;--text-muted:#6B4C3B;
+  --green:#3B6E2A;--green-pale:#EFF7EA;--border:#E8D5B0;
+  --radius:14px;--radius-lg:20px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:44px;width:44px;border-radius:50%;object-fit:cover}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-text span:first-child{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--brown-dark)}
+.nav-logo-text span:last-child{font-size:11px;color:var(--honey);font-weight:500;letter-spacing:.5px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--honey)}
+.nav-cta{background:var(--honey);color:#fff;padding:9px 22px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:600;transition:background .2s}
+.nav-cta:hover{background:var(--brown-mid)}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0}
+
+/* PAGE HERO */
+.page-hero{min-height:380px;background:linear-gradient(150deg,#3B1F0A 0%,#7A4010 100%);display:flex;align-items:flex-end;padding:120px 5% 60px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('images/store.jpg') center/cover no-repeat;opacity:.2}
+.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:20px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-inner{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px}
+.breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,56px);font-weight:700;color:#fff;line-height:1.15}
+.page-hero h1 em{font-style:italic;color:#F5A623}
+.hero-sub{font-size:15px;color:rgba(255,255,255,.65);margin-top:10px;max-width:500px}
+
+/* FILTER BAR */
+.filter-bar{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:68px;z-index:90;padding:0 5%}
+.filter-bar-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;flex-wrap:wrap}
+.filter-chips{display:flex;gap:8px;flex-wrap:wrap}
+.fchip{background:none;border:1.5px solid var(--border);cursor:pointer;padding:7px 16px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--text-muted);transition:all .18s;white-space:nowrap}
+.fchip:hover{border-color:var(--honey);color:var(--honey)}
+.fchip.active{background:var(--honey);border-color:var(--honey);color:#fff;font-weight:600}
+.filter-count{font-size:13px;color:var(--text-muted);white-space:nowrap}
+.filter-count strong{color:var(--brown-dark)}
+
+/* GALLERY LAYOUT */
+.gallery-wrap{max-width:1200px;margin:0 auto;padding:48px 5% 80px}
+
+/* MASONRY GRID */
+.masonry{
+  columns:4;
+  column-gap:16px;
+}
+.masonry-item{
+  break-inside:avoid;
+  margin-bottom:16px;
+  position:relative;
+  border-radius:var(--radius);
+  overflow:hidden;
+  cursor:pointer;
+  display:block;
+}
+.masonry-item.hidden{display:none}
+.masonry-item img,.masonry-item video{
+  width:100%;display:block;
+  border-radius:var(--radius);
+  transition:transform .35s ease;
+}
+.masonry-item:hover img,.masonry-item:hover video{transform:scale(1.04)}
+
+/* OVERLAY ON HOVER */
+.item-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(transparent 40%,rgba(59,31,10,.88));
+  border-radius:var(--radius);
+  opacity:0;transition:opacity .3s;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:16px;
+}
+.masonry-item:hover .item-overlay{opacity:1}
+.overlay-title{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:#fff;margin-bottom:4px;line-height:1.3}
+.overlay-tag{display:inline-block;background:var(--honey);color:#fff;padding:3px 10px;border-radius:50px;font-size:11px;font-weight:600}
+.overlay-zoom{
+  position:absolute;top:12px;right:12px;
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(255,255,255,.2);backdrop-filter:blur(4px);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:#fff;opacity:0;transition:opacity .3s;
+}
+.masonry-item:hover .overlay-zoom{opacity:1}
+
+/* VIDEO BADGE */
+.video-badge{
+  position:absolute;top:10px;left:10px;
+  background:rgba(212,120,10,.9);color:#fff;
+  padding:4px 10px;border-radius:50px;font-size:11px;font-weight:700;
+  display:flex;align-items:center;gap:4px;
+  backdrop-filter:blur(4px);
+}
+
+/* NO RESULTS */
+.no-items{text-align:center;padding:60px 20px;color:var(--text-muted);display:none}
+.no-items div{font-size:48px;margin-bottom:12px}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(20,10,4,.96);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+  flex-direction:column;
+}
+.lightbox.open{opacity:1;pointer-events:all}
+.lb-media{max-width:90vw;max-height:80vh;border-radius:var(--radius-lg);object-fit:contain;box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.lb-info{margin-top:16px;text-align:center}
+.lb-title{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:600}
+.lb-tag{display:inline-block;background:var(--honey);color:#fff;padding:4px 12px;border-radius:50px;font-size:12px;font-weight:600;margin-top:6px}
+.lb-close{
+  position:absolute;top:20px;right:24px;
+  background:rgba(255,255,255,.12);border:none;cursor:pointer;
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;color:#fff;transition:background .2s;
+}
+.lb-close:hover{background:rgba(255,255,255,.25)}
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.12);border:none;cursor:pointer;
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;color:#fff;transition:background .2s;
+}
+.lb-nav:hover{background:rgba(255,255,255,.25)}
+.lb-prev{left:20px}
+.lb-next{right:20px}
+.lb-counter{font-size:13px;color:rgba(255,255,255,.55);margin-top:8px}
+
+/* STATS STRIP */
+.stats-strip{background:var(--brown-dark);padding:48px 5%}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.08);border-radius:var(--radius-lg);overflow:hidden}
+.stat-box{background:var(--brown-dark);padding:32px 20px;text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--honey-light);line-height:1}
+.stat-label{font-size:13px;color:rgba(255,255,255,.55);margin-top:6px}
+
+/* ORDER CTA */
+.order-cta{background:linear-gradient(135deg,var(--honey) 0%,var(--brown-mid) 100%);padding:64px 5%;text-align:center}
+.order-cta h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,40px);color:#fff;font-weight:700;margin-bottom:12px}
+.order-cta p{font-size:16px;color:rgba(255,255,255,.8);max-width:460px;margin:0 auto 28px}
+.cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:#fff;color:var(--honey);padding:14px 32px;border-radius:50px;text-decoration:none;font-size:15px;font-weight:700;transition:transform .15s,box-shadow .15s}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.btn-ghost{border:2px solid rgba(255,255,255,.6);color:#fff;padding:13px 30px;border-radius:50px;text-decoration:none;font-size:15px;font-weight:600;transition:background .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+/* FOOTER */
+footer{background:#2C1810;padding:50px 5% 30px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:12px;max-width:260px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo img{height:40px;width:40px;border-radius:50%}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff}
+footer h4{font-size:13px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.5px;margin-bottom:16px;text-transform:uppercase}
+footer ul{list-style:none}
+footer ul li{margin-bottom:10px}
+footer ul a{text-decoration:none;font-size:14px;color:rgba(255,255,255,.5);transition:color .2s}
+footer ul a:hover{color:#F5A623}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-bottom p{font-size:13px;color:rgba(255,255,255,.35)}
+.footer-social{display:flex;gap:12px}
+.social-link{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:14px;text-decoration:none;transition:border-color .2s,color .2s}
+.social-link:hover{border-color:#F5A623;color:#F5A623}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:1100px){.masonry{columns:3}}
+@media(max-width:760px){.masonry{columns:2}.stats-inner{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.masonry{columns:2}.nav-links,.nav-cta{display:none}.nav-hamburger{display:block}.footer-grid{grid-template-columns:1fr}.lb-nav{display:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      <span>Akkis Healthy Baking</span>
+      <span>The Secret is Love</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="custom-cake.html">Custom Cakes</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="custom-cake.html" class="nav-cta">Order a Cake</a>
+  <button class="nav-hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Gallery</div>
+    <h1>Made with Love,<br><em>Every Single Time</em></h1>
+    <p class="hero-sub">A peek into our creations — custom cakes, healthy loaves, decadent desserts, and everything in between.</p>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <div class="filter-chips">
+      <button class="fchip active" onclick="filterGallery('all',this)">✦ All</button>
+      <button class="fchip" onclick="filterGallery('custom',this)">🎂 Custom Cakes</button>
+      <button class="fchip" onclick="filterGallery('kids',this)">🦕 Kids Cakes</button>
+      <button class="fchip" onclick="filterGallery('celebration',this)">🎉 Celebrations</button>
+      <button class="fchip" onclick="filterGallery('healthy',this)">🌾 Healthy Bakes</button>
+      <button class="fchip" onclick="filterGallery('store',this)">🏪 Our Store</button>
+      <button class="fchip" onclick="filterGallery('video',this)">🎬 Videos</button>
+    </div>
+    <div class="filter-count">Showing <strong id="showCount">12</strong> items</div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLBOnBg(event)">
+  <button class="lb-close" onclick="closeLB()">✕</button>
+  <button class="lb-nav lb-prev" onclick="lbNav(-1)">‹</button>
+  <button class="lb-nav lb-next" onclick="lbNav(1)">›</button>
+  <img id="lbImg" class="lb-media" src="" alt="" style="display:none">
+  <video id="lbVid" class="lb-media" controls style="display:none"></video>
+  <div class="lb-info">
+    <div class="lb-title" id="lbTitle"></div>
+    <div class="lb-tag" id="lbTag"></div>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+</div>
+
+<!-- GALLERY GRID -->
+<div class="gallery-wrap">
+  <div class="masonry" id="masonryGrid">
+
+    <!-- 1. Store Opening -->
+    <div class="masonry-item" data-cat="store" data-title="Grand Store Opening" data-tag="Our Store" onclick="openLB(this,0)">
+      <img src="images/display.jpeg" alt="Akkis Healthy Baking Display front" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Grand Store Opening</div>
+        <span class="overlay-tag">Our Store</span>
+      </div>
+    </div>
+
+    <!-- 2. 9 Cakes Collage -->
+    <div class="masonry-item" data-cat="custom kids celebration" data-title="Custom Cake Collection" data-tag="Custom Cakes" onclick="openLB(this,1)">
+      <img src="images/cake_collage.png" alt="9 custom cakes collage" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Custom Cake Collection</div>
+        <span class="overlay-tag">Custom Cakes</span>
+      </div>
+    </div>
+
+    <!-- 3. Mom Cake with Flowers -->
+    <div class="masonry-item" data-cat="custom celebration" data-title="Mom's World — Floral Birthday Cake" data-tag="Custom Cake" onclick="openLB(this,2)">
+      <img src="images/cake_mom.jpeg" alt="Mom birthday cake with flowers" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Mom's World — Floral Birthday Cake</div>
+        <span class="overlay-tag">Custom Cake</span>
+      </div>
+    </div>
+
+    <!-- 4. 30th Birthday Sketch Cake -->
+    <div class="masonry-item" data-cat="custom celebration" data-title="Turning 30 — Stickman Edition" data-tag="Celebration Cake" onclick="openLB(this,3)">
+      <img src="images/cake_30.jpeg" alt="30th birthday cake with stickman" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Turning 30 — Stickman Edition</div>
+        <span class="overlay-tag">Celebration Cake</span>
+      </div>
+    </div>
+
+    <!-- 5. 40 is Fine Cake -->
+    <div class="masonry-item" data-cat="custom celebration" data-title="40 is Fine When You Look 29!" data-tag="Celebration Cake" onclick="openLB(this,4)">
+      <img src="images/cake_40.jpeg" alt="40th birthday blue cake" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">40 is Fine When You Look 29!</div>
+        <span class="overlay-tag">Celebration Cake</span>
+      </div>
+    </div>
+
+    <!-- 6. Music / Rockstar Cake -->
+    <div class="masonry-item" data-cat="custom celebration" data-title="Born to Be a Rockstar — Vijran" data-tag="Custom Cake" onclick="openLB(this,5)">
+      <img src="images/cake_music.jpeg" alt="Music rockstar birthday cake Vijran" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Born to Be a Rockstar — Vijran</div>
+        <span class="overlay-tag">Custom Cake</span>
+      </div>
+    </div>
+
+    <!-- 7. Spiderman Cake -->
+    <div class="masonry-item" data-cat="custom kids" data-title="Spider-Man 4th Birthday — Adwait" data-tag="Kids Cake" onclick="openLB(this,6)">
+      <img src="images/cake_spiderman.jpeg" alt="Spiderman birthday cake Adwait" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Spider-Man 4th Birthday — Adwait</div>
+        <span class="overlay-tag">Kids Cake</span>
+      </div>
+    </div>
+
+    <!-- 8. Designer / NID Cake -->
+    <div class="masonry-item" data-cat="custom celebration" data-title="Designer in the Making — NID Cake" data-tag="Custom Cake" onclick="openLB(this,7)">
+      <img src="images/cake_designer.jpeg" alt="Designer NID theme custom cake" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Designer in the Making — NID</div>
+        <span class="overlay-tag">Custom Cake</span>
+      </div>
+    </div>
+
+    <!-- 9. Romantic Red Rose Cake -->
+    <div class="masonry-item" data-cat="custom celebration" data-title="Romantic Red Rose Birthday Cake" data-tag="Celebration Cake" onclick="openLB(this,8)">
+      <img src="images/cake_romantic.jpeg" alt="Romantic red rose birthday cake" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Romantic Red Rose Birthday Cake</div>
+        <span class="overlay-tag">Celebration Cake</span>
+      </div>
+    </div>
+
+    <!-- 10. Healthy Brownies & Loaf -->
+    <div class="masonry-item" data-cat="healthy" data-title="Healthy Multi-Seed Brownies & Almond Loaf" data-tag="Healthy Bakes" onclick="openLB(this,9)">
+      <img src="images/cake_brownies.webp" alt="Healthy brownies and almond loaf" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Multi-Seed Brownies & Almond Loaf</div>
+        <span class="overlay-tag">Healthy Bakes</span>
+      </div>
+    </div>
+
+    <!-- 11. Loaf Product -->
+    <div class="masonry-item" data-cat="healthy" data-title="Mango Pistachio & Banana Walnut Loaves" data-tag="Healthy Bakes" onclick="openLB(this,10)">
+      <img src="images/cake_loaf.webp" alt="Mango pistachio and banana walnut loaves" loading="lazy">
+      <div class="item-overlay">
+        <div class="overlay-zoom">⤢</div>
+        <div class="overlay-title">Mango Pistachio & Banana Walnut Loaves</div>
+        <span class="overlay-tag">Healthy Bakes</span>
+      </div>
+    </div>
+
+    <!-- 12. VIDEO -->
+    <div class="masonry-item" data-cat="video custom" data-title="Behind the Scenes — Cake in the Making" data-tag="Video" onclick="openLB(this,11)">
+      <video src="images/cake_video.mp4" muted loop autoplay playsinline style="width:100%;border-radius:14px;display:block"></video>
+      <div class="video-badge">▶ Video</div>
+      <div class="item-overlay">
+        <div class="overlay-zoom">▶</div>
+        <div class="overlay-title">Behind the Scenes — Cake in the Making</div>
+        <span class="overlay-tag">Video</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="no-items" id="noItems"><div>🔍</div><p>No items in this category yet.</p></div>
+</div>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner reveal">
+    <div class="stat-box"><div class="stat-num">500+</div><div class="stat-label">Happy Customers</div></div>
+    <div class="stat-box"><div class="stat-num">∞</div><div class="stat-label">Custom Designs Made</div></div>
+    <div class="stat-box"><div class="stat-num">0g</div><div class="stat-label">Maida in Any Cake</div></div>
+    <div class="stat-box"><div class="stat-num">♥</div><div class="stat-label">Secret Ingredient</div></div>
+  </div>
+</div>
+
+<!-- ORDER CTA -->
+<div class="order-cta">
+  <h2>Love what you see?<br>Let's create yours!</h2>
+  <p>Every cake is made fresh with whole wheat, ragi and jaggery — designed exactly the way you imagine it.</p>
+  <div class="cta-btns">
+    <a href="custom-cake.html" class="btn-white">🎂 Design Your Cake</a>
+    <a href="https://wa.me/917795076412" target="_blank" class="btn-ghost">💬 WhatsApp Us</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
+          <span class="footer-logo-text">Akkis Healthy Baking</span>
+        </div>
+        <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
+      </div>
+      <div><h4>Pages</h4><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="custom-cake.html">Custom Cakes</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="blog.html">Blog / Health Tips</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul></div>
+      <div><h4>Visit Us</h4><ul>
+        <li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Bhanuse Wasti, Marunji Rd, Hinjawadi Phase II, Pune 411057</a></li>
+        <li><a href="tel:+917795076412">+91 77950 76412</a></li>
+        <li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Akkis Healthy Baking. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link">📸</a>
+        <a href="https://wa.me/917795076412" target="_blank" class="social-link">💬</a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-link">📍</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── GALLERY DATA ── */
+const ITEMS = [
+  {src:'images/store.jpg',      type:'img', title:'Grand Store Opening',                  tag:'Our Store'},
+  {src:'images/cake_collage.png',type:'img',title:'Custom Cake Collection',               tag:'Custom Cakes'},
+  {src:'images/cake_mom.jpeg',  type:'img', title:"Mom's World — Floral Birthday Cake",   tag:'Custom Cake'},
+  {src:'images/cake_30.jpeg',   type:'img', title:'Turning 30 — Stickman Edition',        tag:'Celebration Cake'},
+  {src:'images/cake_40.jpeg',   type:'img', title:'40 is Fine When You Look 29!',         tag:'Celebration Cake'},
+  {src:'images/cake_music.jpeg',type:'img', title:'Born to Be a Rockstar — Vijran',       tag:'Custom Cake'},
+  {src:'images/cake_spiderman.jpeg',type:'img',title:'Spider-Man 4th Birthday — Adwait', tag:'Kids Cake'},
+  {src:'images/cake_designer.jpeg',type:'img',title:'Designer in the Making — NID',      tag:'Custom Cake'},
+  {src:'images/cake_romantic.jpeg',type:'img',title:'Romantic Red Rose Birthday Cake',   tag:'Celebration Cake'},
+  {src:'images/cake_brownies.webp',type:'img',title:'Multi-Seed Brownies & Almond Loaf', tag:'Healthy Bakes'},
+  {src:'images/cake_loaf.webp', type:'img', title:'Mango Pistachio & Banana Walnut Loaves',tag:'Healthy Bakes'},
+  {src:'images/cake_video.mp4', type:'vid', title:'Behind the Scenes — Cake in the Making',tag:'Video'},
+];
+
+let lbIdx = 0;
+
+/* ── FILTER ── */
+function filterGallery(cat, btn) {
+  document.querySelectorAll('.fchip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const items = document.querySelectorAll('.masonry-item');
+  let count = 0;
+  items.forEach(el => {
+    const cats = el.dataset.cat || '';
+    const show = cat === 'all' || cats.includes(cat);
+    el.classList.toggle('hidden', !show);
+    if (show) count++;
+  });
+  document.getElementById('showCount').textContent = count;
+  document.getElementById('noItems').style.display = count === 0 ? 'block' : 'none';
+}
+
+/* ── LIGHTBOX ── */
+function openLB(el, idx) {
+  lbIdx = idx;
+  showLBItem(idx);
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showLBItem(idx) {
+  const item = ITEMS[idx];
+  const img = document.getElementById('lbImg');
+  const vid = document.getElementById('lbVid');
+  if (item.type === 'vid') {
+    img.style.display = 'none';
+    vid.style.display = 'block';
+    vid.src = item.src;
+    vid.load();
+  } else {
+    vid.style.display = 'none'; vid.pause(); vid.src = '';
+    img.style.display = 'block';
+    img.src = item.src;
+    img.alt = item.title;
+  }
+  document.getElementById('lbTitle').textContent = item.title;
+  document.getElementById('lbTag').textContent = item.tag;
+  document.getElementById('lbCounter').textContent = `${idx + 1} / ${ITEMS.length}`;
+}
+
+function closeLB() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  const vid = document.getElementById('lbVid');
+  vid.pause(); vid.src = '';
+}
+
+function closeLBOnBg(e) {
+  if (e.target === document.getElementById('lightbox')) closeLB();
+}
+
+function lbNav(dir) {
+  lbIdx = (lbIdx + dir + ITEMS.length) % ITEMS.length;
+  showLBItem(lbIdx);
+}
+
+/* keyboard nav */
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbNav(1);
+  if (e.key === 'ArrowLeft')  lbNav(-1);
+  if (e.key === 'Escape')     closeLB();
+});
+
+/* ── REVEAL ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── HAMBURGER ── */
+document.querySelector('.nav-hamburger').addEventListener('click', function () {
+  const nav = document.querySelector('.nav-links');
+  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+  if (nav.style.display === 'flex') {
+    nav.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99';
+  }
+});
+
+/* ── INIT COUNT ── */
+document.getElementById('showCount').textContent = document.querySelectorAll('.masonry-item').length;
+</script>
+</body>
+</html>

@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Akki's Healthy Baking – Guilt-Free Goodness</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --honey:#D4780A;
+    --honey-light:#F5A623;
+    --honey-pale:#FEF3E2;
+    --brown-dark:#3B1F0A;
+    --brown-mid:#7A4010;
+    --cream:#FFFBF4;
+    --white:#FFFFFF;
+    --text:#2C1810;
+    --text-muted:#6B4C3B;
+    --green-fresh:#3B6E2A;
+    --green-pale:#EFF7EA;
+    --border:#E8D5B0;
+    --radius:12px;
+    --radius-lg:20px;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,251,244,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+    padding:0 5%;
+    display:flex;align-items:center;justify-content:space-between;
+    height:68px;
+  }
+  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .nav-logo img{height:44px;width:44px;border-radius:50%;object-fit:cover}
+  .nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+  .nav-logo-text span:first-child{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--brown-dark)}
+  .nav-logo-text span:last-child{font-size:11px;color:var(--honey);font-weight:500;letter-spacing:0.5px}
+  .nav-links{display:flex;gap:28px;list-style:none}
+  .nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-muted);transition:color .2s}
+  .nav-links a:hover{color:var(--honey)}
+  .nav-cta{
+    background:var(--honey);color:#fff;
+    padding:9px 22px;border-radius:50px;
+    text-decoration:none;font-size:13px;font-weight:600;
+    transition:background .2s,transform .15s;
+  }
+  .nav-cta:hover{background:var(--brown-mid);transform:scale(1.02)}
+  .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+
+  /* ── HERO ── */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding:100px 5% 60px;
+    background:linear-gradient(135deg,var(--cream) 0%,#FEF0D4 100%);
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;
+    width:600px;height:600px;border-radius:50%;
+    background:radial-gradient(circle,rgba(212,120,10,0.08) 0%,transparent 70%);
+    right:-100px;top:50%;transform:translateY(-50%);
+    pointer-events:none;
+  }
+  .hero-inner{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--green-pale);color:var(--green-fresh);
+    border:1px solid rgba(59,110,42,0.2);
+    padding:6px 14px;border-radius:50px;
+    font-size:12px;font-weight:600;letter-spacing:0.4px;
+    margin-bottom:20px;
+  }
+  .hero-badge::before{content:'✦';font-size:10px}
+  h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(36px,4.5vw,58px);
+    font-weight:700;line-height:1.15;
+    color:var(--brown-dark);
+    margin-bottom:20px;
+  }
+  h1 em{font-style:italic;color:var(--honey)}
+  .hero-sub{font-size:17px;color:var(--text-muted);margin-bottom:32px;line-height:1.7;max-width:440px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .btn-primary{
+    background:var(--honey);color:#fff;
+    padding:14px 32px;border-radius:50px;
+    text-decoration:none;font-size:15px;font-weight:600;
+    transition:background .2s,transform .15s,box-shadow .15s;
+    box-shadow:0 4px 16px rgba(212,120,10,0.3);
+  }
+  .btn-primary:hover{background:var(--brown-mid);transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,120,10,0.4)}
+  .btn-outline{
+    border:2px solid var(--honey);color:var(--honey);
+    padding:13px 30px;border-radius:50px;
+    text-decoration:none;font-size:15px;font-weight:600;
+    transition:all .2s;
+  }
+  .btn-outline:hover{background:var(--honey);color:#fff}
+  .hero-trust{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted)}
+  .trust-icon{width:32px;height:32px;border-radius:50%;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:15px}
+  
+  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+  .hero-img-main{
+    width:100%;max-width:460px;
+    border-radius:var(--radius-lg);
+    box-shadow:0 20px 60px rgba(59,31,10,0.2);
+    object-fit:cover;
+  }
+  .hero-float-card{
+    position:absolute;
+    background:#fff;
+    border-radius:var(--radius);
+    padding:14px 18px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.12);
+    display:flex;align-items:center;gap:12px;
+    min-width:160px;
+  }
+  .hero-float-card.left{left:-20px;bottom:60px}
+  .hero-float-card.right{right:-10px;top:80px}
+  .float-icon{width:40px;height:40px;border-radius:10px;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .float-text strong{display:block;font-size:14px;font-weight:600;color:var(--brown-dark)}
+  .float-text span{font-size:11px;color:var(--text-muted)}
+
+  /* ── MARQUEE ── */
+  .marquee-wrap{background:var(--honey);padding:14px 0;overflow:hidden}
+  .marquee-track{display:flex;gap:0;animation:marquee 20s linear infinite;width:max-content}
+  .marquee-item{white-space:nowrap;padding:0 40px;font-size:13px;font-weight:600;color:#fff;letter-spacing:0.5px}
+  .marquee-item::before{content:'♥  ';opacity:0.7}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ── SECTION COMMON ── */
+  section{padding:80px 5%}
+  .section-inner{max-width:1200px;margin:0 auto}
+  .section-tag{font-size:12px;font-weight:600;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+  .section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--brown-dark);margin-bottom:14px;line-height:1.25}
+  .section-sub{font-size:16px;color:var(--text-muted);max-width:520px;line-height:1.7}
+  .section-header{margin-bottom:50px}
+  .section-header.center{text-align:center}
+  .section-header.center .section-sub{margin:0 auto}
+
+  /* ── WHY US ── */
+  .why-bg{background:var(--white)}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+  .why-card{
+    background:var(--cream);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:28px 24px;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .why-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(59,31,10,0.1)}
+  .why-card-icon{width:52px;height:52px;border-radius:14px;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
+  .why-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown-dark);margin-bottom:8px}
+  .why-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
+
+  /* ── FEATURED PRODUCTS ── */
+  .products-bg{background:var(--cream)}
+  .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+  .product-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .product-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(59,31,10,0.12)}
+  .product-img{
+    width:100%;height:200px;object-fit:cover;
+    background:linear-gradient(135deg,#FEF0D4,#F5D9A8);
+    display:flex;align-items:center;justify-content:center;font-size:60px;
+  }
+  .product-info{padding:18px 20px}
+  .product-veg{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--green-fresh);font-weight:600;margin-bottom:6px}
+  .veg-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--green-fresh);display:inline-flex;align-items:center;justify-content:center}
+  .veg-dot::after{content:'';width:5px;height:5px;background:var(--green-fresh);border-radius:50%;display:block}
+  .product-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--brown-dark);margin-bottom:4px;line-height:1.3}
+  .product-weight{font-size:12px;color:var(--text-muted);margin-bottom:12px}
+  .product-footer{display:flex;align-items:center;justify-content:space-between}
+  .product-price{font-size:20px;font-weight:700;color:var(--honey)}
+  .product-add{
+    background:var(--honey);color:#fff;
+    border:none;cursor:pointer;
+    padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;
+    transition:background .2s,transform .15s;
+  }
+  .product-add:hover{background:var(--brown-mid);transform:scale(1.05)}
+  .view-all-wrap{text-align:center;margin-top:44px}
+
+  /* ── LOAF HIGHLIGHT ── */
+  .loaf-section{background:var(--honey-pale)}
+  .loaf-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .loaf-img{width:100%;border-radius:var(--radius-lg);box-shadow:0 16px 48px rgba(59,31,10,0.15)}
+  .loaf-tag-list{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+  .tag{background:rgba(212,120,10,0.12);color:var(--honey);padding:5px 12px;border-radius:50px;font-size:12px;font-weight:600}
+  .loaf-features{margin:24px 0;display:flex;flex-direction:column;gap:10px}
+  .loaf-feat{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
+  .feat-check{width:22px;height:22px;background:var(--green-fresh);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .feat-check::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-bg{background:var(--white)}
+  .test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .test-card{
+    background:var(--cream);
+    border:1px solid var(--border);
+    border-radius:var(--radius-lg);
+    padding:24px;
+  }
+  .test-stars{color:var(--honey-light);font-size:14px;margin-bottom:12px;letter-spacing:2px}
+  .test-text{font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;font-style:italic}
+  .test-author{display:flex;align-items:center;gap:10px}
+  .test-avatar{width:38px;height:38px;border-radius:50%;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--honey);flex-shrink:0}
+  .test-name{font-size:14px;font-weight:600;color:var(--brown-dark)}
+  .test-loc{font-size:12px;color:var(--text-muted)}
+
+  /* ── GALLERY STRIP ── */
+  .gallery-bg{background:var(--cream)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .gallery-item{border-radius:var(--radius);overflow:hidden;aspect-ratio:1;position:relative;cursor:pointer}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .gallery-item:hover img{transform:scale(1.06)}
+
+  /* ── BLOG ── */
+  .blog-bg{background:var(--honey-pale)}
+  .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .blog-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:transform .2s,box-shadow .2s}
+  .blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(59,31,10,0.1)}
+  .blog-tag{display:inline-block;background:var(--honey-pale);color:var(--honey);padding:4px 12px;border-radius:50px;font-size:11px;font-weight:600;margin-bottom:10px}
+  .blog-card-body{padding:22px}
+  .blog-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown-dark);margin-bottom:8px;line-height:1.35}
+  .blog-card p{font-size:14px;color:var(--text-muted);line-height:1.65;margin-bottom:16px}
+  .blog-read{font-size:13px;font-weight:600;color:var(--honey);text-decoration:none}
+  .blog-read:hover{color:var(--brown-mid)}
+
+  /* ── CONTACT STRIP ── */
+  .contact-strip{background:var(--brown-dark);padding:60px 5%}
+  .contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .contact-text h2{font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:8px}
+  .contact-text p{color:rgba(255,255,255,0.65);font-size:16px}
+  .contact-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .contact-btn{
+    background:var(--honey);color:#fff;padding:13px 28px;
+    border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;
+    transition:background .2s;white-space:nowrap;
+  }
+  .contact-btn:hover{background:var(--honey-light)}
+  .contact-btn.outline{background:transparent;border:2px solid rgba(255,255,255,0.4);color:#fff}
+  .contact-btn.outline:hover{background:rgba(255,255,255,0.1)}
+
+  /* ── FOOTER ── */
+  footer{background:#2C1810;padding:50px 5% 30px}
+  .footer-inner{max-width:1200px;margin:0 auto}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+  .footer-brand p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-top:12px;max-width:260px}
+  .footer-logo{display:flex;align-items:center;gap:10px}
+  .footer-logo img{height:40px;width:40px;border-radius:50%}
+  .footer-logo-text{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff}
+  footer h4{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:0.5px;margin-bottom:16px;text-transform:uppercase}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:10px}
+  footer ul a{text-decoration:none;font-size:14px;color:rgba(255,255,255,0.5);transition:color .2s}
+  footer ul a:hover{color:var(--honey-light)}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap 14px}
+  .footer-bottom p{font-size:13px;color:rgba(255,255,255,0.35)}
+  .footer-social{display:flex;gap:12px}
+  .social-link{
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(255,255,255,0.2);
+    display:flex;align-items:center;justify-content:center;
+    color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none;
+    transition:border-color .2s,color .2s;
+  }
+  .social-link:hover{border-color:var(--honey-light);color:var(--honey-light)}
+
+  /* ── MOBILE ── */
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr}
+    .hero-visual{display:none}
+    .loaf-inner{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .contact-inner{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .nav-links,.nav-cta{display:none}
+    .nav-hamburger{display:block}
+    section{padding:60px 5%}
+    .hero-float-card{display:none}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .footer-grid{grid-template-columns:1fr}
+    .contact-inner{gap:24px}
+  }
+
+  /* ── CART FAB ── */
+  .cart-fab{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--honey);color:#fff;border:none;cursor:pointer;width:60px;height:60px;border-radius:50%;font-size:24px;box-shadow:0 6px 24px rgba(212,120,10,.45);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
+  .cart-fab:hover{background:var(--brown-mid);transform:scale(1.08)}
+  .cart-badge{position:absolute;top:-4px;right:-4px;background:#C0392B;color:#fff;width:20px;height:20px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;display:none}
+  .cart-panel{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--white);box-shadow:-8px 0 40px rgba(0,0,0,.15);z-index:300;transition:right .3s ease;display:flex;flex-direction:column}
+  .cart-panel.open{right:0}
+  .cart-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+  .cart-header h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--brown-dark)}
+  .cart-close{background:none;border:none;cursor:pointer;font-size:22px;color:var(--text-muted)}
+  .cart-body{flex:1;overflow-y:auto;padding:16px 24px}
+  .cart-empty-msg{text-align:center;padding:40px 20px;color:var(--text-muted)}
+  .cart-empty-msg div{font-size:48px;margin-bottom:12px}
+  .cart-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+  .ci-emoji{width:40px;height:40px;background:var(--honey-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+  .ci-info{flex:1;min-width:0}
+  .ci-name{font-size:13px;font-weight:600;color:var(--brown-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .ci-price{font-size:13px;color:var(--honey);font-weight:600}
+  .qty-wrap{display:flex;align-items:center;gap:8px}
+  .qbtn{background:var(--honey-pale);border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;color:var(--brown-dark);font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s}
+  .qbtn:hover{background:var(--honey);color:#fff}
+  .qnum{font-size:14px;font-weight:600;min-width:20px;text-align:center}
+  .cart-foot{padding:20px 24px;border-top:1px solid var(--border)}
+  .cart-total-row{display:flex;justify-content:space-between;margin-bottom:16px}
+  .cart-total-row span:first-child{font-size:15px;color:var(--text-muted)}
+  .cart-total-row span:last-child{font-size:20px;font-weight:700;color:var(--brown-dark)}
+  .checkout-btn{width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;padding:14px;border-radius:50px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+  .checkout-btn:hover{background:#1ebe5d}
+  .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:250;opacity:0;pointer-events:none;transition:opacity .3s}
+  .cart-overlay.show{opacity:1;pointer-events:all}
+  /* ── SCROLL ANIMATION ── */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Akki's Healthy Baking logo" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      <span>Akki's Healthy Baking</span>
+      <span>The Secret is Love</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="custom-cake.html">Custom Cakes</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="custom-cake.html" class="nav-cta">Order a Cake</a>
+  <button class="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">No Maida · No Refined Sugar · 100% Organic</div>
+      <h1>Baked with Love,<br><em>Good for You</em><br>Every Time</h1>
+      <p class="hero-sub">From celebration cakes to everyday treats — every bite is crafted with whole grains, jaggery, and real ingredients. Guilt-free never tasted this good.</p>
+      <div class="hero-actions">
+        <a href="products.html" class="btn-primary">Explore Our Treats</a>
+        <a href="custom-cake.html" class="btn-outline">Design Your Cake</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><div class="trust-icon">🌾</div> Whole Wheat &amp; Ragi</div>
+        <div class="trust-item"><div class="trust-icon">🍯</div> Jaggery Sweetened</div>
+        <div class="trust-item"><div class="trust-icon">🚚</div> Home Delivery</div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="hero-img-main" src="images/store.jpg" alt="Akki's Healthy Baking store" onerror="this.src='';this.style.background='linear-gradient(135deg,#FEF0D4,#F5D9A8)';this.style.minHeight='360px'">
+      <div class="hero-float-card left">
+        <div class="float-icon">🎂</div>
+        <div class="float-text"><strong>Custom Cakes</strong><span>Made to order</span></div>
+      </div>
+      <div class="hero-float-card right">
+        <div class="float-icon">🏅</div>
+        <div class="float-text"><strong>100% Organic</strong><span>Verified ingredients</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">No Maida</span>
+    <span class="marquee-item">No Refined Sugar</span>
+    <span class="marquee-item">Ragi &amp; Whole Wheat</span>
+    <span class="marquee-item">Jaggery Sweetened</span>
+    <span class="marquee-item">Freshly Baked Daily</span>
+    <span class="marquee-item">Home Delivery Available</span>
+    <span class="marquee-item">100% Vegetarian</span>
+    <span class="marquee-item">Custom Cakes</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">No Maida</span>
+    <span class="marquee-item">No Refined Sugar</span>
+    <span class="marquee-item">Ragi &amp; Whole Wheat</span>
+    <span class="marquee-item">Jaggery Sweetened</span>
+    <span class="marquee-item">Freshly Baked Daily</span>
+    <span class="marquee-item">Home Delivery Available</span>
+    <span class="marquee-item">100% Vegetarian</span>
+    <span class="marquee-item">Custom Cakes</span>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="why-bg">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <p class="section-tag">Why Akki's</p>
+      <h2 class="section-title">Baking that actually cares about you</h2>
+      <p class="section-sub">Every ingredient is chosen for taste and nourishment. No shortcuts, no compromise.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-card-icon">🌾</div>
+        <h3>Whole Grain Flours</h3>
+        <p>We use whole wheat and ragi (finger millet) instead of refined maida — keeping fibre, minerals, and flavour intact.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">🍯</div>
+        <h3>Natural Sweeteners</h3>
+        <p>Jaggery and organic honey replace refined sugar, adding iron and a warm, earthy sweetness to every bite.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">🥭</div>
+        <h3>Real, Seasonal Fruits</h3>
+        <p>Alphonso mangoes, fresh bananas, and handpicked berries go in whole — no extracts, no artificial flavours.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-card-icon">👩‍🍳</div>
+        <h3>Freshly Baked Daily</h3>
+        <p>No preservatives means everything is baked fresh each morning. What you taste is what was made today.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-tag">Our Bestsellers</p>
+      <h2 class="section-title">Treats everyone loves</h2>
+      <p class="section-sub">From celebration cakes to healthy snacks — find something for every craving.</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-img">🍫</div>
+        <div class="product-info">
+          <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
+          <div class="product-name">Ragi Dark Chocolate Truffles Cake</div>
+          <div class="product-weight">500 G</div>
+          <div class="product-footer">
+            <span class="product-price">₹1,214</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-img">🍍</div>
+        <div class="product-info">
+          <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
+          <div class="product-name">Pineapple Cream Cake</div>
+          <div class="product-weight">500 G</div>
+          <div class="product-footer">
+            <span class="product-price">₹1,011</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-img">🫐</div>
+        <div class="product-info">
+          <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
+          <div class="product-name">Blueberry Cream Cake</div>
+          <div class="product-weight">500 G</div>
+          <div class="product-footer">
+            <span class="product-price">₹1,011</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card reveal">
+        <div class="product-img">🌋</div>
+        <div class="product-info">
+          <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
+          <div class="product-name">Hot Choco Lava</div>
+          <div class="product-weight">100 G</div>
+          <div class="product-footer">
+            <span class="product-price">₹149</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="view-all-wrap reveal">
+      <a href="products.html" class="btn-primary">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOAF HIGHLIGHT -->
+<section class="loaf-section">
+  <div class="section-inner">
+    <div class="loaf-inner">
+      <div class="reveal">
+        <img class="loaf-img" src="images/loaf-product.jpg" alt="Healthy wheat loaf" onerror="this.style.display='none'">
+      </div>
+      <div class="reveal">
+        <p class="section-tag">New &amp; Exclusive</p>
+        <h2 class="section-title">Wholesome Loaves,<br><em>Nothing to Regret</em></h2>
+        <div class="loaf-tag-list">
+          <span class="tag">Wheat</span>
+          <span class="tag">Ragi</span>
+          <span class="tag">Jaggery</span>
+          <span class="tag">No Sugar</span>
+        </div>
+        <p style="color:var(--text-muted);font-size:15px;line-height:1.7">Our signature loaves use Alphonso mangoes with pistachios, or ripe bananas with walnuts — baked in whole wheat and ragi with jaggery sweetness.</p>
+        <div class="loaf-features">
+          <div class="loaf-feat"><div class="feat-check"></div> Hearty Ragi Banana Walnut Loaf — ₹404</div>
+          <div class="loaf-feat"><div class="feat-check"></div> Sweet Wheat Mango Pistachio Loaf — ₹404</div>
+          <div class="loaf-feat"><div class="feat-check"></div> Freshly baked on order</div>
+        </div>
+        <a href="products.html" class="btn-primary" style="display:inline-block;margin-top:8px">Order a Loaf</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-bg">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <p class="section-tag">Happy Customers</p>
+      <h2 class="section-title">People love what they taste</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Finally a bakery where I can enjoy cake without worrying about maida or sugar. The Ragi Chocolate Cake is incredible — my kids devoured it!"</p>
+        <div class="test-author">
+          <div class="test-avatar">P</div>
+          <div><div class="test-name">Priya Sharma</div><div class="test-loc">Hinjawadi, Pune</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"Ordered a custom birthday cake for my daughter — she wanted Harry Potter theme and Akki nailed it perfectly. Tasted amazing and healthy too!"</p>
+        <div class="test-author">
+          <div class="test-avatar">R</div>
+          <div><div class="test-name">Rahul Desai</div><div class="test-loc">Wakad, Pune</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="test-stars">★★★★★</div>
+        <p class="test-text">"The Mango Pistachio loaf is my weekend favourite. Knowing it's made with Alphonso mangoes and jaggery makes every slice guilt-free joy."</p>
+        <div class="test-author">
+          <div class="test-avatar">S</div>
+          <div><div class="test-name">Snehal Kulkarni</div><div class="test-loc">Marunji, Pune</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<section class="gallery-bg">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <p class="section-tag">Gallery</p>
+      <h2 class="section-title">Made with love, looks it too</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><div style="width:100%;height:100%;background:linear-gradient(135deg,#FEF0D4,#F5D9A8);display:flex;align-items:center;justify-content:center;font-size:50px">🎂</div></div>
+      <div class="gallery-item"><div style="width:100%;height:100%;background:linear-gradient(135deg,#EFF7EA,#C0DD97);display:flex;align-items:center;justify-content:center;font-size:50px">🍰</div></div>
+      <div class="gallery-item"><div style="width:100%;height:100%;background:linear-gradient(135deg,#FEF3E2,#FAC775);display:flex;align-items:center;justify-content:center;font-size:50px">🥧</div></div>
+    </div>
+    <div class="view-all-wrap reveal" style="margin-top:28px">
+      <a href="gallery.html" class="btn-outline">See Full Gallery</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-bg">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <p class="section-tag">Health Tips &amp; More</p>
+      <h2 class="section-title">From our kitchen to your life</h2>
+      <p class="section-sub">Simple reads on healthy baking, millets, and mindful eating.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-card-body">
+          <span class="blog-tag">Millets</span>
+          <h3>Why Ragi (Finger Millet) is a Superfood for Your Family</h3>
+          <p>Ragi is rich in calcium, iron, and essential amino acids — making it perfect for kids, elders, and everyone in between.</p>
+          <a href="blog.html" class="blog-read">Read more →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-card-body">
+          <span class="blog-tag">Sweeteners</span>
+          <h3>Jaggery vs Sugar: What Really Happens Inside Your Body</h3>
+          <p>Refined sugar spikes blood glucose fast. Jaggery is absorbed slowly, supplies minerals, and tastes richer too.</p>
+          <a href="blog.html" class="blog-read">Read more →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-card-body">
+          <span class="blog-tag">Baking Tips</span>
+          <h3>How to Make Whole Wheat Cakes Soft — Our Secret Techniques</h3>
+          <p>Whole wheat can feel dense if not handled right. We share the method that keeps every loaf light and moist.</p>
+          <a href="blog.html" class="blog-read">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-inner">
+    <div class="contact-text">
+      <h2>Ready to order something special?</h2>
+      <p>Visit us in Hinjawadi, Pune — or call us for home delivery.</p>
+    </div>
+    <div class="contact-actions">
+      <a href="tel:+917795076412" class="contact-btn">📞 +91 77950 76412</a>
+      <a href="custom-cake.html" class="contact-btn outline">Design a Custom Cake</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
+          <span class="footer-logo-text">Akki's Healthy Baking</span>
+        </div>
+        <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="custom-cake.html">Custom Cakes</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>More</h4>
+        <ul>
+          <li><a href="blog.html">Blog / Health Tips</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <ul>
+          <li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Bhanuse Wasti, Marunji Rd, Hinjawadi Phase II, Pune 411057</a></li>
+          <li><a href="tel:+917795076412">+91 77950 76412</a></li>
+          <li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Akki's Healthy Baking. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link" aria-label="Instagram">📸</a>
+        <a href="https://wa.me/917795076412" target="_blank" class="social-link" aria-label="WhatsApp">💬</a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-link" aria-label="Map">📍</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART FAB -->
+<button class="cart-fab" onclick="toggleCart()" aria-label="Cart">
+  🛒<span class="cart-badge" id="homeBadge">0</span>
+</button>
+<div class="cart-overlay" id="homeOverlay" onclick="toggleCart()"></div>
+<div class="cart-panel" id="homeCartPanel">
+  <div class="cart-header">
+    <h3>Your Cart 🛒</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="homeCartBody">
+    <div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>
+  </div>
+  <div class="cart-foot" id="homeCartFoot" style="display:none">
+    <div class="cart-total-row"><span>Total</span><span id="homeTotal">₹0</span></div>
+    <button class="checkout-btn" onclick="homeCheckout()">💬 Order via WhatsApp</button>
+  </div>
+</div>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
+  });
+},{threshold:0.1});
+reveals.forEach(el=>observer.observe(el));
+
+// ── HOME PAGE CART ──
+const HOME_PRODUCTS = {
+  'Ragi Dark Chocolate Truffles Cake': {emoji:'🍫', price:1214},
+  'Pineapple Cream Cake':              {emoji:'🍍', price:1011},
+  'Blueberry Cream Cake':              {emoji:'🫐', price:1011},
+  'Hot Choco Lava':                    {emoji:'🌋', price:149},
+};
+let homeCart = {};
+
+function addToCart(btn){
+  // Get product name from parent card
+  const card = btn.closest('.product-card');
+  const name = card.querySelector('.product-name').textContent.trim();
+  const p = HOME_PRODUCTS[name];
+  if(!p) return;
+  homeCart[name] = homeCart[name]
+    ? {...homeCart[name], qty: homeCart[name].qty+1}
+    : {...p, name, qty:1};
+  btn.textContent = `In Cart (${homeCart[name].qty})`;
+  btn.style.background = '#3B6E2A';
+  renderHomeCart();
+}
+
+function renderHomeCart(){
+  const keys = Object.keys(homeCart);
+  const count = keys.reduce((s,k)=>s+homeCart[k].qty,0);
+  const total = keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
+  const badge = document.getElementById('homeBadge');
+  if(count>0){badge.textContent=count;badge.style.display='flex';}
+  else{badge.style.display='none';}
+  const foot = document.getElementById('homeCartFoot');
+  const body = document.getElementById('homeCartBody');
+  document.getElementById('homeTotal').textContent = '₹'+total.toLocaleString('en-IN');
+  if(!keys.length){
+    body.innerHTML='<div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>';
+    foot.style.display='none'; return;
+  }
+  foot.style.display='block';
+  body.innerHTML = keys.map(k=>{
+    const i=homeCart[k];
+    return `<div class="cart-item">
+      <div class="ci-emoji">${i.emoji}</div>
+      <div class="ci-info">
+        <div class="ci-name">${i.name}</div>
+        <div class="ci-price">₹${(i.price*i.qty).toLocaleString('en-IN')}</div>
+      </div>
+      <div class="qty-wrap">
+        <button class="qbtn" onclick="homeQty('${k}',-1)">−</button>
+        <span class="qnum">${i.qty}</span>
+        <button class="qbtn" onclick="homeQty('${k}',1)">+</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function homeQty(name,delta){
+  if(!homeCart[name]) return;
+  homeCart[name].qty+=delta;
+  if(homeCart[name].qty<=0){
+    delete homeCart[name];
+    // Reset button text
+    document.querySelectorAll('.product-card').forEach(card=>{
+      if(card.querySelector('.product-name')?.textContent.trim()===name){
+        const btn=card.querySelector('.product-add');
+        if(btn){btn.textContent='Add to Cart';btn.style.background='';}
+      }
+    });
+  } else {
+    document.querySelectorAll('.product-card').forEach(card=>{
+      if(card.querySelector('.product-name')?.textContent.trim()===name){
+        const btn=card.querySelector('.product-add');
+        if(btn) btn.textContent=`In Cart (${homeCart[name].qty})`;
+      }
+    });
+  }
+  renderHomeCart();
+}
+
+function toggleCart(){
+  document.getElementById('homeCartPanel').classList.toggle('open');
+  document.getElementById('homeOverlay').classList.toggle('show');
+}
+
+function homeCheckout(){
+  const keys=Object.keys(homeCart);
+  if(!keys.length) return;
+  const total=keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
+  let msg="Hello! I'd like to order from Akki's Healthy Baking:%0A%0A";
+  keys.forEach(k=>{const i=homeCart[k];msg+=`• ${i.name} x${i.qty} — ₹${i.price*i.qty}%0A`;});
+  msg+=`%0ATotal: ₹${total}%0A%0APlease confirm availability and delivery. Thank you!`;
+  window.open(`https://wa.me/917795076412?text=${msg}`,'_blank');
+}
+
+// Mobile hamburger (basic toggle)
+document.querySelector('.nav-hamburger').addEventListener('click',function(){
+  const nav = document.querySelector('.nav-links');
+  if(nav.style.display==='flex'){nav.style.display='none'}
+  else{nav.style.cssText='display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99'}
+});
+</script>
+</body>
+</html>

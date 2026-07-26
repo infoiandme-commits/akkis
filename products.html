@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products – Akki's Healthy Baking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --honey:#D4780A;--honey-light:#F5A623;--honey-pale:#FEF3E2;
+  --brown-dark:#3B1F0A;--brown-mid:#7A4010;--cream:#FFFBF4;
+  --white:#fff;--text:#2C1810;--text-muted:#6B4C3B;
+  --green:#3B6E2A;--green-pale:#EFF7EA;--border:#E8D5B0;
+  --r:12px;--rlg:20px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 4%;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:38px;width:38px;border-radius:50%;object-fit:cover}
+.nav-logo-text span:first-child{display:block;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--brown-dark);line-height:1.2}
+.nav-logo-text span:last-child{display:block;font-size:10px;color:var(--honey);font-weight:500}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--honey)}
+.nav-cta{background:var(--honey);color:#fff;padding:8px 18px;border-radius:50px;text-decoration:none;font-size:12px;font-weight:600;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--brown-mid)}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);padding:16px 4%;z-index:99;flex-direction:column;gap:14px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{text-decoration:none;font-size:15px;font-weight:500;color:var(--text-muted);padding:6px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--honey)}
+.mobile-menu .m-cta{background:var(--honey);color:#fff;padding:12px;border-radius:50px;text-align:center;font-weight:600;border:none;margin-top:4px}
+
+/* ── HERO ── */
+.page-hero{min-height:280px;background:linear-gradient(150deg,#3B1F0A,#7A4010);display:flex;align-items:flex-end;padding:80px 4% 44px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('images/store.jpg') center/cover no-repeat;opacity:.15}
+.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:20px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-inner{max-width:1100px;width:100%;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:10px}
+.breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);font-weight:700;color:#fff;line-height:1.15}
+.page-hero h1 em{font-style:italic;color:#F5A623}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6);margin-top:8px}
+
+/* ── MOBILE FILTER DRAWER ── */
+.mob-filter-bar{display:none;background:var(--white);border-bottom:2px solid var(--border);padding:10px 4%;position:sticky;top:60px;z-index:80}
+.mob-filter-scroll{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.mob-filter-scroll::-webkit-scrollbar{display:none}
+.mob-cat-btn{flex-shrink:0;background:none;border:1.5px solid var(--border);cursor:pointer;padding:7px 14px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:var(--text-muted);white-space:nowrap;transition:all .18s}
+.mob-cat-btn.active{background:var(--honey);border-color:var(--honey);color:#fff;font-weight:600}
+.mob-sort-row{display:flex;gap:8px;margin-top:8px;align-items:center}
+.mob-search{flex:1;border:1.5px solid var(--border);border-radius:50px;padding:8px 14px 8px 36px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s}
+.mob-search:focus{border-color:var(--honey)}
+.mob-search-wrap{position:relative;flex:1}
+.mob-search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;pointer-events:none}
+.mob-sort{border:1.5px solid var(--border);border-radius:50px;padding:8px 12px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text);background:var(--white);outline:none;cursor:pointer}
+
+/* ── DESKTOP LAYOUT ── */
+.products-layout{max-width:1100px;margin:0 auto;padding:48px 4% 80px;display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:start}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:80px}
+.sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);padding:20px;margin-bottom:14px}
+.sidebar-title{font-size:11px;font-weight:700;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.filter-group{display:flex;flex-direction:column;gap:7px}
+.filter-btn{background:none;border:1.5px solid var(--border);cursor:pointer;padding:8px 12px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--text-muted);text-align:left;display:flex;align-items:center;justify-content:space-between;transition:all .2s}
+.filter-btn:hover{border-color:var(--honey);color:var(--honey)}
+.filter-btn.active{background:var(--honey);border-color:var(--honey);color:#fff;font-weight:600}
+.filter-count{font-size:10px;opacity:.75;background:rgba(0,0,0,.08);padding:1px 6px;border-radius:50px}
+.filter-btn.active .filter-count{background:rgba(255,255,255,.25)}
+.price-row{display:flex;gap:8px;margin-top:10px}
+.price-input{flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 8px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:var(--cream);outline:none;width:100%}
+.price-input:focus{border-color:var(--honey)}
+.apply-price{width:100%;margin-top:8px;background:var(--honey);color:#fff;border:none;cursor:pointer;padding:8px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;transition:background .2s}
+.apply-price:hover{background:var(--brown-mid)}
+.clear-all{width:100%;background:none;border:1.5px solid var(--border);cursor:pointer;padding:8px;border-radius:50px;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--text-muted);margin-top:6px;transition:all .2s}
+.clear-all:hover{border-color:var(--honey);color:var(--honey)}
+
+/* ── MAIN ── */
+.main-area{}
+.search-wrap{position:relative;margin-bottom:16px}
+.search-input{width:100%;border:1.5px solid var(--border);border-radius:50px;padding:11px 16px 11px 42px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--white);outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--honey)}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none}
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px}
+.result-count{font-size:13px;color:var(--text-muted)}
+.result-count strong{color:var(--brown-dark)}
+.sort-select{border:1.5px solid var(--border);border-radius:50px;padding:7px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:var(--white);outline:none;cursor:pointer}
+.sort-select:focus{border-color:var(--honey)}
+
+/* ── PRODUCTS GRID ── */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+
+/* ── PRODUCT CARD ── */
+.product-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);overflow:hidden;transition:transform .22s,box-shadow .22s,border-color .22s;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(59,31,10,.12);border-color:rgba(212,120,10,.35)}
+.product-card.hidden{display:none}
+.card-img{height:160px;width:100%;display:flex;align-items:center;justify-content:center;font-size:56px;position:relative;flex-shrink:0}
+.card-img-bg-1{background:linear-gradient(135deg,#FEF0D4,#F5D9A8)}
+.card-img-bg-2{background:linear-gradient(135deg,#EFF7EA,#C8E6B0)}
+.card-img-bg-3{background:linear-gradient(135deg,#F5E6FF,#DEB8FF)}
+.card-img-bg-4{background:linear-gradient(135deg,#FFE6E6,#FFBCBC)}
+.card-img-bg-5{background:linear-gradient(135deg,#E6F3FF,#B8D8FF)}
+.badge-new{position:absolute;top:10px;left:10px;background:var(--green);color:#fff;font-size:9px;font-weight:700;letter-spacing:.5px;padding:3px 8px;border-radius:50px}
+.badge-popular{position:absolute;top:10px;left:10px;background:var(--honey);color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:50px}
+.card-body{padding:14px 14px 16px;flex:1;display:flex;flex-direction:column}
+.card-cat{font-size:10px;font-weight:600;color:var(--honey);letter-spacing:.8px;text-transform:uppercase;margin-bottom:3px}
+.card-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:600;color:var(--brown-dark);line-height:1.3;margin-bottom:3px}
+.card-weight{font-size:11px;color:var(--text-muted);margin-bottom:8px}
+.card-tags{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px}
+.ctag{background:var(--honey-pale);color:var(--brown-mid);padding:2px 7px;border-radius:50px;font-size:9px;font-weight:500}
+.veg-line{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--green);font-weight:600;margin-bottom:10px}
+.vdot{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--green);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.vdot::after{content:'';width:3px;height:3px;background:var(--green);border-radius:50%;display:block}
+.card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;gap:6px}
+.card-price{font-size:18px;font-weight:700;color:var(--honey);white-space:nowrap}
+.add-btn{background:var(--honey);color:#fff;border:none;cursor:pointer;padding:7px 13px;border-radius:50px;font-size:11px;font-weight:600;font-family:'DM Sans',sans-serif;transition:background .2s,transform .15s;white-space:nowrap}
+.add-btn:hover{background:var(--brown-mid);transform:scale(1.04)}
+.no-results{grid-column:1/-1;text-align:center;padding:50px 20px;color:var(--text-muted)}
+.no-results div{font-size:48px;margin-bottom:12px}
+
+/* ── CART FAB ── */
+.cart-fab{position:fixed;bottom:24px;right:20px;z-index:200;background:var(--honey);color:#fff;border:none;cursor:pointer;width:56px;height:56px;border-radius:50%;font-size:22px;box-shadow:0 6px 24px rgba(212,120,10,.45);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
+.cart-fab:hover{background:var(--brown-mid);transform:scale(1.08)}
+.cart-count{position:absolute;top:-4px;right:-4px;background:#C0392B;color:#fff;width:20px;height:20px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cart-panel{position:fixed;top:0;right:-110%;width:min(360px,100vw);height:100vh;background:var(--white);box-shadow:-8px 0 40px rgba(0,0,0,.15);z-index:300;transition:right .3s ease;display:flex;flex-direction:column}
+.cart-panel.open{right:0}
+.cart-header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.cart-header h3{font-family:'Playfair Display',serif;font-size:19px;font-weight:700;color:var(--brown-dark)}
+.cart-close{background:none;border:none;cursor:pointer;font-size:22px;color:var(--text-muted);line-height:1;padding:4px}
+.cart-body{flex:1;overflow-y:auto;padding:14px 20px}
+.cart-empty{text-align:center;padding:40px 20px;color:var(--text-muted)}
+.cart-empty div{font-size:44px;margin-bottom:10px}
+.cart-item{display:flex;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid var(--border)}
+.ci-emoji{width:38px;height:38px;background:var(--honey-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ci-info{flex:1;min-width:0}
+.ci-name{font-size:12px;font-weight:600;color:var(--brown-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-price{font-size:12px;color:var(--honey);font-weight:600}
+.qty-wrap{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.qbtn{background:var(--honey-pale);border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s;color:var(--brown-dark)}
+.qbtn:hover{background:var(--honey);color:#fff}
+.qnum{font-size:13px;font-weight:600;min-width:18px;text-align:center}
+.cart-foot{padding:16px 20px;border-top:1px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;margin-bottom:14px}
+.cart-total-row span:first-child{font-size:14px;color:var(--text-muted)}
+.cart-total-row span:last-child{font-size:19px;font-weight:700;color:var(--brown-dark)}
+.checkout-btn{width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;padding:13px;border-radius:50px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:6px}
+.checkout-btn:hover{background:#1ebe5d}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:250;opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.show{opacity:1;pointer-events:all}
+
+/* ── FOOTER ── */
+footer{background:#2C1810;padding:44px 4% 28px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:10px;max-width:240px}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo img{height:38px;width:38px;border-radius:50%}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff}
+footer h4{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
+footer ul{list-style:none}
+footer ul li{margin-bottom:9px}
+footer ul a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
+footer ul a:hover{color:#F5A623}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.35)}
+.footer-social{display:flex;gap:10px}
+.social-link{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:14px;text-decoration:none;transition:border-color .2s,color .2s}
+.social-link:hover{border-color:#F5A623;color:#F5A623}
+
+/* ══════════ RESPONSIVE ══════════ */
+
+/* Tablet */
+@media(max-width:900px){
+  .products-layout{grid-template-columns:1fr;padding:28px 4% 60px;gap:20px}
+  .sidebar{position:static;display:none} /* hide sidebar — use mobile bar */
+  .mob-filter-bar{display:block}
+  .search-wrap{margin-bottom:12px}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+}
+
+/* Mobile */
+@media(max-width:600px){
+  nav{height:56px;padding:0 4%}
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:block}
+  .nav-logo img{height:34px;width:34px}
+  .nav-logo-text span:first-child{font-size:13px}
+  .nav-logo-text span:last-child{display:none}
+
+  .mob-filter-bar{top:56px;padding:8px 4%}
+
+  .page-hero{min-height:220px;padding:76px 4% 36px}
+  .page-hero h1{font-size:24px}
+  .hero-sub{font-size:12px}
+
+  .products-layout{padding:16px 3% 60px}
+
+  /* 2-column grid */
+  .products-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .card-img{height:130px;font-size:44px}
+  .card-body{padding:10px 10px 12px}
+  .card-cat{font-size:9px}
+  .card-name{font-size:12px;margin-bottom:2px}
+  .card-weight{font-size:10px;margin-bottom:6px}
+  .card-tags{gap:3px;margin-bottom:6px}
+  .ctag{font-size:8px;padding:2px 5px}
+  .veg-line{font-size:9px;margin-bottom:8px}
+  .card-footer{gap:4px}
+  .card-price{font-size:15px}
+  .add-btn{padding:6px 10px;font-size:10px}
+
+  .toolbar{flex-direction:row;gap:6px}
+  .result-count{font-size:12px}
+
+  .cart-fab{width:50px;height:50px;font-size:20px;bottom:20px;right:16px}
+
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .footer-brand p{max-width:100%}
+}
+
+/* Very small phones */
+@media(max-width:360px){
+  .products-grid{grid-template-columns:1fr 1fr;gap:8px}
+  .card-img{height:110px;font-size:36px}
+  .card-name{font-size:11px}
+  .card-price{font-size:14px}
+  .add-btn{padding:5px 8px;font-size:9px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      <span>Akki's Healthy Baking</span>
+      <span>The Secret is Love</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="custom-cake.html">Custom Cakes</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="custom-cake.html" class="nav-cta">Order a Cake</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="menu.html">Menu</a>
+  <a href="products.html" class="active">Products</a>
+  <a href="custom-cake.html">Custom Cakes</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="custom-cake.html" class="m-cta">🎂 Order a Cake</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Products</div>
+    <h1>All Products —<br><em>Guilt-Free Goodness</em></h1>
+    <p class="hero-sub">No Maida · No Refined Sugar · 100% Vegetarian · Freshly Baked Daily</p>
+  </div>
+</div>
+
+<!-- MOBILE FILTER BAR (tablet + mobile only) -->
+<div class="mob-filter-bar">
+  <div class="mob-filter-scroll" id="mobCatFilters">
+    <button class="mob-cat-btn active" onclick="mobCat('all',this)">✦ All (27)</button>
+    <button class="mob-cat-btn" onclick="mobCat('cake',this)">🎂 Cakes (8)</button>
+    <button class="mob-cat-btn" onclick="mobCat('pastry',this)">🥐 Pastries (5)</button>
+    <button class="mob-cat-btn" onclick="mobCat('loaf',this)">🍞 Loaves (4)</button>
+    <button class="mob-cat-btn" onclick="mobCat('dessert',this)">🍮 Desserts (7)</button>
+    <button class="mob-cat-btn" onclick="mobCat('jar',this)">🫙 Jars (2)</button>
+    <button class="mob-cat-btn" onclick="mobCat('ball',this)">🍡 Balls (2)</button>
+  </div>
+  <div class="mob-sort-row">
+    <div class="mob-search-wrap">
+      <span class="mob-search-icon">🔍</span>
+      <input class="mob-search" type="text" id="mobSearch" placeholder="Search…" oninput="syncSearch(this.value)">
+    </div>
+    <select class="mob-sort" id="mobSort" onchange="syncSort(this.value)">
+      <option value="default">Sort</option>
+      <option value="price-asc">Low–High</option>
+      <option value="price-desc">High–Low</option>
+      <option value="name">A–Z</option>
+    </select>
+  </div>
+</div>
+
+<!-- CART FAB -->
+<button class="cart-fab" onclick="toggleCart()" aria-label="Cart">
+  🛒<span class="cart-count" id="cartCount" style="display:none">0</span>
+</button>
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-header">
+    <h3>Your Cart 🛒</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-total-row"><span>Total</span><span id="cartTotal">₹0</span></div>
+    <button class="checkout-btn" onclick="checkout()">💬 Order via WhatsApp</button>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="products-layout">
+
+  <!-- DESKTOP SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-title">Category</div>
+      <div class="filter-group" id="catFilters">
+        <button class="filter-btn active" onclick="setFilter('all',this)">All Products <span class="filter-count">27</span></button>
+        <button class="filter-btn" onclick="setFilter('cake',this)">🎂 Cakes <span class="filter-count">8</span></button>
+        <button class="filter-btn" onclick="setFilter('pastry',this)">🥐 Pastries <span class="filter-count">5</span></button>
+        <button class="filter-btn" onclick="setFilter('loaf',this)">🍞 Loaves <span class="filter-count">4</span></button>
+        <button class="filter-btn" onclick="setFilter('dessert',this)">🍮 Desserts <span class="filter-count">7</span></button>
+        <button class="filter-btn" onclick="setFilter('jar',this)">🫙 Jars & Bowls <span class="filter-count">2</span></button>
+        <button class="filter-btn" onclick="setFilter('ball',this)">🍡 Cake Balls <span class="filter-count">2</span></button>
+      </div>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">Price Range</div>
+      <div class="price-row">
+        <input class="price-input" type="number" id="minPrice" placeholder="Min ₹" value="0">
+        <input class="price-input" type="number" id="maxPrice" placeholder="Max ₹" value="2000">
+      </div>
+      <button class="apply-price" onclick="applyPrice()">Apply</button>
+    </div>
+    <div class="sidebar-card">
+      <div class="sidebar-title">Sort By</div>
+      <div class="filter-group" id="sortBtns">
+        <button class="filter-btn active" onclick="setSort('default',this)">Default</button>
+        <button class="filter-btn" onclick="setSort('price-asc',this)">Price: Low to High</button>
+        <button class="filter-btn" onclick="setSort('price-desc',this)">Price: High to Low</button>
+        <button class="filter-btn" onclick="setSort('name',this)">Name A–Z</button>
+      </div>
+    </div>
+    <button class="clear-all" onclick="clearAll()">✕ Clear All Filters</button>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <!-- Desktop search + toolbar -->
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" id="searchInput" placeholder="Search… ragi, mango, brownie" oninput="renderGrid()">
+    </div>
+    <div class="toolbar">
+      <span class="result-count">Showing <strong id="showCount">27</strong> products</span>
+      <select class="sort-select" id="sortSelect" onchange="renderGrid()">
+        <option value="default">Default</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="name">Name A–Z</option>
+      </select>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
+          <span class="footer-logo-text">Akki's Healthy Baking</span>
+        </div>
+        <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
+      </div>
+      <div><h4>Pages</h4><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="custom-cake.html">Custom Cakes</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Visit Us</h4><ul>
+        <li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Hinjawadi Phase II, Pune 411057</a></li>
+        <li><a href="tel:+917795076412">+91 77950 76412</a></li>
+        <li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Akki's Healthy Baking. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link">📸</a>
+        <a href="https://wa.me/917795076412" target="_blank" class="social-link">💬</a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-link">📍</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── DATA ── */
+const PRODUCTS = [
+  {id:1,  name:'Ragi Dark Chocolate Truffles Cake',  cat:'cake',    price:1214, weight:'500 G', emoji:'🍫', bg:'card-img-bg-1', tags:['Ragi','Dark Choco','Jaggery'],    badge:'popular'},
+  {id:2,  name:'Chocolate Cream Cake',               cat:'cake',    price:1011, weight:'500 G', emoji:'🍫', bg:'card-img-bg-1', tags:['Whole Wheat','Chocolate'],          badge:''},
+  {id:3,  name:'Pineapple Cream Cake',               cat:'cake',    price:1011, weight:'500 G', emoji:'🍍', bg:'card-img-bg-2', tags:['Pineapple','Cream'],                badge:''},
+  {id:4,  name:'Strawberry Cream Cake',              cat:'cake',    price:1011, weight:'500 G', emoji:'🍓', bg:'card-img-bg-4', tags:['Strawberry','Cream'],               badge:''},
+  {id:5,  name:'Blueberry Cream Cake',               cat:'cake',    price:1011, weight:'500 G', emoji:'🫐', bg:'card-img-bg-5', tags:['Blueberry','Antioxidants'],         badge:''},
+  {id:6,  name:'Mixed Fruit Cream Cake',             cat:'cake',    price:1146, weight:'500 G', emoji:'🍑', bg:'card-img-bg-2', tags:['Mixed Fruits','Seasonal'],          badge:''},
+  {id:7,  name:'Bento Chocolate Truffles Cream Cake',cat:'cake',    price:674,  weight:'300 G', emoji:'🎁', bg:'card-img-bg-1', tags:['Bento','Chocolate'],                badge:''},
+  {id:8,  name:'Lotus Biscoff Cheesecake Bento',    cat:'cake',    price:674,  weight:'300 G', emoji:'🍪', bg:'card-img-bg-3', tags:['Biscoff','Cheesecake'],             badge:'popular'},
+  {id:9,  name:'Nutella Peanut Butter Pastry',       cat:'pastry',  price:236,  weight:'200 G', emoji:'🥜', bg:'card-img-bg-1', tags:['Nutella','Peanut Butter'],          badge:'popular'},
+  {id:10, name:'Triple Chocolate Truffles Pastry',   cat:'pastry',  price:236,  weight:'150 G', emoji:'🍫', bg:'card-img-bg-1', tags:['Triple Choco','Truffles'],          badge:''},
+  {id:11, name:'Red Velvet Orange Zest Pastry',      cat:'pastry',  price:203,  weight:'150 G', emoji:'🍰', bg:'card-img-bg-4', tags:['Red Velvet','Orange'],              badge:''},
+  {id:12, name:'Ragi Dark Chocolate Pastry',         cat:'pastry',  price:203,  weight:'150 G', emoji:'🌑', bg:'card-img-bg-1', tags:['Ragi','Dark Choco'],                badge:'popular'},
+  {id:13, name:'Milk Chocolate Truffles Pastry',     cat:'pastry',  price:203,  weight:'200 G', emoji:'🍫', bg:'card-img-bg-1', tags:['Milk Choco','Truffles'],            badge:''},
+  {id:14, name:'Hearty Ragi Banana Walnut Loaf',     cat:'loaf',    price:404,  weight:'250 G', emoji:'🍌', bg:'card-img-bg-2', tags:['Ragi','Banana','Walnuts'],          badge:'new'},
+  {id:15, name:'Sweet Wheat Mango Pistachio Loaf',   cat:'loaf',    price:404,  weight:'250 G', emoji:'🥭', bg:'card-img-bg-1', tags:['Mango','Pistachios'],               badge:'new'},
+  {id:16, name:'Ragi Jaggery Banana Bread',          cat:'loaf',    price:404,  weight:'250 G', emoji:'🌱', bg:'card-img-bg-2', tags:['Ragi','Jaggery','Banana'],          badge:'new'},
+  {id:17, name:'Wheat Carrot Honey Cake Bread',      cat:'loaf',    price:404,  weight:'250 G', emoji:'🥕', bg:'card-img-bg-2', tags:['Carrot','Honey','Wheat'],           badge:'new'},
+  {id:18, name:'Apricot Delight',                    cat:'dessert', price:236,  weight:'120 G', emoji:'🍑', bg:'card-img-bg-1', tags:['Apricot','Natural Sweet'],          badge:''},
+  {id:19, name:'Passion Delight',                    cat:'dessert', price:236,  weight:'120 G', emoji:'🌺', bg:'card-img-bg-3', tags:['Tropical','Jaggery'],               badge:''},
+  {id:20, name:'Lotus Biscoff Cheesecake Slice',     cat:'dessert', price:236,  weight:'125 G', emoji:'🍪', bg:'card-img-bg-3', tags:['Biscoff','Cheesecake'],             badge:'popular'},
+  {id:21, name:'Hot Chocolate Brownie',              cat:'dessert', price:203,  weight:'100 G', emoji:'🍫', bg:'card-img-bg-1', tags:['Brownie','Whole Wheat'],            badge:'popular'},
+  {id:22, name:'Roasted Almond Cake Ball',           cat:'ball',    price:236,  weight:'150 G', emoji:'🏅', bg:'card-img-bg-1', tags:['Almonds','Cake Ball'],              badge:''},
+  {id:23, name:'Hot Choco Lava',                     cat:'dessert', price:149,  weight:'100 G', emoji:'🌋', bg:'card-img-bg-1', tags:['Lava Cake','Molten'],               badge:'popular'},
+  {id:24, name:'Cakecicles',                         cat:'dessert', price:149,  weight:'100 G', emoji:'🍭', bg:'card-img-bg-3', tags:['Party Treat','Gift'],               badge:''},
+  {id:25, name:'Strawberry Cake Bowl',               cat:'jar',     price:336,  weight:'250 G', emoji:'🍓', bg:'card-img-bg-4', tags:['Strawberry','Bowl'],                badge:''},
+  {id:26, name:'Strawberry Cake Jar',                cat:'jar',     price:236,  weight:'150 G', emoji:'🍓', bg:'card-img-bg-4', tags:['Strawberry','Jar','Gift'],          badge:''},
+  {id:27, name:'Chocolate Cake Ball',                cat:'ball',    price:81,   weight:'75 G',  emoji:'🍡', bg:'card-img-bg-1', tags:['Bite-Sized','Gifting'],             badge:''},
+];
+
+/* ── STATE ── */
+let activeCat='all', minP=0, maxP=9999, cart={};
+
+/* ── RENDER ── */
+function renderGrid(){
+  const search = (document.getElementById('searchInput').value || document.getElementById('mobSearch').value || '').toLowerCase();
+  const sort   = document.getElementById('sortSelect').value || document.getElementById('mobSort').value;
+  let list = PRODUCTS.filter(p=>{
+    return (activeCat==='all'||p.cat===activeCat) &&
+           p.price>=minP && p.price<=maxP &&
+           (!search || p.name.toLowerCase().includes(search) || p.tags.some(t=>t.toLowerCase().includes(search)));
+  });
+  if(sort==='price-asc')  list.sort((a,b)=>a.price-b.price);
+  if(sort==='price-desc') list.sort((a,b)=>b.price-a.price);
+  if(sort==='name')       list.sort((a,b)=>a.name.localeCompare(b.name));
+  document.getElementById('showCount').textContent=list.length;
+  const grid=document.getElementById('productsGrid');
+  if(!list.length){grid.innerHTML='<div class="no-results"><div>🔍</div><p>No products found.</p></div>';return;}
+  const catMap={cake:'Cake',pastry:'Pastry',loaf:'Loaf',dessert:'Dessert',jar:'Jar & Bowl',ball:'Cake Ball'};
+  grid.innerHTML=list.map(p=>{
+    const b=p.badge==='new'?'<span class="badge-new">NEW</span>':p.badge==='popular'?'<span class="badge-popular">⭐ Popular</span>':'';
+    const inCart=cart[p.id]?cart[p.id].qty:0;
+    return `<div class="product-card">
+      <div class="card-img ${p.bg}">${p.emoji}${b}</div>
+      <div class="card-body">
+        <div class="card-cat">${catMap[p.cat]||p.cat}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-weight">${p.weight}</div>
+        <div class="card-tags">${p.tags.map(t=>`<span class="ctag">${t}</span>`).join('')}</div>
+        <div class="veg-line"><span class="vdot"></span> Veg</div>
+        <div class="card-footer">
+          <span class="card-price">₹${p.price.toLocaleString('en-IN')}</span>
+          <button class="add-btn" id="abtn${p.id}" onclick="addItem(${p.id})">${inCart?`In Cart (${inCart})`:'Add to Cart'}</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── FILTERS ── */
+function setFilter(val,btn){
+  activeCat=val;
+  document.querySelectorAll('#catFilters .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+function mobCat(val,btn){
+  activeCat=val;
+  document.querySelectorAll('#mobCatFilters .mob-cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+function applyPrice(){
+  minP=parseFloat(document.getElementById('minPrice').value)||0;
+  maxP=parseFloat(document.getElementById('maxPrice').value)||9999;
+  renderGrid();
+}
+function setSort(val,btn){
+  document.getElementById('sortSelect').value=val;
+  document.querySelectorAll('#sortBtns .filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+function syncSearch(v){document.getElementById('searchInput').value=v;renderGrid();}
+function syncSort(v){document.getElementById('sortSelect').value=v;renderGrid();}
+function clearAll(){
+  activeCat='all';minP=0;maxP=9999;
+  document.getElementById('minPrice').value=0;
+  document.getElementById('maxPrice').value=2000;
+  document.getElementById('searchInput').value='';
+  document.getElementById('mobSearch').value='';
+  document.getElementById('sortSelect').value='default';
+  document.getElementById('mobSort').value='default';
+  document.querySelectorAll('#catFilters .filter-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+  document.querySelectorAll('#mobCatFilters .mob-cat-btn').forEach((b,i)=>b.classList.toggle('active',i===0));
+  renderGrid();
+}
+
+/* ── CART ── */
+function addItem(id){
+  const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
+  cart[id]=cart[id]?{...cart[id],qty:cart[id].qty+1}:{...p,qty:1};
+  const btn=document.getElementById('abtn'+id);
+  if(btn){btn.textContent=`In Cart (${cart[id].qty})`;btn.style.background='#3B6E2A';}
+  renderCartPanel();
+}
+function changeQty(id,delta){
+  if(!cart[id])return;
+  cart[id].qty+=delta;
+  if(cart[id].qty<=0){
+    delete cart[id];
+    const btn=document.getElementById('abtn'+id);
+    if(btn){btn.textContent='Add to Cart';btn.style.background='';}
+  } else {
+    const btn=document.getElementById('abtn'+id);
+    if(btn) btn.textContent=`In Cart (${cart[id].qty})`;
+  }
+  renderCartPanel();
+}
+function renderCartPanel(){
+  const keys=Object.keys(cart);
+  const count=keys.reduce((s,k)=>s+cart[k].qty,0);
+  const total=keys.reduce((s,k)=>s+cart[k].price*cart[k].qty,0);
+  const ce=document.getElementById('cartCount');
+  ce.textContent=count;ce.style.display=count>0?'flex':'none';
+  const foot=document.getElementById('cartFoot');
+  document.getElementById('cartTotal').textContent='₹'+total.toLocaleString('en-IN');
+  if(!keys.length){
+    document.getElementById('cartBody').innerHTML='<div class="cart-empty"><div>🍰</div><p>Your cart is empty.<br>Add something!</p></div>';
+    foot.style.display='none';return;
+  }
+  foot.style.display='block';
+  document.getElementById('cartBody').innerHTML=keys.map(k=>{
+    const i=cart[k];
+    return `<div class="cart-item">
+      <div class="ci-emoji">${i.emoji}</div>
+      <div class="ci-info"><div class="ci-name">${i.name}</div><div class="ci-price">₹${(i.price*i.qty).toLocaleString('en-IN')}</div></div>
+      <div class="qty-wrap">
+        <button class="qbtn" onclick="changeQty(${k},-1)">−</button>
+        <span class="qnum">${i.qty}</span>
+        <button class="qbtn" onclick="changeQty(${k},1)">+</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+function toggleCart(){
+  document.getElementById('cartPanel').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+function checkout(){
+  const keys=Object.keys(cart);if(!keys.length)return;
+  const total=keys.reduce((s,k)=>s+cart[k].price*cart[k].qty,0);
+  let msg="Hello! Order from Akki%27s Healthy Baking:%0A%0A";
+  keys.forEach(k=>{const i=cart[k];msg+=`• ${i.name} x${i.qty} — ₹${i.price*i.qty}%0A`;});
+  msg+=`%0ATotal: ₹${total}%0A%0APlease confirm availability. Thank you!`;
+  window.open(`https://wa.me/917795076412?text=${msg}`,'_blank');
+}
+
+/* ── HAMBURGER ── */
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+
+/* ── INIT ── */
+renderGrid();
+</script>
+</body>
+</html>

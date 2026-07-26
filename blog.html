@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="robots" content="noindex">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog & Health Tips – Akki's Healthy Baking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --honey:#D4780A;--honey-light:#F5A623;--honey-pale:#FEF3E2;
+  --brown-dark:#3B1F0A;--brown-mid:#7A4010;--cream:#FFFBF4;
+  --white:#fff;--text:#2C1810;--text-muted:#6B4C3B;
+  --green:#3B6E2A;--green-pale:#EFF7EA;--border:#E8D5B0;
+  --r:12px;--rlg:20px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 4%;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:38px;width:38px;border-radius:50%;object-fit:cover}
+.nav-logo-text span:first-child{display:block;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--brown-dark);line-height:1.2}
+.nav-logo-text span:last-child{display:block;font-size:10px;color:var(--honey);font-weight:500}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--honey)}
+.nav-cta{background:var(--honey);color:#fff;padding:8px 18px;border-radius:50px;text-decoration:none;font-size:12px;font-weight:600;transition:background .2s;white-space:nowrap}
+.nav-cta:hover{background:var(--brown-mid)}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);padding:16px 4%;z-index:99;flex-direction:column;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{text-decoration:none;font-size:15px;font-weight:500;color:var(--text-muted);padding:12px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--honey)}
+.mobile-menu .m-cta{background:var(--honey);color:#fff;padding:12px;border-radius:50px;text-align:center;font-weight:600;margin-top:8px;border-bottom:none}
+
+/* HERO */
+.page-hero{min-height:320px;background:linear-gradient(150deg,#3B1F0A,#7A4010);display:flex;align-items:flex-end;padding:90px 4% 52px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:url('images/store.jpg') center/cover no-repeat;opacity:.15}
+.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:20px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-inner{max-width:1100px;width:100%;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:10px}
+.breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,52px);font-weight:700;color:#fff;line-height:1.15}
+.page-hero h1 em{font-style:italic;color:#F5A623}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.65);margin-top:8px;max-width:480px}
+
+/* MAIN LAYOUT */
+.blog-layout{max-width:1100px;margin:0 auto;padding:52px 4% 80px;display:grid;grid-template-columns:1fr 300px;gap:48px;align-items:start}
+
+/* FEATURED POST */
+.featured-post{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);overflow:hidden;
+  margin-bottom:40px;transition:box-shadow .2s;
+}
+.featured-post:hover{box-shadow:0 12px 40px rgba(59,31,10,.1)}
+.featured-img{
+  height:280px;width:100%;
+  display:flex;align-items:center;justify-content:center;font-size:80px;
+  background:linear-gradient(135deg,#FEF0D4,#F5C674);
+  position:relative;
+}
+.featured-badge{position:absolute;top:16px;left:16px;background:var(--honey);color:#fff;padding:5px 14px;border-radius:50px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.featured-body{padding:28px 32px 32px}
+.post-meta{display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.post-tag{background:var(--honey-pale);color:var(--honey);padding:4px 12px;border-radius:50px;font-size:11px;font-weight:600}
+.post-date{font-size:12px;color:var(--text-muted)}
+.post-read-time{font-size:12px;color:var(--text-muted);display:flex;align-items:center;gap:4px}
+.featured-body h2{font-family:'Playfair Display',serif;font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--brown-dark);margin-bottom:12px;line-height:1.3}
+.featured-body p{font-size:15px;color:var(--text-muted);line-height:1.75;margin-bottom:20px}
+.read-btn{display:inline-flex;align-items:center;gap:6px;background:var(--honey);color:#fff;padding:11px 24px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:600;transition:background .2s,transform .15s;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.read-btn:hover{background:var(--brown-mid);transform:translateY(-1px)}
+
+/* SECTION LABEL */
+.section-label{font-size:12px;font-weight:700;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* BLOG GRID */
+.blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px}
+.blog-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);overflow:hidden;transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(59,31,10,.1)}
+.blog-card-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative}
+.blog-card-body{padding:18px 20px 20px;flex:1;display:flex;flex-direction:column}
+.blog-card-body .post-meta{margin-bottom:8px}
+.blog-card-body h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--brown-dark);line-height:1.35;margin-bottom:8px}
+.blog-card-body p{font-size:13px;color:var(--text-muted);line-height:1.65;margin-bottom:14px;flex:1}
+.read-link{font-size:12px;font-weight:600;color:var(--honey);text-decoration:none;display:inline-flex;align-items:center;gap:4px;transition:color .2s;border:none;background:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:0}
+.read-link:hover{color:var(--brown-mid)}
+
+/* LIST POSTS */
+.blog-list{display:flex;flex-direction:column;gap:14px;margin-bottom:40px}
+.list-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s,box-shadow .2s}
+.list-card:hover{border-color:var(--honey);box-shadow:0 4px 16px rgba(59,31,10,.07)}
+.list-emoji{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.list-body{flex:1;min-width:0}
+.list-body h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--brown-dark);line-height:1.35;margin-bottom:5px}
+.list-body p{font-size:13px;color:var(--text-muted);line-height:1.6;margin-bottom:8px}
+.list-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* NEWSLETTER */
+.newsletter-box{background:linear-gradient(135deg,var(--brown-dark),var(--brown-mid));border-radius:var(--rlg);padding:32px 28px;text-align:center;margin-bottom:40px}
+.newsletter-box h3{font-family:'Playfair Display',serif;font-size:22px;color:#fff;font-weight:600;margin-bottom:8px}
+.newsletter-box p{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:20px;line-height:1.6}
+.nl-form{display:flex;gap:8px;flex-wrap:wrap}
+.nl-input{flex:1;min-width:160px;border:none;border-radius:50px;padding:11px 16px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:#fff;outline:none}
+.nl-btn{background:var(--honey);color:#fff;border:none;cursor:pointer;padding:11px 20px;border-radius:50px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;transition:background .2s;white-space:nowrap}
+.nl-btn:hover{background:var(--honey-light)}
+
+/* SIDEBAR */
+.blog-sidebar{position:sticky;top:80px;display:flex;flex-direction:column;gap:20px}
+.sidebar-widget{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);padding:22px}
+.widget-title{font-size:11px;font-weight:700;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+
+/* CATEGORY PILLS */
+.cat-pills{display:flex;flex-direction:column;gap:8px}
+.cat-pill{display:flex;align-items:center;justify-content:space-between;padding:9px 14px;border-radius:50px;border:1.5px solid var(--border);cursor:pointer;font-size:13px;color:var(--text-muted);font-weight:500;transition:all .2s;background:none;font-family:'DM Sans',sans-serif;text-align:left;width:100%}
+.cat-pill:hover,.cat-pill.active{background:var(--honey);border-color:var(--honey);color:#fff}
+.cat-count{font-size:11px;background:rgba(0,0,0,.08);padding:1px 7px;border-radius:50px}
+.cat-pill.active .cat-count,.cat-pill:hover .cat-count{background:rgba(255,255,255,.25)}
+
+/* POPULAR POSTS */
+.pop-list{display:flex;flex-direction:column;gap:14px}
+.pop-item{display:flex;gap:10px;align-items:flex-start}
+.pop-num{width:24px;height:24px;border-radius:50%;background:var(--honey-pale);color:var(--honey);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pop-item h4{font-size:13px;font-weight:600;color:var(--brown-dark);line-height:1.35;margin-bottom:3px;cursor:pointer}
+.pop-item h4:hover{color:var(--honey)}
+.pop-item span{font-size:11px;color:var(--text-muted)}
+
+/* HEALTH TIPS WIDGET */
+.tips-list{display:flex;flex-direction:column;gap:10px}
+.tip-item{display:flex;gap:8px;align-items:flex-start;padding:10px 12px;background:var(--green-pale);border-radius:var(--r);border:1px solid rgba(59,110,42,.15)}
+.tip-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.tip-item p{font-size:12px;color:#3B5A2A;line-height:1.55}
+
+/* TAGS CLOUD */
+.tags-cloud{display:flex;gap:7px;flex-wrap:wrap}
+.tag-pill{background:var(--honey-pale);color:var(--brown-mid);padding:5px 12px;border-radius:50px;font-size:11px;font-weight:500;cursor:pointer;transition:all .18s;border:none;font-family:'DM Sans',sans-serif}
+.tag-pill:hover{background:var(--honey);color:#fff}
+
+/* ARTICLE MODAL */
+.article-overlay{position:fixed;inset:0;background:rgba(20,10,4,.75);z-index:400;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:20px}
+.article-overlay.open{opacity:1;pointer-events:all}
+.article-modal{background:var(--white);border-radius:var(--rlg);max-width:680px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.95);transition:transform .3s}
+.article-overlay.open .article-modal{transform:scale(1)}
+.article-hero{height:200px;display:flex;align-items:center;justify-content:center;font-size:70px;position:relative;border-radius:var(--rlg) var(--rlg) 0 0}
+.article-close{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.85);border:none;cursor:pointer;width:36px;height:36px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.article-close:hover{background:#fff}
+.article-content{padding:28px 32px 36px}
+.article-content .post-meta{margin-bottom:14px}
+.article-content h2{font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,26px);font-weight:700;color:var(--brown-dark);margin-bottom:16px;line-height:1.3}
+.article-content p{font-size:15px;color:var(--text-muted);line-height:1.8;margin-bottom:16px}
+.article-content h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown-dark);margin:24px 0 10px}
+.article-content ul{margin-left:20px;margin-bottom:16px}
+.article-content ul li{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:6px}
+.article-highlight{background:var(--honey-pale);border-left:4px solid var(--honey);padding:16px 18px;border-radius:0 var(--r) var(--r) 0;margin:20px 0}
+.article-highlight p{font-size:14px;color:var(--brown-dark);font-weight:500;margin:0;line-height:1.65}
+.article-cta{background:linear-gradient(135deg,var(--honey),var(--brown-mid));border-radius:var(--r);padding:20px 22px;text-align:center;margin-top:28px}
+.article-cta p{color:rgba(255,255,255,.85);font-size:13px;margin-bottom:12px}
+.article-cta a{background:#fff;color:var(--honey);padding:10px 24px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:700;display:inline-block}
+
+/* FOOTER */
+footer{background:#2C1810;padding:44px 4% 28px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:10px;max-width:240px}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo img{height:38px;width:38px;border-radius:50%}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff}
+footer h4{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
+footer ul{list-style:none}
+footer ul li{margin-bottom:9px}
+footer ul a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
+footer ul a:hover{color:#F5A623}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.35)}
+.footer-social{display:flex;gap:10px}
+.social-link{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;transition:border-color .2s,color .2s}
+.social-link:hover{border-color:#F5A623;color:#F5A623}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .blog-layout{grid-template-columns:1fr;gap:32px;padding:40px 4% 60px}
+  .blog-sidebar{position:static}
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+}
+@media(max-width:600px){
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:block}
+  nav{height:56px}
+  .page-hero{min-height:220px;padding:76px 4% 36px}
+  .page-hero h1{font-size:24px}
+  .featured-img{height:200px;font-size:60px}
+  .featured-body{padding:18px 18px 22px}
+  .featured-body h2{font-size:18px}
+  .blog-grid{grid-template-columns:1fr}
+  .article-content{padding:20px 18px 28px}
+  .nl-form{flex-direction:column}
+  .nl-input,.nl-btn{width:100%}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .footer-brand p{max-width:100%}
+  .list-card{flex-direction:column;gap:10px}
+  .list-emoji{width:44px;height:44px;font-size:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      <span>Akki's Healthy Baking</span>
+      <span>The Secret is Love</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="custom-cake.html">Custom Cakes</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="custom-cake.html" class="nav-cta">Order a Cake</a>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="menu.html">Menu</a>
+  <a href="products.html">Products</a>
+  <a href="custom-cake.html">Custom Cakes</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="blog.html" class="active">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="custom-cake.html" class="m-cta">🎂 Order a Cake</a>
+</div>
+
+<!-- ARTICLE MODAL -->
+<div class="article-overlay" id="articleOverlay" onclick="closeLBOnBg(event)">
+  <div class="article-modal" id="articleModal">
+    <div class="article-hero" id="articleHero" style="background:linear-gradient(135deg,#FEF0D4,#F5C674)"></div>
+    <div class="article-content" id="articleContent"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Blog</div>
+    <h1>Health Tips &<br><em>Baking Stories</em></h1>
+    <p class="hero-sub">Learn about millets, jaggery, whole grains, and how healthy baking can be truly delicious.</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="blog-layout">
+
+  <!-- LEFT: POSTS -->
+  <div>
+
+    <!-- FEATURED -->
+    <div class="featured-post reveal" onclick="openArticle(0)">
+      <div class="featured-img" style="background:linear-gradient(135deg,#3B1F0A,#7A4010);position:relative">
+        🎂
+        <span class="featured-badge">✦ Our Story</span>
+      </div>
+      <div class="featured-body">
+        <div class="post-meta">
+          <span class="post-tag">Our Story</span>
+          <span class="post-date">📅 July 2025</span>
+          <span class="post-read-time">⏱ 6 min read</span>
+        </div>
+        <h2>From a Boy Who Never Got a Birthday Cake  to a Bakery That Makes Sure No One Misses Out</h2>
+        <p>Akki's birthday fell every year during Shravan month. His family was vegetarian. And for 10 straight years, there was no cake because back then, every bakery only made egg cakes. This is the story of how that changed, and how Akki's Healthy Baking was born.</p>
+        <button class="read-btn" onclick="openArticle(0)">Read Full Story →</button>
+      </div>
+    </div>
+
+    <!-- GRID POSTS -->
+    <div class="section-label reveal">Latest Articles</div>
+    <div class="blog-grid" id="blogGrid">
+
+      <div class="blog-card reveal" onclick="openArticle(2)">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#FEF3E2,#FAC775)">🍯</div>
+        <div class="blog-card-body">
+          <div class="post-meta">
+            <span class="post-tag">Sweeteners</span>
+            <span class="post-read-time">⏱ 4 min</span>
+          </div>
+          <h3>Jaggery vs Refined Sugar — What Really Happens Inside Your Body</h3>
+          <p>Refined sugar spikes blood glucose in minutes. Jaggery is absorbed slower, supplies iron and minerals, and has a lower glycemic index. We break down the science in simple terms.</p>
+          <button class="read-link" onclick="openArticle(2)">Read more →</button>
+        </div>
+      </div>
+
+      <div class="blog-card reveal" onclick="openArticle(3)">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#EFF7EA,#C0DD97)">🌱</div>
+        <div class="blog-card-body">
+          <div class="post-meta">
+            <span class="post-tag">Baking Tips</span>
+            <span class="post-read-time">⏱ 6 min</span>
+          </div>
+          <h3>How to Make Whole Wheat Cakes Soft & Moist, Our Secret Techniques</h3>
+          <p>Whole wheat can feel dense if not handled right. We share the exact methods, resting the batter, adding yoghurt, and the right oil ratio, that make every loaf light.</p>
+          <button class="read-link" onclick="openArticle(3)">Read more →</button>
+        </div>
+      </div>
+
+      <div class="blog-card reveal" onclick="openArticle(4)">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#FFF0F0,#FFB8B8)">🎂</div>
+        <div class="blog-card-body">
+          <div class="post-meta">
+            <span class="post-tag">Celebrations</span>
+            <span class="post-read-time">⏱ 3 min</span>
+          </div>
+          <h3>Can Birthday Cakes Be Healthy? The Answer Is Yes - Here's How</h3>
+          <p>Parents often feel guilty about giving kids sugar-heavy cakes. We explain how swapping maida + refined sugar doesn't mean compromising on taste or celebration.</p>
+          <button class="read-link" onclick="openArticle(4)">Read more →</button>
+        </div>
+      </div>
+
+      <div class="blog-card reveal" onclick="openArticle(5)">
+        <div class="blog-card-img" style="background:linear-gradient(135deg,#F0F4FF,#B8C8FF)">🥭</div>
+        <div class="blog-card-body">
+          <div class="post-meta">
+            <span class="post-tag">Ingredients</span>
+            <span class="post-read-time">⏱ 4 min</span>
+          </div>
+          <h3>Why We Only Use Alphonso Mangoes in Our Mango Loaf</h3>
+          <p>Not all mangoes are created equal. Alphonso (Hapus) has a natural sweetness and fibre content that makes it ideal for baking and we never use canned pulp or extracts.</p>
+          <button class="read-link" onclick="openArticle(5)">Read more →</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LIST POSTS -->
+    <div class="section-label reveal">More from the Kitchen</div>
+    <div class="blog-list">
+
+      <div class="list-card reveal" onclick="openArticle(6)">
+        <div class="list-emoji" style="background:var(--honey-pale)">🫐</div>
+        <div class="list-body">
+          <h3>The Antioxidant Power of Blueberries, Why We Put Them in Our Cream Cake</h3>
+          <p>Blueberries are one of the most nutrient-dense foods on the planet. Learn why adding them to a cake doesn't just improve flavour  it improves nutritional value too.</p>
+          <div class="list-meta">
+            <span class="post-tag">Ingredients</span>
+            <span class="post-date" style="font-size:11px;color:var(--text-muted)">📅 June 2025 · ⏱ 3 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-card reveal" onclick="openArticle(7)">
+        <div class="list-emoji" style="background:var(--green-pale)">🥕</div>
+        <div class="list-body">
+          <h3>Carrots in Cake? The Surprising Nutrition Behind Our Wheat Carrot Honey Bread</h3>
+          <p>Carrots add natural sweetness, beta-carotene, and moisture to bakes. Combined with whole wheat and organic honey, the result is something special.</p>
+          <div class="list-meta">
+            <span class="post-tag">Baking Tips</span>
+            <span class="post-date" style="font-size:11px;color:var(--text-muted)">📅 May 2025 · ⏱ 4 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-card reveal" onclick="openArticle(8)">
+        <div class="list-emoji" style="background:#EDE7F6">🧠</div>
+        <div class="list-body">
+          <h3>5 Reasons to Switch from Maida to Whole Wheat in Your Daily Diet</h3>
+          <p>Maida is stripped of fibre, protein, and almost all nutrition. Whole wheat retains the germ and bran  and the difference in how your body processes it is dramatic.</p>
+          <div class="list-meta">
+            <span class="post-tag">Nutrition</span>
+            <span class="post-date" style="font-size:11px;color:var(--text-muted)">📅 April 2025 · ⏱ 5 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-card reveal" onclick="openArticle(9)">
+        <div class="list-emoji" style="background:#FFF3E0">🥜</div>
+        <div class="list-body">
+          <h3>Walnuts, Pistachios & Almonds, The Nut Guide for Healthy Baking</h3>
+          <p>Different nuts do different things in a bake. Walnuts add omega-3s and a slight bitterness, pistachios add colour and earthiness, almonds add protein and crunch.</p>
+          <div class="list-meta">
+            <span class="post-tag">Ingredients</span>
+            <span class="post-date" style="font-size:11px;color:var(--text-muted)">📅 March 2025 · ⏱ 4 min</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter-box reveal">
+      <h3>Get Health Tips in Your Inbox</h3>
+      <p>We send one email a week  a simple tip about healthy eating, baking, or ingredients. No spam, ever.</p>
+      <div class="nl-form">
+        <input class="nl-input" type="email" placeholder="your@email.com" id="nlEmail">
+        <button class="nl-btn" onclick="nlSubscribe()">Subscribe Free</button>
+      </div>
+      <p id="nlMsg" style="color:rgba(255,255,255,.8);font-size:12px;margin-top:10px;display:none"></p>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="blog-sidebar">
+
+    <!-- CATEGORIES -->
+    <div class="sidebar-widget reveal">
+      <div class="widget-title">Browse by Topic</div>
+      <div class="cat-pills">
+        <button class="cat-pill active" onclick="filterByTag('all',this)">✦ All Articles <span class="cat-count">10</span></button>
+        <button class="cat-pill" onclick="filterByTag('Our Story',this)">❤️ Our Story <span class="cat-count">1</span></button>
+        <button class="cat-pill" onclick="filterByTag('Millets',this)">🌾 Millets <span class="cat-count">1</span></button>
+        <button class="cat-pill" onclick="filterByTag('Sweeteners',this)">🍯 Sweeteners <span class="cat-count">1</span></button>
+        <button class="cat-pill" onclick="filterByTag('Baking Tips',this)">🧁 Baking Tips <span class="cat-count">2</span></button>
+        <button class="cat-pill" onclick="filterByTag('Ingredients',this)">🥭 Ingredients <span class="cat-count">3</span></button>
+        <button class="cat-pill" onclick="filterByTag('Nutrition',this)">🧠 Nutrition <span class="cat-count">1</span></button>
+        <button class="cat-pill" onclick="filterByTag('Celebrations',this)">🎂 Celebrations <span class="cat-count">1</span></button>
+      </div>
+    </div>
+
+    <!-- POPULAR POSTS -->
+    <div class="sidebar-widget reveal">
+      <div class="widget-title">Most Popular</div>
+      <div class="pop-list">
+        <div class="pop-item">
+          <div class="pop-num">1</div>
+          <div>
+            <h4 onclick="openArticle(0)">From a Boy Who Never Got a Birthday Cake Our Story</h4>
+            <span>Our Story · 6 min read</span>
+          </div>
+        </div>
+        <div class="pop-item">
+          <div class="pop-num">2</div>
+          <div>
+            <h4 onclick="openArticle(1)">Why Ragi is the Superfood Your Family is Missing</h4>
+            <span>Millets · 5 min read</span>
+          </div>
+        </div>
+        <div class="pop-item">
+          <div class="pop-num">3</div>
+          <div>
+            <h4 onclick="openArticle(2)">Jaggery vs Refined Sugar, The Real Difference</h4>
+            <span>Sweeteners · 4 min read</span>
+          </div>
+        </div>
+        <div class="pop-item">
+          <div class="pop-num">4</div>
+          <div>
+            <h4 onclick="openArticle(4)">Can Birthday Cakes Be Healthy? Yes, Here's How</h4>
+            <span>Celebrations · 3 min read</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAILY HEALTH TIPS -->
+    <div class="sidebar-widget reveal">
+      <div class="widget-title">Quick Health Tips</div>
+      <div class="tips-list">
+        <div class="tip-item">
+          <div class="tip-icon">🌾</div>
+          <p>Ragi has 3x more calcium than wheat and 5x more than rice, ideal for growing children and elders.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">🍯</div>
+          <p>Jaggery has a glycemic index of 84 vs refined sugar's 100 a meaningful difference for daily consumption.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">🌰</div>
+          <p>Walnuts contain alpha-linolenic acid (ALA), the plant-based form of omega-3 fatty acids.</p>
+        </div>
+        <div class="tip-item">
+          <div class="tip-icon">🥭</div>
+          <p>Alphonso mangoes contain mangiferin, a powerful antioxidant with anti-inflammatory properties.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAGS -->
+    <div class="sidebar-widget reveal">
+      <div class="widget-title">Tags</div>
+      <div class="tags-cloud">
+        <button class="tag-pill" onclick="openArticle(0)">Ragi</button>
+        <button class="tag-pill" onclick="openArticle(1)">Jaggery</button>
+        <button class="tag-pill" onclick="openArticle(7)">No Maida</button>
+        <button class="tag-pill" onclick="openArticle(2)">Whole Wheat</button>
+        <button class="tag-pill" onclick="openArticle(4)">Alphonso</button>
+        <button class="tag-pill" onclick="openArticle(8)">Walnuts</button>
+        <button class="tag-pill" onclick="openArticle(3)">Kids Cakes</button>
+        <button class="tag-pill" onclick="openArticle(5)">Blueberry</button>
+        <button class="tag-pill" onclick="openArticle(6)">Carrots</button>
+        <button class="tag-pill" onclick="openArticle(3)">Healthy Cakes</button>
+      </div>
+    </div>
+
+    <!-- ORDER CTA -->
+    <div class="sidebar-widget reveal" style="background:linear-gradient(135deg,var(--honey-pale),#FEE4BC);border-color:rgba(212,120,10,.3);text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">🎂</div>
+      <div class="widget-title" style="text-align:center">Ready to Order?</div>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px;line-height:1.6">Experience healthy baking yourself order a custom cake or explore our products.</p>
+      <a href="custom-cake.html" style="display:block;background:var(--honey);color:#fff;padding:10px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:600;margin-bottom:8px;transition:background .2s" onmouseover="this.style.background='var(--brown-mid)'" onmouseout="this.style.background='var(--honey)'">Design Your Cake</a>
+      <a href="products.html" style="display:block;border:1.5px solid var(--honey);color:var(--honey);padding:9px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:600;transition:all .2s" onmouseover="this.style.background='var(--honey)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='var(--honey)'">Shop Products</a>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
+          <span class="footer-logo-text">Akki's Healthy Baking</span>
+        </div>
+        <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar just wholesome ingredients and a whole lot of love.</p>
+      </div>
+      <div><h4>Pages</h4><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="custom-cake.html">Custom Cakes</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="blog.html">Blog / Health Tips</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Visit Us</h4><ul>
+        <li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Hinjawadi Phase II, Pune 411057</a></li>
+        <li><a href="tel:+917795076412">+91 77950 76412</a></li>
+        <li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Akki's Healthy Baking. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link">📸</a>
+        <a href="https://wa.me/917795076412" target="_blank" class="social-link">💬</a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-link">📍</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── ARTICLES DATA ── */
+const ARTICLES = [
+  {
+    emoji:'🎂', bg:'linear-gradient(135deg,#3B1F0A,#7A4010)',
+    tag:'Our Story', date:'July 2025', read:'6 min',
+    title:'From a Boy Who Never Got a Birthday Cake to a Bakery That Makes Sure No One Misses Out',
+    content:`
+      <p>This is the story of how Akki's Healthy Baking was born. And it starts not in a kitchen, but with a little boy named Akki, whose birthday kept falling in the Shravan month.</p>
+
+      <h3>A Birthday That Kept Getting Skipped</h3>
+      <p>Akki's family was vegetarian. And every year, his birthday would come around during Shravan, a month when many vegetarian families follow even stricter food rules. Back then, almost every bakery made cakes with eggs. There was simply no such thing as a good eggless, vegetarian birthday cake.</p>
+      <p>So for 10 straight years, Akki didn't have a birthday cake. Not one. His birthday was celebrated but without that one thing every kid looks forward to. The candles, the cutting, the excitement of a cake made just for you.</p>
+
+      <div class="article-highlight"><p>🎂 For 10 years, Akki's birthday passed without a cake not because his family didn't care, but because a vegetarian cake simply didn't exist at their local bakeries.</p></div>
+
+      <h3>His Mother's Attempt and a Pressure Cooker That Had Other Plans</h3>
+      <p>When Akki turned 10, his mother decided she'd had enough of the wait. She was going to bake him a cake herself a simple, homemade, eggless one. She gathered the ingredients, followed the recipe, and put it in the pressure cooker to bake.</p>
+      <p>And then the pressure cooker burst.</p>
+      <p>No cake. No celebration. Just a very disappointed little boy and a very exhausted mother. That birthday passed like all the others without the one thing Akki had been quietly hoping for every single year.</p>
+
+      <h3>The Cake That Changed Everything</h3>
+      <p>Five years later, when Akki turned 15, his sister did something special. She found a vegetarian cake, baked it herself, and brought it home for his birthday.</p>
+      <p>It sounds simple. But if you've waited 15 years for something if you've watched other kids blow out candles while your birthday went by quietly that moment hits differently. Akki's face when he saw that cake said everything. The excitement wasn't just about the cake. It was about finally feeling seen.</p>
+
+      <div class="article-highlight"><p>💛 "When I finally had a birthday cake at 15, it wasn't just cake. It felt like someone had heard me — after all those years of waiting." — Akki</p></div>
+
+      <h3>Growing Up, But Never Forgetting</h3>
+      <p>Akki finished his studies, got a good job at a reputable company, and built a steady life. But that feeling of being a kid who couldn't have a birthday cake never really left him. He knew there were thousands of vegetarian families across India going through the exact same thing every year.</p>
+      <p>So he enrolled in a baking class. Not as a hobby. With a quiet purpose.</p>
+      <p>He learned everything from batter ratios to frosting techniques to how to make an eggless cake that was just as soft, just as rich, just as beautiful as any other. He baked for family first. Then friends. Then neighbours started asking.</p>
+
+      <h3>Pune, Hinjawadi, and a Kitchen Full of Orders</h3>
+      <p>After getting married, Akki moved to Hinjawadi, Pune. He and his wife settled into their apartment and the baking continued. Word spread fast in a tech hub full of vegetarian families who had the same problem Akki once had.</p>
+      <p>Orders started coming in. Then more orders. Then a WhatsApp group — just to manage everything. The group grew to 1,000 customers.</p>
+      <p>All from an apartment kitchen. All made with love. All 100% vegetarian, no maida, no refined sugar.</p>
+
+      <h3>The Shop on Marunji Road</h3>
+      <p>Eventually, the apartment kitchen wasn't enough. Akki's Healthy Baking opened its doors at Bhanuse Wasti, Marunji Road opposite Global E Homes, behind WIPRO Technologies, Hinjawadi Phase II, Pune.</p>
+      <p>The response was overwhelming. What started as one boy's missed birthday had become Hinjawadi's most loved healthy bakery a place where no vegetarian family ever has to hear "sorry, we only have egg cakes" again.</p>
+
+      <div class="article-highlight"><p>🏪 Today, Akki's Healthy Baking serves 1,000+ happy customers every cake made fresh, every day, with no maida and no refined sugar. Because every child deserves a birthday cake.</p></div>
+
+      <h3>Why We Do What We Do</h3>
+      <p>Every cake at Akki's is made with whole wheat or ragi, sweetened with jaggery, and baked fresh without preservatives. But more than the ingredients — it's made with the memory of a little boy who waited 15 years for his first birthday cake.</p>
+      <p>That's why we never cut corners. That's why every order matters to us. And that's the real secret ingredient the one that doesn't appear on any label.</p>
+      <p style="font-weight:600;color:var(--brown-dark)">The secret is love. ❤️</p>
+    `
+  },
+  {
+    emoji:'🌾', bg:'linear-gradient(135deg,#FEF0D4,#F5C674)',
+    tag:'Millets', date:'July 2025', read:'5 min',
+    title:'Why Ragi (Finger Millet) is the Superfood Your Family Has Been Missing',
+    content:`
+      <p>Ragi- also known as finger millet or nachni — has been grown and eaten in the Deccan plateau for over 4,000 years. It was a staple food of ancient Indian communities long before wheat or rice became dominant. Yet today, most urban kitchens have never used it.</p>
+      <div class="article-highlight"><p>💡 Ragi contains <strong>344mg of calcium per 100g</strong> that's 3x more than wheat and 5x more than rice. No dairy product needed.</p></div>
+      <h3>What makes Ragi so special?</h3>
+      <ul>
+        <li><strong>Calcium powerhouse:</strong> 344mg per 100g — excellent for children's bone development and preventing osteoporosis in older adults.</li>
+        <li><strong>Rich in iron:</strong> Helps prevent anaemia, especially important for women and growing children.</li>
+        <li><strong>Essential amino acids:</strong> Contains methionine, a rare amino acid in cereal grains.</li>
+        <li><strong>High fibre:</strong> Keeps you feeling full longer, reduces overeating, and aids digestion.</li>
+        <li><strong>Low glycemic index:</strong> 54–68, compared to refined flour's 70+. Better for blood sugar management.</li>
+      </ul>
+      <h3>Why we use it in our bakes</h3>
+      <p>At Akki's, we blend ragi with whole wheat in our breads, loaves, pastries, and cakes. The combination gives the dense nutritional profile of ragi with the lighter texture that whole wheat provides. The result is something that tastes like an indulgence but nourishes like a meal.</p>
+      <p>Our Ragi Dark Chocolate Truffles Cake and the Hearty Ragi Banana Walnut Loaf are our most popular ragi-based items and both are loved by adults and children equally.</p>
+      <div class="article-highlight"><p>🌾 Try adding ragi to your home cooking — even replacing 25% of regular flour in your rotis or chillas makes a significant nutritional difference.</p></div>
+    `
+  },
+  {
+    emoji:'🍯', bg:'linear-gradient(135deg,#FEF3E2,#FAC775)',
+    tag:'Sweeteners', date:'June 2025', read:'4 min',
+    title:'Jaggery vs Refined Sugar — What Really Happens Inside Your Body',
+    content:`
+      <p>When you eat refined white sugar, it's absorbed almost instantly into your bloodstream. Blood glucose spikes, insulin surges, and then crashes — leaving you craving more. This cycle, repeated daily over years, is one of the root causes of Type 2 diabetes, obesity, and chronic inflammation.</p>
+      <h3>What's different about Jaggery?</h3>
+      <ul>
+        <li><strong>Slower absorption:</strong> Jaggery's natural molasses content slows glucose absorption, reducing spikes.</li>
+        <li><strong>Mineral-rich:</strong> Contains iron, magnesium, potassium, and phosphorus all stripped from refined sugar.</li>
+        <li><strong>Digestive aid:</strong> Traditionally used after meals to stimulate digestive enzymes.</li>
+        <li><strong>Lower GI:</strong> Glycemic index of ~84 vs refined sugar's 100 — meaningful for daily use.</li>
+      </ul>
+      <div class="article-highlight"><p>⚠️ Jaggery is not sugar-free — it still contains calories and carbohydrates. But for someone choosing between jaggery and refined sugar daily, jaggery is meaningfully better.</p></div>
+      <h3>How we use it at Akki's</h3>
+      <p>Every bake at our bakery is sweetened exclusively with jaggery, organic honey, or natural fruit sugars. We never use refined white sugar — not even in frostings or fillings. Our customers regularly tell us they can eat our cakes without the sugar "crash" they feel after regular bakery products.</p>
+    `
+  },
+  {
+    emoji:'🌱', bg:'linear-gradient(135deg,#EFF7EA,#C0DD97)',
+    tag:'Baking Tips', date:'June 2025', read:'6 min',
+    title:'How to Make Whole Wheat Cakes Soft & Moist — Our Secret Techniques',
+    content:`
+      <p>The most common complaint about whole wheat baking is that it turns out dense, dry, or crumbly. This discourages people from switching from maida — but it doesn't have to be this way. The secret is in technique, not flour.</p>
+      <h3>Technique 1: Rest the Batter</h3>
+      <p>After mixing your batter, let it rest for 20–30 minutes before baking. This allows the bran in whole wheat to hydrate fully, resulting in a softer crumb. Skipping this step is the #1 reason whole wheat cakes turn out dry.</p>
+      <h3>Technique 2: Add Yoghurt or Buttermilk</h3>
+      <p>The acidity in yoghurt or buttermilk breaks down the gluten in whole wheat, making the texture much lighter. We use fresh curd in almost all our cake bases — it also adds a subtle tang that balances sweetness beautifully.</p>
+      <h3>Technique 3: The Right Oil Ratio</h3>
+      <p>Whole wheat absorbs more fat than maida. Use cold-pressed coconut oil or sunflower oil at a slightly higher ratio about 15–20% more than you would for a maida recipe.</p>
+      <div class="article-highlight"><p>🧁 Pro tip: Never overbake whole wheat it dries out faster than maida. Pull it out when a skewer comes out with just a few moist crumbs, not completely clean.</p></div>
+      <h3>Technique 4: Don't Overmix</h3>
+      <p>Overmixing develops too much gluten, making the cake tough. Mix until the batter just comes together a few lumps are fine.</p>
+    `
+  },
+  {
+    emoji:'🎂', bg:'linear-gradient(135deg,#FFF0F0,#FFB8B8)',
+    tag:'Celebrations', date:'May 2025', read:'3 min',
+    title:'Can Birthday Cakes Be Healthy? The Answer Is Yes Here\'s How',
+    content:`
+      <p>When we think of a birthday cake, we think of white flour, refined sugar, and artificial food colour. That's what most bakeries offer. But parents of young children are increasingly asking: does celebrating have to mean feeding kids something harmful?</p>
+      <h3>The Problem with Conventional Cakes</h3>
+      <p>A typical store-bought birthday cake contains maida (nutritionally empty refined flour), refined sugar (empty calories + blood sugar spikes), artificial colours (linked to hyperactivity in children in several studies), and hydrogenated fats (trans fats that affect heart health).</p>
+      <div class="article-highlight"><p>💡 A child who eats a slice of conventional birthday cake gets a large dose of refined carbohydrates, artificial additives, and almost zero nutritional value.</p></div>
+      <h3>What we do differently</h3>
+      <p>At Akki's, our celebration cakes use whole wheat or ragi as the flour base, jaggery as the sweetener, natural fruit purees and real cream for flavour, and cold-pressed oils instead of margarine. The result looks just as beautiful, tastes just as indulgent — but you can feel good about giving it to your child.</p>
+      <p>Our custom birthday cakes have been ordered for children as young as 1 year old. Many parents who've tried us once never go back to conventional bakeries for their children's cakes.</p>
+    `
+  },
+  {
+    emoji:'🥭', bg:'linear-gradient(135deg,#FFF8E1,#FFD54F)',
+    tag:'Ingredients', date:'May 2025', read:'4 min',
+    title:'Why We Only Use Alphonso Mangoes in Our Mango Loaf',
+    content:`
+      <p>When we decided to create a mango loaf, the first question was: which mango? India has over 1,500 varieties. We spent weeks testing different types before landing on Alphonso — and the difference is remarkable.</p>
+      <h3>Why Alphonso (Hapus)?</h3>
+      <ul>
+        <li><strong>Natural sweetness:</strong> Alphonso has the highest natural sugar content of any Indian mango variety, meaning we need less added sweetener.</li>
+        <li><strong>Low fibre pulp:</strong> Its smooth, fibre-free pulp integrates perfectly into batter without creating chunks or uneven texture.</li>
+        <li><strong>Aroma:</strong> The distinctive Hapus fragrance survives baking — the loaf literally smells like a mango garden.</li>
+        <li><strong>Nutritional value:</strong> High in Vitamin C, Vitamin A, and folate.</li>
+      </ul>
+      <div class="article-highlight"><p>🥭 We source our Alphonso mangoes from Ratnagiri and Devgad during peak season (April–June) and never use canned pulp, extracts, or artificial mango flavouring at any time of year.</p></div>
+      <h3>The result</h3>
+      <p>Our Sweet Wheat Mango Pistachio Loaf uses fresh Alphonso pulp folded into a whole wheat ragi batter, sweetened with jaggery, and topped with dried narg pistachios. If you've only had it once, you know exactly why we're particular about the mango.</p>
+    `
+  },
+  {
+    emoji:'🫐', bg:'linear-gradient(135deg,#EDE7F6,#CE93D8)',
+    tag:'Ingredients', date:'April 2025', read:'3 min',
+    title:'The Antioxidant Power of Blueberries- Why We Put Them in Our Cream Cake',
+    content:`
+      <p>Blueberries are consistently ranked among the world's most nutrient-dense foods. Tiny as they are, they pack a remarkable amount of nutrition into each berry.</p>
+      <h3>What makes blueberries special?</h3>
+      <ul>
+        <li><strong>Anthocyanins:</strong> The pigment that makes them blue is a powerful antioxidant that helps protect cells from damage.</li>
+        <li><strong>Vitamin C & K:</strong> Supports immunity and bone health.</li>
+        <li><strong>Low glycemic index:</strong> Despite their sweetness, blueberries have a GI of just 53.</li>
+        <li><strong>Brain health:</strong> Studies suggest regular blueberry consumption may improve memory and cognitive function.</li>
+      </ul>
+      <div class="article-highlight"><p>🫐 Adding blueberries to a baked product doesn't just make it taste better it genuinely adds nutritional value that plain cake doesn't have.</p></div>
+      <p>Our Blueberry Cream Cake uses real blueberries in the batter and as a topping, sweetened with jaggery, on a whole wheat base. It's one of our best-selling cakes — and one of the healthiest things on our menu.</p>
+    `
+  },
+  {
+    emoji:'🥕', bg:'linear-gradient(135deg,#FFF3E0,#FFCC80)',
+    tag:'Baking Tips', date:'March 2025', read:'4 min',
+    title:'Carrots in Cake? The Surprising Nutrition Behind Our Wheat Carrot Honey Bread',
+    content:`
+      <p>Carrot cake has a long history but most modern versions use maida and refined sugar, turning what could be a nutritious bake into a nutritional disaster. Our Wheat Carrot Honey Cake Bread is different.</p>
+      <h3>Why carrots work so well in baking</h3>
+      <ul>
+        <li><strong>Natural moisture:</strong> Grated carrots release moisture slowly during baking, keeping the crumb moist for days.</li>
+        <li><strong>Natural sweetness:</strong> Carrots contain natural sugars that reduce the need for added sweeteners.</li>
+        <li><strong>Beta-carotene:</strong> Converts to Vitamin A in the body — essential for eye health and immunity.</li>
+        <li><strong>Fibre:</strong> Adds bulk and slows digestion, improving satiety.</li>
+      </ul>
+      <h3>Our recipe philosophy</h3>
+      <p>We use freshly grated carrots (never canned or processed), organic honey as the only sweetener, cold-pressed oil, and whole wheat flour. The result is a dense, moist loaf that works as breakfast, a snack, or a light dessert.</p>
+      <div class="article-highlight"><p>🥕 Our Wheat Carrot Honey Cake Bread is one of our most requested items for corporate gift boxes — it's something you can give without any guilt.</p></div>
+    `
+  },
+  {
+    emoji:'🧠', bg:'linear-gradient(135deg,#E8EAF6,#9FA8DA)',
+    tag:'Nutrition', date:'March 2025', read:'5 min',
+    title:'5 Reasons to Switch from Maida to Whole Wheat in Your Daily Diet',
+    content:`
+      <p>Maida — refined white flour is one of the most commonly consumed ingredients in India. Bread, rotis, biscuits, noodles, cakes, samosas — maida is everywhere. And this is a serious nutritional problem.</p>
+      <h3>What happens to wheat when it becomes maida?</h3>
+      <p>Whole wheat has three parts: the bran (outer layer, fibre-rich), the germ (nutrient-dense core), and the endosperm (mostly starch). Maida is made by removing the bran and germ entirely leaving only the starchy endosperm. You lose 75% of the original grain's nutrition in that process.</p>
+      <h3>5 reasons to switch:</h3>
+      <ul>
+        <li><strong>1. Fibre:</strong> Whole wheat has 10–12g of fibre per 100g. Maida has less than 3g. Fibre feeds good gut bacteria, prevents constipation, and reduces cholesterol.</li>
+        <li><strong>2. Blood sugar:</strong> Maida's glycemic index is 85+. Whole wheat is 50–70. The difference in how your body processes them is significant over a lifetime.</li>
+        <li><strong>3. B vitamins:</strong> Thiamine, niacin, riboflavin — all present in whole wheat, almost absent in maida.</li>
+        <li><strong>4. Minerals:</strong> Iron, magnesium, zinc — whole wheat retains them all. Maida loses them in processing.</li>
+        <li><strong>5. Satiety:</strong> Because whole wheat is digested more slowly, you feel full longer — leading to less overeating.</li>
+      </ul>
+      <div class="article-highlight"><p>🌾 The simplest change you can make: switch your daily roti flour from maida to whole wheat atta. The taste difference is minimal. The health difference, over years, is enormous.</p></div>
+    `
+  },
+  {
+    emoji:'🥜', bg:'linear-gradient(135deg,#FFF3E0,#FFCC80)',
+    tag:'Ingredients', date:'February 2025', read:'4 min',
+    title:'Walnuts, Pistachios & Almonds — The Nut Guide for Healthy Baking',
+    content:`
+      <p>Nuts are one of the most valuable additions you can make to any baked product. Each variety brings different nutrition, texture, and flavour — and knowing which to use when makes all the difference.</p>
+      <h3>Walnuts</h3>
+      <p>We use walnuts in our Ragi Banana Walnut Loaf both toasted and crushed. Walnuts are the only common nut that contains significant alpha-linolenic acid (ALA), the plant-based omega-3 fatty acid. They add a slight bitterness that balances the sweetness of banana and jaggery beautifully.</p>
+      <h3>Pistachios</h3>
+      <p>Our Sweet Wheat Mango Pistachio Loaf uses dried narg pistachios as a topping. Pistachios are lower in calories than most nuts, high in protein, and contain lutein and zeaxanthin — antioxidants that support eye health. Their green colour also makes the loaf visually stunning.</p>
+      <h3>Almonds</h3>
+      <p>Used in our Roasted Almond Cake Ball — rolled in sliced, toasted almonds for crunch. Almonds are the highest-protein nut, rich in Vitamin E, and one of the best sources of magnesium. Roasting them deepens their flavour significantly.</p>
+      <div class="article-highlight"><p>🥜 One rule in our kitchen: we always use whole, real nuts — never nut extracts, nut-flavoured fillings, or artificially flavoured coatings. The real thing always tastes better and nourishes better.</p></div>
+    `
+  },
+];
+
+/* ── OPEN ARTICLE ── */
+function openArticle(idx){
+  const a = ARTICLES[idx];
+  document.getElementById('articleHero').style.background = a.bg;
+  document.getElementById('articleHero').textContent = a.emoji;
+
+  // re-add close button
+  const closeBtn = document.createElement('button');
+  closeBtn.className='article-close'; closeBtn.textContent='✕';
+  closeBtn.onclick=closeArticle;
+  document.getElementById('articleHero').appendChild(closeBtn);
+
+  document.getElementById('articleContent').innerHTML = `
+    <div class="post-meta">
+      <span class="post-tag">${a.tag}</span>
+      <span class="post-date">📅 ${a.date}</span>
+      <span class="post-read-time">⏱ ${a.read} read</span>
+    </div>
+    <h2>${a.title}</h2>
+    ${a.content}
+    <div class="article-cta">
+      <p>Enjoyed this? Try our healthy baked products — made with exactly the ingredients we write about.</p>
+      <a href="products.html">Shop Our Products →</a>
+    </div>
+  `;
+  document.getElementById('articleOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeArticle(){
+  document.getElementById('articleOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeLBOnBg(e){
+  if(e.target===document.getElementById('articleOverlay')) closeArticle();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeArticle();});
+
+/* ── CATEGORY FILTER (visual only) ── */
+function filterByTag(tag,btn){
+  document.querySelectorAll('.cat-pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  // Highlight matching cards
+  document.querySelectorAll('.blog-card,.list-card').forEach(card=>{
+    const tagEl=card.querySelector('.post-tag');
+    if(!tagEl) return;
+    const match = tag==='all' || tagEl.textContent===tag;
+    card.style.opacity = match?'1':'0.35';
+    card.style.pointerEvents = match?'all':'none';
+  });
+}
+
+/* ── NEWSLETTER ── */
+function nlSubscribe(){
+  const email=document.getElementById('nlEmail').value.trim();
+  const msg=document.getElementById('nlMsg');
+  if(!email||!email.includes('@')){
+    msg.style.display='block';msg.textContent='Please enter a valid email address.';return;
+  }
+  msg.style.display='block';
+  msg.textContent='🎉 Thank you! You\'re subscribed to our healthy tips newsletter.';
+  document.getElementById('nlEmail').value='';
+}
+
+/* ── REVEAL ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── HAMBURGER ── */
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+</script>
+</body>
+</html>
