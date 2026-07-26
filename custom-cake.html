@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="robots" content="noindex">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Cake Order – Akki's Healthy Baking</title>
+<title>Custom Cake Order – Akkis Healthy Baking</title>
+    <meta name="title" content="Custom Cake Order – Healthy Birthday Cakes in Pune | Akkis Healthy Baking">
+<meta name="description" content="Order a custom healthy birthday cake in Pune. Any theme – Harry Potter, Spiderman, Ferrari, K-Pop and more. Made with whole wheat, ragi and jaggery. No maida, no sugar. Home delivery available.">
+<meta name="keywords" content="custom cake pune, healthy birthday cake pune, eggless custom cake hinjawadi, no sugar birthday cake pune, themed cake pune, ragi birthday cake">
+<meta property="og:title" content="Custom Cake Order – Akkis Healthy Baking Pune">
+<meta property="og:description" content="Design your own healthy custom cake – any theme, any size, delivered fresh in Pune.">
+<meta property="og:image" content="images/cake_collage.png">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.akkishealthybaking.in/custom-cake.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
+
+
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -38,7 +49,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,
 /* PAGE HERO */
 .page-hero{min-height:360px;background:linear-gradient(150deg,#3B1F0A 0%,#7A4010 100%);display:flex;align-items:flex-end;padding:120px 5% 56px;position:relative;overflow:hidden}
 .page-hero::before{content:'';position:absolute;inset:0;background:url('images/store.jpg') center/cover no-repeat;opacity:.15}
-.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:20px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:80px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
 .hero-inner{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1}
 .breadcrumb{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px}
 .breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
@@ -236,7 +247,7 @@ footer ul a:hover{color:#F5A623}
   <a href="index.html" class="nav-logo">
     <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
     <div class="nav-logo-text">
-      <span>Akki's Healthy Baking</span>
+      <span>akkis Healthy Baking</span>
       <span>The Secret is Love</span>
     </div>
   </a>
@@ -496,6 +507,13 @@ footer ul a:hover{color:#F5A623}
         <a href="tel:+917795076412" class="btn-call">
           <span>📞</span> Or Call Us: +91 77950 76412
         </a>
+        <!-- ADMIN: Order Log -->
+        <div style="margin-top:16px;padding:14px 16px;background:var(--green-pale);border:1px solid rgba(59,110,42,.2);border-radius:var(--radius);display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <span style="font-size:12px;color:var(--green);font-weight:600">📊 Admin — Order Log:</span>
+          <button onclick="downloadOrdersExcel()" style="background:var(--green);color:#fff;border:none;cursor:pointer;padding:7px 16px;border-radius:50px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif">⬇️ Download Excel (CSV)</button>
+          <button onclick="clearOrderLog()" style="background:none;border:1.5px solid #C0392B;color:#C0392B;cursor:pointer;padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif">🗑 Clear Log</button>
+          <span style="font-size:11px;color:var(--text-muted)">Orders saved on this device/browser</span>
+        </div>
       </div>
     </div>
   </div>
@@ -620,7 +638,7 @@ footer ul a:hover{color:#F5A623}
       <div class="footer-brand">
         <div class="footer-logo">
           <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
-          <span class="footer-logo-text">Akki's Healthy Baking</span>
+          <span class="footer-logo-text">akkis Healthy Baking</span>
         </div>
         <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
       </div>
@@ -643,7 +661,7 @@ footer ul a:hover{color:#F5A623}
       </ul></div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Akki's Healthy Baking. All rights reserved.</p>
+      <p>© 2025 akkis Healthy Baking. All rights reserved.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link">📸</a>
         <a href="https://wa.me/917795076412" target="_blank" class="social-link">💬</a>
@@ -654,6 +672,46 @@ footer ul a:hover{color:#F5A623}
 </footer>
 
 <script>
+/* ── ORDER LOG → CSV/EXCEL ── */
+function saveOrderToLog(order) {
+  try {
+    const existing = JSON.parse(localStorage.getItem('akkis_orders') || '[]');
+    existing.push(order);
+    localStorage.setItem('akkis_orders', JSON.stringify(existing));
+  } catch(e) {}
+}
+
+function downloadOrdersExcel() {
+  try {
+    const orders = JSON.parse(localStorage.getItem('akkis_orders') || '[]');
+    if (!orders.length) { alert('No orders saved yet! Submit an order first.'); return; }
+    const headers = ['Date','Name','Phone','Address','Occasion','Size','Tiers','Flavour',
+      'Cake Message','Delivery Date','Delivery Time','Theme','Design Idea',
+      'Colour','Topper','Budget','Special Requests'];
+    let csv = '\uFEFF' + headers.join(',') + '\n';
+    orders.forEach(o => {
+      const row = [o.date,o.name,o.phone,o.address,o.occasion,o.size,o.tiers,o.flavour,
+        o.cakeMessage,o.deliveryDate,o.deliveryTime,o.theme,o.designIdea,
+        o.colour,o.topper,o.budget,o.specialRequests];
+      csv += row.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',') + '\n';
+    });
+    const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href = url;
+    a.download = `Akkis_Orders_${new Date().toLocaleDateString('en-IN').replace(/\//g,'-')}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  } catch(e) { alert('Download failed. Please try again.'); }
+}
+
+function clearOrderLog() {
+  if(confirm('Clear all saved orders? This cannot be undone.')) {
+    localStorage.removeItem('akkis_orders');
+    alert('All orders cleared.');
+  }
+}
+
 /* ── CHIP SELECTION ── */
 let selections = { occasion:'Birthday', flavour:'Chocolate', topper:'Our Choice', time:'Morning (9–12)' };
 let selectedTheme = 'Kids & Characters';
@@ -736,30 +794,55 @@ function submitOrder() {
   const address  = document.getElementById('custAddress').value;
   const budget   = document.getElementById('custBudget').value;
   const special  = document.getElementById('custSpecial').value;
+  const topper   = selections.topper || 'Our Choice';
+  const occasion = selections.occasion || 'Birthday';
+  const flavour  = selections.flavour || 'Chocolate';
+  const time     = selections.time || 'Morning (9-12)';
 
-  let wa = `Hello Akki! I would like to order a Custom Cake. Here are my details:%0A%0A`;
-  wa += `🎂 *CAKE DETAILS*%0A`;
-  wa += `• Occasion: ${selections.occasion}%0A`;
-  wa += `• Size: ${size}%0A`;
-  wa += `• Tiers: ${tiers}%0A`;
-  wa += `• Flavour: ${selections.flavour}%0A`;
-  wa += `• Cake Message: ${msg || 'None'}%0A`;
-  wa += `• Delivery Date: ${date}%0A`;
-  wa += `• Delivery Time: ${selections.time}%0A%0A`;
-  wa += `🎨 *THEME & DESIGN*%0A`;
-  wa += `• Theme: ${selectedTheme}%0A`;
-  wa += `• Design Idea: ${design || 'Not specified'}%0A`;
-  wa += `• Colour Preference: ${colour || 'Not specified'}%0A`;
-  wa += `• Topper: ${selections.topper}%0A%0A`;
-  wa += `👤 *MY DETAILS*%0A`;
-  wa += `• Name: ${name}%0A`;
-  wa += `• Phone: ${phone}%0A`;
-  wa += `• Address: ${address}%0A`;
-  wa += `• Budget: ${budget || 'Flexible'}%0A`;
-  wa += `• Special Requests: ${special || 'None'}%0A%0A`;
-  wa += `Please confirm availability and share pricing. Thank you! 🙏`;
+  // Build plain text message — encodeURIComponent handles all special chars
+  const plainMsg =
+`Hello Akki! Custom Cake Order Request
 
-  window.open(`https://wa.me/917795076412?text=${wa}`, '_blank');
+CAKE DETAILS
+Occasion: ${occasion}
+Size: ${size}
+Tiers: ${tiers}
+Flavour: ${flavour}
+Cake Message: ${msg || 'None'}
+Delivery Date: ${date}
+Delivery Time: ${time}
+
+THEME & DESIGN
+Theme: ${selectedTheme}
+Design Idea: ${design || 'Not specified'}
+Colour Preference: ${colour || 'Not specified'}
+Topper: ${topper}
+
+CUSTOMER DETAILS
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+Budget: ${budget || 'Flexible'}
+Special Requests: ${special || 'None'}
+
+Please confirm availability and pricing. Thank you!`;
+
+  // Save to localStorage as order log (Excel download available)
+  saveOrderToLog({
+    date: new Date().toLocaleString('en-IN'),
+    name, phone, address,
+    occasion, size, tiers, flavour,
+    cakeMessage: msg || 'None',
+    deliveryDate: date, deliveryTime: time,
+    theme: selectedTheme,
+    designIdea: design || 'Not specified',
+    colour: colour || 'Not specified',
+    topper,
+    budget: budget || 'Flexible',
+    specialRequests: special || 'None'
+  });
+
+  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(plainMsg)}`, '_blank');
   document.getElementById('successModal').classList.add('show');
 }
 
