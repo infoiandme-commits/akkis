@@ -3,251 +3,234 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Custom Cake Order – Akkis Healthy Baking</title>
-    <meta name="title" content="Custom Cake Order – Healthy Birthday Cakes in Pune | Akkis Healthy Baking">
-<meta name="description" content="Order a custom healthy birthday cake in Pune. Any theme – Harry Potter, Spiderman, Ferrari, K-Pop and more. Made with whole wheat, ragi and jaggery. No maida, no sugar. Home delivery available.">
-<meta name="keywords" content="custom cake pune, healthy birthday cake pune, eggless custom cake hinjawadi, no sugar birthday cake pune, themed cake pune, ragi birthday cake">
-<meta property="og:title" content="Custom Cake Order – Akkis Healthy Baking Pune">
-<meta property="og:description" content="Design your own healthy custom cake – any theme, any size, delivered fresh in Pune.">
-<meta property="og:image" content="images/cake_collage.png">
+<title>Custom Cake Order – Akki's Healthy Baking</title>
+<meta name="title" content="Custom Cake Order – Healthy Birthday Cakes in Pune | Akki's Healthy Baking">
+<meta name="description" content="Order a custom healthy birthday cake in Pune. Any theme – Harry Potter, Spiderman, Ferrari, K-Pop and more. Made with whole wheat, ragi and jaggery. No maida, no sugar.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.akkishealthybaking.com/custom-cake.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
-
-
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --honey:#D4780A;--honey-light:#F5A623;--honey-pale:#FEF3E2;
   --brown-dark:#3B1F0A;--brown-mid:#7A4010;--cream:#FFFBF4;
-  --white:#FFFFFF;--text:#2C1810;--text-muted:#6B4C3B;
+  --white:#fff;--text:#2C1810;--text-muted:#6B4C3B;
   --green:#3B6E2A;--green-pale:#EFF7EA;--border:#E8D5B0;
-  --radius:12px;--radius-lg:20px;--error:#C0392B;
+  --r:12px;--rlg:20px;--error:#C0392B;
 }
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6;overflow-x:hidden}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,0.93);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo img{height:44px;width:44px;border-radius:50%;object-fit:cover}
-.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
-.nav-logo-text span:first-child{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--brown-dark)}
-.nav-logo-text span:last-child{font-size:11px;color:var(--honey);font-weight:500;letter-spacing:.5px}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-muted);transition:color .2s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 4%;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;flex-shrink:0}
+.nav-logo img{height:38px;width:38px;border-radius:50%;object-fit:cover}
+.nav-logo-text span:first-child{display:block;font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--brown-dark);line-height:1.2}
+.nav-logo-text span:last-child{display:block;font-size:10px;color:var(--honey);font-weight:500}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--text-muted);transition:color .2s}
 .nav-links a:hover,.nav-links a.active{color:var(--honey)}
-.nav-cta{background:var(--honey);color:#fff;padding:9px 22px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:600;transition:background .2s}
+.nav-cta{background:var(--honey);color:#fff;padding:8px 18px;border-radius:50px;text-decoration:none;font-size:12px;font-weight:600;transition:background .2s;white-space:nowrap}
 .nav-cta:hover{background:var(--brown-mid)}
-.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px;flex-shrink:0}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--cream);border-bottom:1px solid var(--border);padding:16px 4%;z-index:99;flex-direction:column}
+.mobile-menu.open{display:flex}
+.mobile-menu a{text-decoration:none;font-size:15px;font-weight:500;color:var(--text-muted);padding:12px 0;border-bottom:1px solid var(--border)}
+.mobile-menu a.active,.mobile-menu a:hover{color:var(--honey)}
+.mobile-menu .m-cta{background:var(--honey);color:#fff;padding:12px;border-radius:50px;text-align:center;font-weight:600;margin-top:8px;border-bottom:none}
 
-/* PAGE HERO */
-.page-hero{min-height:360px;background:linear-gradient(150deg,#3B1F0A 0%,#7A4010 100%);display:flex;align-items:flex-end;padding:120px 5% 56px;position:relative;overflow:hidden}
+/* HERO */
+.page-hero{min-height:300px;background:linear-gradient(150deg,#3B1F0A,#7A4010);display:flex;align-items:flex-end;padding:88px 4% 48px;position:relative;overflow:hidden}
 .page-hero::before{content:'';position:absolute;inset:0;background:url('images/store.jpg') center/cover no-repeat;opacity:.15}
-.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:20px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero-inner{max-width:1200px;width:100%;margin:0 auto;position:relative;z-index:1}
-.breadcrumb{font-size:13px;color:rgba(255,255,255,.5);margin-bottom:14px}
+.page-hero::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:64px;background:var(--cream);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-inner{max-width:1100px;width:100%;margin:0 auto;position:relative;z-index:1}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.5);margin-bottom:10px}
 .breadcrumb a{color:rgba(255,255,255,.6);text-decoration:none}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,5vw,54px);font-weight:700;color:#fff;line-height:1.15}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,52px);font-weight:700;color:#fff;line-height:1.15}
 .page-hero h1 em{font-style:italic;color:#F5A623}
-.hero-sub{font-size:15px;color:rgba(255,255,255,.65);margin-top:10px;max-width:520px}
+.hero-sub{font-size:14px;color:rgba(255,255,255,.65);margin-top:8px;max-width:480px}
 
 /* MAIN LAYOUT */
-.main-wrap{max-width:1200px;margin:0 auto;padding:60px 5% 80px;display:grid;grid-template-columns:1fr 380px;gap:48px;align-items:start}
+.main-wrap{max-width:1100px;margin:0 auto;padding:52px 4% 80px;display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start}
 
-/* GALLERY SHOWCASE */
-.gallery-showcase{margin-bottom:48px}
-.showcase-label{font-size:12px;font-weight:700;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
-.showcase-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--brown-dark);margin-bottom:6px;line-height:1.25}
-.showcase-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px;line-height:1.7}
-.theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-.theme-card{
-  border-radius:var(--radius-lg);overflow:hidden;
-  aspect-ratio:1;position:relative;cursor:pointer;
-  border:2px solid transparent;transition:border-color .2s,transform .2s;
-}
-.theme-card:hover{border-color:var(--honey);transform:scale(1.03)}
-.theme-card.selected{border-color:var(--honey)}
-.theme-img{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative}
-.theme-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(59,31,10,.85));padding:10px 12px}
-.theme-name{font-size:12px;font-weight:600;color:#fff}
-.theme-tag{font-size:10px;color:rgba(255,255,255,.7)}
+/* FORM SECTIONS */
+.form-section{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);padding:28px 28px 32px;margin-bottom:18px}
+.form-section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--brown-dark);margin-bottom:5px;display:flex;align-items:center;gap:8px}
+.form-section-sub{font-size:13px;color:var(--text-muted);margin-bottom:22px}
 
-/* STEP INDICATOR */
-.steps-bar{display:flex;align-items:center;margin-bottom:36px}
-.step{display:flex;align-items:center;gap:8px;flex:1}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--border);color:var(--text-muted);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;transition:background .3s,color .3s}
-.step-num.done{background:var(--green);color:#fff}
-.step-num.active{background:var(--honey);color:#fff}
-.step-label{font-size:12px;color:var(--text-muted);font-weight:500}
-.step-label.active{color:var(--honey);font-weight:600}
-.step-line{flex:1;height:2px;background:var(--border);margin:0 6px}
-.step-line.done{background:var(--green)}
-
-/* FORM CARD */
-.form-section{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;margin-bottom:20px}
-.form-section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--brown-dark);margin-bottom:6px;display:flex;align-items:center;gap:10px}
-.form-section-sub{font-size:13px;color:var(--text-muted);margin-bottom:24px}
-
-/* FORM ELEMENTS */
-.field{margin-bottom:20px}
-.field label{display:block;font-size:13px;font-weight:600;color:var(--brown-dark);margin-bottom:7px}
-.field label span.req{color:var(--error)}
+/* FIELDS */
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--brown-dark);margin-bottom:6px}
+.req{color:var(--error)}
 .field input,.field textarea,.field select{
-  width:100%;border:1.5px solid var(--border);border-radius:var(--radius);
+  width:100%;border:1.5px solid var(--border);border-radius:var(--r);
   padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;
   color:var(--text);background:var(--cream);outline:none;
   transition:border-color .2s,box-shadow .2s;
 }
 .field input:focus,.field textarea:focus,.field select:focus{border-color:var(--honey);box-shadow:0 0 0 3px rgba(212,120,10,.1)}
-.field input.err,.field textarea.err,.field select.err{border-color:var(--error)}
-.field .err-msg{font-size:12px;color:var(--error);margin-top:5px;display:none}
-.field .err-msg.show{display:block}
-.field textarea{resize:vertical;min-height:90px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.field-hint{font-size:12px;color:var(--text-muted);margin-top:5px}
+.field input.err{border-color:var(--error)}
+.err-msg{font-size:12px;color:var(--error);margin-top:4px;display:none}
+.err-msg.show{display:block}
+.field textarea{resize:vertical;min-height:80px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field-hint{font-size:11px;color:var(--text-muted);margin-top:4px}
 
-/* OPTION CHIPS */
-.chip-group{display:flex;gap:8px;flex-wrap:wrap}
-.chip{
-  background:var(--cream);border:1.5px solid var(--border);
-  padding:8px 16px;border-radius:50px;font-size:13px;font-weight:500;
-  color:var(--text-muted);cursor:pointer;transition:all .18s;
-  user-select:none;
-}
+/* CHIPS */
+.chip-group{display:flex;gap:7px;flex-wrap:wrap}
+.chip{background:var(--cream);border:1.5px solid var(--border);padding:7px 14px;border-radius:50px;font-size:13px;font-weight:500;color:var(--text-muted);cursor:pointer;transition:all .18s;user-select:none}
 .chip:hover{border-color:var(--honey);color:var(--honey)}
 .chip.selected{background:var(--honey);border-color:var(--honey);color:#fff;font-weight:600}
 
-/* THEME PICKER CHIPS */
+/* THEME CHIPS */
 .theme-chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.theme-chip{
-  background:var(--cream);border:1.5px solid var(--border);
-  border-radius:var(--radius);padding:10px 8px;
-  text-align:center;cursor:pointer;transition:all .18s;
-}
+.theme-chip{background:var(--cream);border:1.5px solid var(--border);border-radius:var(--r);padding:10px 8px;text-align:center;cursor:pointer;transition:all .18s}
 .theme-chip:hover{border-color:var(--honey)}
 .theme-chip.selected{background:var(--honey-pale);border-color:var(--honey)}
-.theme-chip-emoji{font-size:22px;margin-bottom:4px}
+.theme-chip-emoji{font-size:22px;margin-bottom:3px}
 .theme-chip-label{font-size:11px;font-weight:600;color:var(--brown-dark)}
 
-/* SUMMARY SIDEBAR */
-.summary-wrap{position:sticky;top:88px}
-.summary-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-.summary-head{background:linear-gradient(135deg,var(--brown-dark),var(--brown-mid));padding:20px 24px}
-.summary-head h3{font-family:'Playfair Display',serif;font-size:20px;color:#fff;font-weight:600}
-.summary-head p{font-size:13px;color:rgba(255,255,255,.6);margin-top:3px}
-.summary-body{padding:20px 24px}
-.summary-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border)}
-.summary-row:last-of-type{border-bottom:none}
-.sr-label{font-size:13px;color:var(--text-muted)}
-.sr-value{font-size:13px;font-weight:600;color:var(--brown-dark);text-align:right;max-width:55%}
-.summary-total{background:var(--honey-pale);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
-.summary-total span:first-child{font-size:14px;color:var(--text-muted)}
-.summary-total-price{font-size:24px;font-weight:700;color:var(--honey)}
-.summary-note{font-size:11px;color:var(--text-muted);padding:12px 24px;background:var(--cream);border-top:1px solid var(--border);line-height:1.6}
+/* IMAGE UPLOAD */
+.upload-box{
+  border:2px dashed var(--border);border-radius:var(--r);
+  padding:24px;text-align:center;cursor:pointer;
+  transition:border-color .2s,background .2s;
+  position:relative;background:var(--cream);
+}
+.upload-box:hover{border-color:var(--honey);background:var(--honey-pale)}
+.upload-box input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-icon{font-size:32px;margin-bottom:8px}
+.upload-text{font-size:13px;font-weight:600;color:var(--brown-dark);margin-bottom:3px}
+.upload-hint{font-size:11px;color:var(--text-muted)}
+.upload-preview{display:none;margin-top:12px;position:relative}
+.upload-preview img{width:100%;max-height:180px;object-fit:cover;border-radius:var(--r);border:1px solid var(--border)}
+.upload-remove{position:absolute;top:6px;right:6px;background:rgba(192,57,43,.9);color:#fff;border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:13px;display:flex;align-items:center;justify-content:center}
 
-/* SUBMIT BUTTONS */
-.submit-wrap{margin-top:8px}
-.btn-whatsapp{
-  width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;
-  padding:16px;border-radius:50px;font-size:15px;font-weight:700;
-  font-family:'DM Sans',sans-serif;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  transition:background .2s,transform .15s;margin-bottom:10px;
-}
-.btn-whatsapp:hover{background:#1ebe5d;transform:scale(1.02)}
-.btn-call{
-  width:100%;background:var(--honey);color:#fff;border:none;cursor:pointer;
-  padding:14px;border-radius:50px;font-size:14px;font-weight:600;
-  font-family:'DM Sans',sans-serif;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  transition:background .2s;text-decoration:none;
-}
-.btn-call:hover{background:var(--brown-mid)}
+/* BIRTHDAY EXTRAS */
+.birthday-extras{background:var(--honey-pale);border:1px solid rgba(212,120,10,.25);border-radius:var(--r);padding:18px;margin-top:10px;display:none}
+.birthday-extras.show{display:block}
+.birthday-extras-title{font-size:12px;font-weight:700;color:var(--honey);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+
+/* TOGGLE SWITCH */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+.toggle-label{font-size:13px;font-weight:600;color:var(--brown-dark)}
+.toggle-desc{font-size:11px;color:var(--text-muted);margin-top:1px}
+.toggle{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0;position:absolute}
+.toggle-slider{position:absolute;inset:0;background:var(--border);border-radius:50px;cursor:pointer;transition:.3s}
+.toggle-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.3s}
+.toggle input:checked + .toggle-slider{background:var(--honey)}
+.toggle input:checked + .toggle-slider::before{transform:translateX(20px)}
+
+/* SUMMARY SIDEBAR */
+.summary-wrap{position:sticky;top:80px}
+.summary-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rlg);overflow:hidden;margin-bottom:14px}
+.summary-head{background:linear-gradient(135deg,var(--brown-dark),var(--brown-mid));padding:18px 22px}
+.summary-head h3{font-family:'Playfair Display',serif;font-size:18px;color:#fff;font-weight:600}
+.summary-head p{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px}
+.summary-body{padding:4px 0}
+.summary-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 18px;border-bottom:1px solid var(--border)}
+.summary-row:last-child{border-bottom:none}
+.sr-label{font-size:12px;color:var(--text-muted);flex-shrink:0;margin-right:8px}
+.sr-value{font-size:12px;font-weight:600;color:var(--brown-dark);text-align:right;max-width:60%;word-break:break-word}
+.summary-note{font-size:11px;color:var(--text-muted);padding:12px 18px;background:var(--cream);border-top:1px solid var(--border);line-height:1.6}
 
 /* TRUST BADGES */
-.trust-badges{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.trust-badge{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;text-align:center}
-.trust-badge-icon{font-size:20px;margin-bottom:4px}
-.trust-badge-text{font-size:11px;color:var(--text-muted);font-weight:500;line-height:1.4}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trust-badge{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:10px;text-align:center}
+.trust-badge-icon{font-size:18px;margin-bottom:3px}
+.trust-badge-text{font-size:10px;color:var(--text-muted);font-weight:500;line-height:1.4}
 
-/* HOW IT WORKS */
-.hiw-section{padding:70px 5%;background:var(--honey-pale)}
-.hiw-inner{max-width:1200px;margin:0 auto}
-.hiw-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--brown-dark);text-align:center;margin-bottom:8px}
-.hiw-sub{text-align:center;font-size:15px;color:var(--text-muted);margin-bottom:48px}
-.hiw-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.hiw-step{text-align:center;padding:28px 20px;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);position:relative}
-.hiw-step-num{width:40px;height:40px;border-radius:50%;background:var(--honey);color:#fff;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
-.hiw-step-icon{font-size:32px;margin-bottom:12px}
-.hiw-step h3{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--brown-dark);margin-bottom:6px}
-.hiw-step p{font-size:13px;color:var(--text-muted);line-height:1.6}
-.hiw-arrow{position:absolute;right:-20px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--honey);z-index:1}
-
-/* GALLERY SECTION */
-.gallery-section{padding:70px 5%;background:var(--white)}
-.gallery-inner{max-width:1200px;margin:0 auto}
-.gallery-title{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--brown-dark);text-align:center;margin-bottom:8px}
-.gallery-sub{text-align:center;font-size:15px;color:var(--text-muted);margin-bottom:40px}
-.cakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.cake-item{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:1;position:relative}
-.cake-item-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;transition:transform .3s}
-.cake-item:hover .cake-item-inner{transform:scale(1.08)}
-.cake-item-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(59,31,10,.8));padding:14px 12px}
-.cake-item-label h4{font-size:13px;font-weight:600;color:#fff}
-.cake-item-label span{font-size:11px;color:rgba(255,255,255,.7)}
-
-/* FOOTER */
-footer{background:#2C1810;padding:50px 5% 30px}
-.footer-inner{max-width:1200px;margin:0 auto}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-.footer-brand p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:12px;max-width:260px}
-.footer-logo{display:flex;align-items:center;gap:10px}
-.footer-logo img{height:40px;width:40px;border-radius:50%}
-.footer-logo-text{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff}
-footer h4{font-size:13px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.5px;margin-bottom:16px;text-transform:uppercase}
-footer ul{list-style:none}
-footer ul li{margin-bottom:10px}
-footer ul a{text-decoration:none;font-size:14px;color:rgba(255,255,255,.5);transition:color .2s}
-footer ul a:hover{color:#F5A623}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.footer-bottom p{font-size:13px;color:rgba(255,255,255,.35)}
-.footer-social{display:flex;gap:12px}
-.social-link{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:14px;text-decoration:none;transition:border-color .2s,color .2s}
-.social-link:hover{border-color:#F5A623;color:#F5A623}
+/* SUBMIT */
+.btn-whatsapp{width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;padding:15px;border-radius:50px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s,transform .15s;margin-bottom:10px}
+.btn-whatsapp:hover{background:#1ebe5d;transform:translateY(-1px)}
+.btn-call{width:100%;background:var(--honey);color:#fff;border:none;cursor:pointer;padding:13px;border-radius:50px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .2s;text-decoration:none;margin-bottom:10px}
+.btn-call:hover{background:var(--brown-mid)}
+.admin-bar{background:var(--green-pale);border:1px solid rgba(59,110,42,.2);border-radius:var(--r);padding:12px 14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.admin-bar span{font-size:11px;color:var(--green);font-weight:600}
+.admin-btn{background:var(--green);color:#fff;border:none;cursor:pointer;padding:6px 14px;border-radius:50px;font-size:11px;font-weight:600;font-family:'DM Sans',sans-serif}
+.admin-btn-red{background:none;border:1.5px solid var(--error);color:var(--error);cursor:pointer;padding:5px 12px;border-radius:50px;font-size:11px;font-weight:600;font-family:'DM Sans',sans-serif}
 
 /* SUCCESS MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
 .modal-overlay.show{opacity:1;pointer-events:all}
-.modal{background:var(--white);border-radius:var(--radius-lg);padding:44px 40px;max-width:440px;width:90%;text-align:center;transform:scale(.9);transition:transform .3s}
+.modal{background:var(--white);border-radius:var(--rlg);padding:36px 32px;max-width:400px;width:100%;text-align:center;transform:scale(.9);transition:transform .3s}
 .modal-overlay.show .modal{transform:scale(1)}
-.modal-icon{font-size:56px;margin-bottom:16px}
-.modal h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--brown-dark);margin-bottom:10px}
-.modal p{font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:24px}
-.modal-btn{background:var(--honey);color:#fff;border:none;cursor:pointer;padding:13px 32px;border-radius:50px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
+.modal-icon{font-size:52px;margin-bottom:14px}
+.modal h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--brown-dark);margin-bottom:10px}
+.modal p{font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:22px}
+.modal-btn{background:var(--honey);color:#fff;border:none;cursor:pointer;padding:12px 28px;border-radius:50px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
-.reveal.visible{opacity:1;transform:none}
+/* HOW IT WORKS */
+.hiw-section{background:var(--honey-pale);padding:60px 4%}
+.hiw-inner{max-width:1100px;margin:0 auto}
+.hiw-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--brown-dark);text-align:center;margin-bottom:8px}
+.hiw-sub{text-align:center;font-size:14px;color:var(--text-muted);margin-bottom:36px}
+.hiw-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.hiw-step{text-align:center;padding:22px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--rlg)}
+.hiw-step-num{width:36px;height:36px;border-radius:50%;background:var(--honey);color:#fff;font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.hiw-step-icon{font-size:28px;margin-bottom:10px}
+.hiw-step h3{font-family:'Playfair Display',serif;font-size:15px;font-weight:600;color:var(--brown-dark);margin-bottom:5px}
+.hiw-step p{font-size:12px;color:var(--text-muted);line-height:1.6}
+
+/* GALLERY */
+.gallery-section{padding:60px 4%;background:var(--white)}
+.gallery-inner{max-width:1100px;margin:0 auto}
+.gallery-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--brown-dark);text-align:center;margin-bottom:8px}
+.gallery-sub{text-align:center;font-size:14px;color:var(--text-muted);margin-bottom:36px}
+.cakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cake-item{border-radius:var(--rlg);overflow:hidden;aspect-ratio:1;position:relative}
+.cake-item-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;transition:transform .3s}
+.cake-item:hover .cake-item-inner{transform:scale(1.06)}
+.cake-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(59,31,10,.8));padding:12px 10px}
+.cake-label h4{font-size:12px;font-weight:600;color:#fff}
+.cake-label span{font-size:10px;color:rgba(255,255,255,.7)}
+
+/* FOOTER */
+footer{background:#2C1810;padding:44px 4% 28px}
+.footer-inner{max-width:1100px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-top:10px;max-width:240px}
+.footer-logo{display:flex;align-items:center;gap:8px}
+.footer-logo img{height:38px;width:38px;border-radius:50%}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:#fff}
+footer h4{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
+footer ul{list-style:none}
+footer ul li{margin-bottom:9px}
+footer ul a{text-decoration:none;font-size:13px;color:rgba(255,255,255,.5);transition:color .2s}
+footer ul a:hover{color:#F5A623}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,.35)}
+.footer-social{display:flex;gap:10px}
+.fsocial{width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:13px;text-decoration:none;transition:border-color .2s,color .2s}
+.fsocial:hover{border-color:#F5A623;color:#F5A623}
 
 /* RESPONSIVE */
-@media(max-width:960px){.main-wrap{grid-template-columns:1fr}.summary-wrap{position:static}.hiw-steps{grid-template-columns:repeat(2,1fr)}.cakes-grid{grid-template-columns:repeat(2,1fr)}.hiw-arrow{display:none}.footer-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.nav-links,.nav-cta{display:none}.nav-hamburger{display:block}.theme-grid{grid-template-columns:repeat(2,1fr)}.field-row{grid-template-columns:1fr}.theme-chips{grid-template-columns:repeat(2,1fr)}.hiw-steps{grid-template-columns:1fr}.cakes-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}}
+@media(max-width:900px){.main-wrap{grid-template-columns:1fr;gap:24px;padding:36px 4% 60px}.summary-wrap{position:static}.hiw-steps{grid-template-columns:repeat(2,1fr)}.cakes-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media(max-width:600px){.nav-links,.nav-cta{display:none}.nav-hamburger{display:block}nav{height:56px}.page-hero{min-height:220px;padding:76px 4% 36px}.page-hero h1{font-size:22px}.main-wrap{padding:20px 4% 60px}.form-section{padding:18px 16px 22px}.field-row{grid-template-columns:1fr}.theme-chips{grid-template-columns:repeat(2,1fr)}.hiw-steps{grid-template-columns:1fr 1fr}.cakes-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.chip{font-size:12px;padding:6px 12px}}
 </style>
 </head>
 <body>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <div class="modal-icon">🎉</div>
+    <h2>Order Sent!</h2>
+    <p>Your custom cake request is on its way to WhatsApp. Akki will confirm your order within 2 hours and share design options!</p>
+    <button class="modal-btn" onclick="document.getElementById('successModal').classList.remove('show')">Great, Thanks!</button>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="images/logo.png" alt="Logo" onerror="this.style.display='none'">
     <div class="nav-logo-text">
-      <span>akkis Healthy Baking</span>
+      <span>Akki's Healthy Baking</span>
       <span>The Secret is Love</span>
     </div>
   </a>
@@ -262,296 +245,321 @@ footer ul a:hover{color:#F5A623}
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <a href="custom-cake.html" class="nav-cta">Order a Cake</a>
-  <button class="nav-hamburger"><span></span><span></span><span></span></button>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="menu.html">Menu</a>
+  <a href="products.html">Products</a><a href="custom-cake.html" class="active">Custom Cakes</a>
+  <a href="gallery.html">Gallery</a><a href="blog.html">Blog</a><a href="contact.html">Contact</a>
+  <a href="custom-cake.html" class="m-cta">🎂 Order a Cake</a>
+</div>
 
-<!-- PAGE HERO -->
+<!-- HERO -->
 <div class="page-hero">
   <div class="hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; Custom Cakes</div>
     <h1>Your Dream Cake,<br><em>Baked Healthy for You</em></h1>
-    <p class="hero-sub">Any theme, any size, any occasion — all made with whole wheat, ragi, and jaggery. No maida, no refined sugar, endless creativity.</p>
+    <p class="hero-sub">Any theme, any size, any occasion — whole wheat, ragi & jaggery. No maida, no sugar.</p>
   </div>
 </div>
 
-<!-- SUCCESS MODAL -->
-<div class="modal-overlay" id="successModal">
-  <div class="modal">
-    <div class="modal-icon">🎉</div>
-    <h2>Order Sent!</h2>
-    <p>Your custom cake request has been sent to WhatsApp. Akki will confirm your order and delivery details shortly. Usually responds within 2 hours!</p>
-    <button class="modal-btn" onclick="document.getElementById('successModal').classList.remove('show')">Great, Thanks!</button>
-  </div>
-</div>
-
-<!-- MAIN LAYOUT -->
+<!-- MAIN -->
 <div class="main-wrap">
-
-  <!-- LEFT: FORM -->
   <div>
 
-    <!-- STEP BAR -->
-    <div class="steps-bar reveal">
-      <div class="step">
-        <div class="step-num active" id="sn1">1</div>
-        <span class="step-label active" id="sl1">Cake Details</span>
+    <!-- SECTION 1: OCCASION -->
+    <div class="form-section">
+      <div class="form-section-title">🎉 Occasion</div>
+      <div class="form-section-sub">What are you celebrating?</div>
+
+      <div class="field">
+        <label>Occasion <span class="req">*</span></label>
+        <div class="chip-group" id="occasionChips">
+          <div class="chip selected" onclick="selectChip(this,'occasion')">🎂 Birthday</div>
+          <div class="chip" onclick="selectChip(this,'occasion')">💍 Anniversary</div>
+          <div class="chip" onclick="selectChip(this,'occasion')">👶 Baby Shower</div>
+          <div class="chip" onclick="selectChip(this,'occasion')">🎓 Graduation</div>
+          <div class="chip" onclick="selectChip(this,'occasion')">🌸 Baby Naming</div>
+          <div class="chip" onclick="selectChip(this,'occasion')">🏢 Corporate</div>
+          <div class="chip" onclick="selectChip(this,'occasion')">✨ Other</div>
+        </div>
+        <div class="err-msg" id="err-occasion">Please select an occasion</div>
       </div>
-      <div class="step-line" id="line1"></div>
-      <div class="step">
-        <div class="step-num" id="sn2">2</div>
-        <span class="step-label" id="sl2">Theme & Design</span>
+
+      <!-- Birthday Extras — shows only when Birthday selected -->
+      <div class="birthday-extras" id="birthdayExtras">
+        <div class="birthday-extras-title">🎂 Birthday Details</div>
+        <div class="field-row">
+          <div class="field" style="margin-bottom:0">
+            <label>Name on Cake</label>
+            <input type="text" id="nameOnCake" placeholder="e.g. Happy Birthday Advik!" oninput="updateSummary()">
+          </div>
+          <div class="field" style="margin-bottom:0">
+            <label>Age / Number</label>
+            <input type="text" id="birthdayNumber" placeholder="e.g. 7 or 30" oninput="updateSummary()">
+          </div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">Number Candle needed?</div>
+              <div class="toggle-desc">We'll add a matching number candle on top</div>
+            </div>
+            <label class="toggle"><input type="checkbox" id="numberCandle" onchange="updateSummary()"><span class="toggle-slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div>
+              <div class="toggle-label">Cake Knife needed?</div>
+              <div class="toggle-desc">We'll include a decorative cake knife</div>
+            </div>
+            <label class="toggle"><input type="checkbox" id="cakeKnife" onchange="updateSummary()"><span class="toggle-slider"></span></label>
+          </div>
+        </div>
       </div>
-      <div class="step-line" id="line2"></div>
-      <div class="step">
-        <div class="step-num" id="sn3">3</div>
-        <span class="step-label" id="sl3">Your Info</span>
+
+      <!-- Anniversary extras -->
+      <div class="birthday-extras" id="anniversaryExtras" style="margin-top:10px">
+        <div class="birthday-extras-title">💍 Anniversary Details</div>
+        <div class="field" style="margin-bottom:8px">
+          <label>Anniversary Number / Couple Names</label>
+          <input type="text" id="anniversaryText" placeholder="e.g. 10th Anniversary or Rahul & Priya" oninput="updateSummary()">
+        </div>
+        <div class="toggle-row">
+          <div>
+            <div class="toggle-label">Cake Knife needed?</div>
+            <div class="toggle-desc">We'll include a decorative cake knife</div>
+          </div>
+          <label class="toggle"><input type="checkbox" id="anniversaryKnife" onchange="updateSummary()"><span class="toggle-slider"></span></label>
+        </div>
       </div>
     </div>
 
-    <!-- STEP 1: CAKE DETAILS -->
-    <div id="step1">
-      <div class="form-section reveal">
-        <div class="form-section-title">🎂 Cake Details</div>
-        <div class="form-section-sub">Tell us what kind of cake you need</div>
+    <!-- SECTION 2: CAKE DETAILS -->
+    <div class="form-section">
+      <div class="form-section-title">🎂 Cake Details</div>
+      <div class="form-section-sub">Size, flavour and finishing</div>
 
+      <div class="field-row">
         <div class="field">
-          <label>Occasion <span class="req">*</span></label>
-          <div class="chip-group" id="occasionChips">
-            <div class="chip selected" onclick="selectChip(this,'occasion')">🎂 Birthday</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">💍 Anniversary</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">👶 Baby Shower</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">🎓 Graduation</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">💝 Valentine's</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">🌸 Baby Naming</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">🎉 Celebration</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">🏢 Corporate</div>
-            <div class="chip" onclick="selectChip(this,'occasion')">✨ Other</div>
-          </div>
-          <div class="err-msg" id="err-occasion">Please select an occasion</div>
+          <label>Weight / Size <span class="req">*</span></label>
+          <select id="cakeSize" onchange="updateSummary()">
+            <option value="">Select size</option>
+            <option>500g – Half Kg (Serves 4–6)</option>
+            <option>1kg – One Kg (Serves 8–12)</option>
+            <option>1.5kg – 1.5 Kg (Serves 12–16)</option>
+            <option>2kg – Two Kg (Serves 16–22)</option>
+            <option>Custom Size – Let us discuss</option>
+          </select>
+          <div class="err-msg" id="err-size">Please select a size</div>
         </div>
+        <div class="field">
+          <label>Number of Tiers</label>
+          <select id="cakeTiers" onchange="updateSummary()">
+            <option>1 Tier</option>
+            <option>2 Tiers</option>
+            <option>3 Tiers</option>
+          </select>
+        </div>
+      </div>
 
+      <div class="field">
+        <label>Flavour <span class="req">*</span></label>
+        <div class="chip-group" id="flavourChips">
+          <div class="chip selected" onclick="selectChip(this,'flavour')">🍫 Chocolate</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">🍍 Pineapple</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">🍓 Strawberry</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">🫐 Blueberry</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">🥭 Mango</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">🌑 Ragi Dark Choco</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">🍪 Biscoff</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">🍑 Mixed Fruit</div>
+          <div class="chip" onclick="selectChip(this,'flavour')">✨ Surprise Me</div>
+        </div>
+        <div class="err-msg" id="err-flavour">Please select a flavour</div>
+      </div>
+
+      <div class="field">
+        <label>Decoration Finish</label>
+        <div class="chip-group" id="finishChips">
+          <div class="chip selected" onclick="selectChip(this,'finish')">🍦 Cream Finish</div>
+          <div class="chip" onclick="selectChip(this,'finish')">🎨 Fondant</div>
+          <div class="chip" onclick="selectChip(this,'finish')">🖨️ Custom Sticker / Printed Topper</div>
+          <div class="chip" onclick="selectChip(this,'finish')">🌸 Fresh Flowers</div>
+          <div class="chip" onclick="selectChip(this,'finish')">✨ Akki's Choice</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>No. of Guests</label>
         <div class="field-row">
-          <div class="field">
-            <label>Cake Size / Weight <span class="req">*</span></label>
-            <select id="cakeSize" onchange="updateSummary()">
-              <option value="">Select size</option>
-              <option value="500g – Half Kg (Serves 4–6)">500g – Half Kg (Serves 4–6)</option>
-              <option value="1kg – One Kg (Serves 8–12)">1kg – One Kg (Serves 8–12)</option>
-              <option value="1.5kg – 1.5 Kg (Serves 12–16)">1.5kg – 1.5 Kg (Serves 12–16)</option>
-              <option value="2kg – Two Kg (Serves 16–22)">2kg – Two Kg (Serves 16–22)</option>
-              <option value="Custom Size – Let us discuss">Custom Size – Let us discuss</option>
-            </select>
-            <div class="err-msg" id="err-size">Please select a size</div>
+          <div>
+            <input type="number" id="guestsAdults" placeholder="Adults" min="0" oninput="updateSummary()">
           </div>
-          <div class="field">
-            <label>Number of Tiers</label>
-            <select id="cakeTiers" onchange="updateSummary()">
-              <option value="1 Tier">1 Tier</option>
-              <option value="2 Tiers">2 Tiers</option>
-              <option value="3 Tiers">3 Tiers</option>
-            </select>
+          <div>
+            <input type="number" id="guestsKids" placeholder="Kids" min="0" oninput="updateSummary()">
           </div>
         </div>
+        <div class="field-hint">Helps us suggest the right cake size</div>
+      </div>
+    </div>
 
-        <div class="field">
-          <label>Cake Flavour Base <span class="req">*</span></label>
-          <div class="chip-group" id="flavourChips">
-            <div class="chip selected" onclick="selectChip(this,'flavour')">🍫 Chocolate</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">🍍 Pineapple</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">🍓 Strawberry</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">🫐 Blueberry</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">🥭 Mango</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">🍑 Mixed Fruit</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">🌑 Ragi Dark Choco</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">🍪 Biscoff</div>
-            <div class="chip" onclick="selectChip(this,'flavour')">✨ Surprise Me</div>
-          </div>
-          <div class="err-msg" id="err-flavour">Please select a flavour</div>
+    <!-- SECTION 3: THEME & DESIGN -->
+    <div class="form-section">
+      <div class="form-section-title">🎨 Theme & Design</div>
+      <div class="form-section-sub">Choose a theme or upload a reference image</div>
+
+      <div class="field">
+        <label>Theme Category</label>
+        <div class="theme-chips" id="themeChips">
+          <div class="theme-chip selected" onclick="selectTheme(this,'Kids & Characters')"><div class="theme-chip-emoji">🦕</div><div class="theme-chip-label">Kids & Characters</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'Princess & Fairy')"><div class="theme-chip-emoji">👑</div><div class="theme-chip-label">Princess & Fairy</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'Sports & Cars')"><div class="theme-chip-emoji">🏎️</div><div class="theme-chip-label">Sports & Cars</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'Harry Potter')"><div class="theme-chip-emoji">⚡</div><div class="theme-chip-label">Harry Potter</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'K-Pop & Music')"><div class="theme-chip-emoji">🎤</div><div class="theme-chip-label">K-Pop & Music</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'Floral & Elegant')"><div class="theme-chip-emoji">🌸</div><div class="theme-chip-label">Floral & Elegant</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'Mom & Family')"><div class="theme-chip-emoji">👩‍👧‍👦</div><div class="theme-chip-label">Mom & Family</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'Football & Sports')"><div class="theme-chip-emoji">⚽</div><div class="theme-chip-label">Football</div></div>
+          <div class="theme-chip" onclick="selectTheme(this,'Custom / My Own Idea')"><div class="theme-chip-emoji">✨</div><div class="theme-chip-label">Custom Idea</div></div>
         </div>
+      </div>
 
+      <div class="field">
+        <label>Describe Your Design</label>
+        <textarea id="designDesc" placeholder="e.g. Blue dinosaur theme, name ADVIK in gold, butterflies on the side…" oninput="updateSummary()"></textarea>
+        <div class="field-hint">More detail = better result! You can also send photos on WhatsApp after submitting.</div>
+      </div>
+
+      <div class="field">
+        <label>Colour Preference</label>
+        <input type="text" id="colourPref" placeholder="e.g. Pastel pink and gold" oninput="updateSummary()">
+      </div>
+
+      <!-- REFERENCE IMAGE UPLOAD -->
+      <div class="field">
+        <label>Upload Reference Image (optional)</label>
+        <div class="upload-box" id="uploadBox">
+          <input type="file" id="refImage" accept="image/*" onchange="handleImageUpload(this)">
+          <div class="upload-icon">📎</div>
+          <div class="upload-text">Tap to upload a reference photo</div>
+          <div class="upload-hint">JPG, PNG, WEBP — max 5MB</div>
+        </div>
+        <div class="upload-preview" id="uploadPreview">
+          <img id="previewImg" src="" alt="Reference">
+          <button class="upload-remove" onclick="removeImage()" title="Remove">✕</button>
+        </div>
+        <div class="field-hint">📌 This image will be noted in your order. You can also send it directly on WhatsApp after submitting.</div>
+      </div>
+
+      <div class="field">
+        <label>Topper Preference</label>
+        <div class="chip-group" id="topperChips">
+          <div class="chip selected" onclick="selectChip(this,'topper')">🪄 Akki's Choice</div>
+          <div class="chip" onclick="selectChip(this,'topper')">🌸 Fresh Flowers</div>
+          <div class="chip" onclick="selectChip(this,'topper')">🪆 Figurines</div>
+          <div class="chip" onclick="selectChip(this,'topper')">✍️ Name Plaque</div>
+          <div class="chip" onclick="selectChip(this,'topper')">🚫 No Topper</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: DELIVERY -->
+    <div class="form-section">
+      <div class="form-section-title">🚚 Delivery Details</div>
+      <div class="form-section-sub">When and where should we deliver?</div>
+
+      <div class="field-row">
         <div class="field">
           <label>Delivery Date <span class="req">*</span></label>
           <input type="date" id="deliveryDate" onchange="updateSummary()" min="">
-          <div class="field-hint">⚠️ Please order at least 2 days in advance. Same-day orders may not be possible.</div>
-          <div class="err-msg" id="err-date">Please select a delivery date</div>
+          <div class="err-msg" id="err-date">Please select a date</div>
         </div>
-
         <div class="field">
-          <label>Message on Cake</label>
-          <input type="text" id="cakeMessage" placeholder="e.g. Happy Birthday Advik! 🎉" oninput="updateSummary()" maxlength="60">
-          <div class="field-hint">Max 60 characters. We'll write this exactly as typed.</div>
-        </div>
-      </div>
-
-      <!-- STEP 2: THEME -->
-      <div class="form-section reveal">
-        <div class="form-section-title">🎨 Theme & Design</div>
-        <div class="form-section-sub">Choose a theme or describe your own idea</div>
-
-        <div class="field">
-          <label>Select Theme Category</label>
-          <div class="theme-chips" id="themeChips">
-            <div class="theme-chip selected" onclick="selectTheme(this,'Kids & Characters')">
-              <div class="theme-chip-emoji">🦕</div>
-              <div class="theme-chip-label">Kids & Characters</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'Princess & Fairy')">
-              <div class="theme-chip-emoji">👑</div>
-              <div class="theme-chip-label">Princess & Fairy</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'Sports & Cars')">
-              <div class="theme-chip-emoji">🏎️</div>
-              <div class="theme-chip-label">Sports & Cars</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'Harry Potter')">
-              <div class="theme-chip-emoji">⚡</div>
-              <div class="theme-chip-label">Harry Potter</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'K-Pop & Music')">
-              <div class="theme-chip-emoji">🎤</div>
-              <div class="theme-chip-label">K-Pop & Music</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'Floral & Elegant')">
-              <div class="theme-chip-emoji">🌸</div>
-              <div class="theme-chip-label">Floral & Elegant</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'Mom & Family')">
-              <div class="theme-chip-emoji">👩‍👧‍👦</div>
-              <div class="theme-chip-label">Mom & Family</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'Football & Sports')">
-              <div class="theme-chip-emoji">⚽</div>
-              <div class="theme-chip-label">Football & Sports</div>
-            </div>
-            <div class="theme-chip" onclick="selectTheme(this,'Custom / My Own Idea')">
-              <div class="theme-chip-emoji">✨</div>
-              <div class="theme-chip-label">Custom / Own Idea</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Describe Your Design Idea</label>
-          <textarea id="designDesc" placeholder="e.g. Blue and green dinosaur theme, name ADVIK in gold letters, 2 candles on top. Please add butterflies and small dino figurines…" oninput="updateSummary()"></textarea>
-          <div class="field-hint">The more detail you give, the better we can match your vision! You can also share reference photos on WhatsApp after submitting.</div>
-        </div>
-
-        <div class="field">
-          <label>Colour Preference</label>
-          <input type="text" id="colourPref" placeholder="e.g. Pastel pink and gold, or blue and white" oninput="updateSummary()">
-        </div>
-
-        <div class="field">
-          <label>Topper / Figurine Preference</label>
-          <div class="chip-group" id="topperChips">
-            <div class="chip selected" onclick="selectChip(this,'topper')">🪄 Our Choice</div>
-            <div class="chip" onclick="selectChip(this,'topper')">🌸 Fresh Flowers</div>
-            <div class="chip" onclick="selectChip(this,'topper')">🪆 Figurines</div>
-            <div class="chip" onclick="selectChip(this,'topper')">✍️ Name Plaque</div>
-            <div class="chip" onclick="selectChip(this,'topper')">🕯️ Candles Only</div>
-            <div class="chip" onclick="selectChip(this,'topper')">🚫 No Topper</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- STEP 3: YOUR INFO -->
-      <div class="form-section reveal">
-        <div class="form-section-title">👤 Your Details</div>
-        <div class="form-section-sub">So we can confirm your order and arrange delivery</div>
-
-        <div class="field-row">
-          <div class="field">
-            <label>Your Name <span class="req">*</span></label>
-            <input type="text" id="custName" placeholder="Full name" oninput="updateSummary()">
-            <div class="err-msg" id="err-name">Please enter your name</div>
-          </div>
-          <div class="field">
-            <label>WhatsApp Number <span class="req">*</span></label>
-            <input type="tel" id="custPhone" placeholder="+91 9876543210" oninput="updateSummary()">
-            <div class="err-msg" id="err-phone">Please enter a valid phone number</div>
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Delivery Address <span class="req">*</span></label>
-          <textarea id="custAddress" placeholder="Full delivery address including flat no, building, area, Pune pincode…" style="min-height:70px" oninput="updateSummary()"></textarea>
-          <div class="err-msg" id="err-address">Please enter delivery address</div>
-        </div>
-
-        <div class="field">
-          <label>Preferred Delivery Time</label>
-          <div class="chip-group" id="timeChips">
+          <label>Preferred Time</label>
+          <div class="chip-group" id="timeChips" style="margin-top:4px">
             <div class="chip selected" onclick="selectChip(this,'time')">🌅 Morning (9–12)</div>
             <div class="chip" onclick="selectChip(this,'time')">☀️ Afternoon (12–4)</div>
             <div class="chip" onclick="selectChip(this,'time')">🌆 Evening (4–8)</div>
           </div>
         </div>
+      </div>
 
+      <div class="field">
+        <label>Complete Delivery Address <span class="req">*</span></label>
+        <textarea id="custAddress" placeholder="Flat No, Building Name, Street, Area, Pune — Pincode" style="min-height:70px" oninput="updateSummary()"></textarea>
+        <div class="err-msg" id="err-address">Please enter complete delivery address</div>
+        <div class="field-hint">Please include flat number, building name, and pincode for smooth delivery.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: YOUR INFO -->
+    <div class="form-section">
+      <div class="form-section-title">👤 Your Details</div>
+      <div class="form-section-sub">So we can confirm and stay in touch</div>
+
+      <div class="field-row">
         <div class="field">
-          <label>Budget (Optional)</label>
-          <input type="text" id="custBudget" placeholder="e.g. ₹800 – ₹1500" oninput="updateSummary()">
-          <div class="field-hint">Helps us suggest the best option within your budget.</div>
+          <label>Your Name <span class="req">*</span></label>
+          <input type="text" id="custName" placeholder="Full name" oninput="updateSummary()">
+          <div class="err-msg" id="err-name">Please enter your name</div>
         </div>
-
         <div class="field">
-          <label>Any Allergies or Special Requests?</label>
-          <textarea id="custSpecial" placeholder="e.g. Nut-free, eggless, extra moist, less sweet…" style="min-height:60px"></textarea>
+          <label>WhatsApp Number <span class="req">*</span></label>
+          <input type="tel" id="custPhone" placeholder="+91 9876543210" oninput="updateSummary()">
+          <div class="err-msg" id="err-phone">Please enter your phone number</div>
         </div>
       </div>
 
-      <!-- SUBMIT -->
-      <div class="submit-wrap reveal">
-        <button class="btn-whatsapp" onclick="submitOrder()">
-          <span style="font-size:20px">💬</span> Send Order via WhatsApp
-        </button>
-        <a href="tel:+917795076412" class="btn-call">
-          <span>📞</span> Or Call Us: +91 77950 76412
-        </a>
-        <!-- ADMIN: Order Log -->
-        <div style="margin-top:16px;padding:14px 16px;background:var(--green-pale);border:1px solid rgba(59,110,42,.2);border-radius:var(--radius);display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-          <span style="font-size:12px;color:var(--green);font-weight:600">📊 Admin — Order Log:</span>
-          <button onclick="downloadOrdersExcel()" style="background:var(--green);color:#fff;border:none;cursor:pointer;padding:7px 16px;border-radius:50px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif">⬇️ Download Excel (CSV)</button>
-          <button onclick="clearOrderLog()" style="background:none;border:1.5px solid #C0392B;color:#C0392B;cursor:pointer;padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;font-family:'DM Sans',sans-serif">🗑 Clear Log</button>
-          <span style="font-size:11px;color:var(--text-muted)">Orders saved on this device/browser</span>
-        </div>
+      <div class="field">
+        <label>Instagram Handle (optional)</label>
+        <input type="text" id="instaHandle" placeholder="@yourhandle — we'll tag you when we post your cake!" oninput="updateSummary()">
+      </div>
+
+      <div class="field">
+        <label>Any Allergies or Special Instructions?</label>
+        <textarea id="allergies" placeholder="e.g. Nut-free, no coconut, eggless strict, less sweet, extra moist…" style="min-height:60px"></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div>
+      <button class="btn-whatsapp" onclick="submitOrder()">
+        <span style="font-size:20px">💬</span> Send Order via WhatsApp
+      </button>
+      <a href="tel:+917795076412" class="btn-call">
+        <span>📞</span> Call Us: +91 77950 76412
+      </a>
+      <div class="admin-bar">
+        <span>📊 Admin — Order Log:</span>
+        <button class="admin-btn" onclick="downloadOrdersExcel()">⬇️ Download CSV</button>
+        <button class="admin-btn-red" onclick="clearOrderLog()">🗑 Clear</button>
       </div>
     </div>
   </div>
 
-  <!-- RIGHT: SUMMARY SIDEBAR -->
+  <!-- SUMMARY SIDEBAR -->
   <div class="summary-wrap">
     <div class="summary-card">
-      <div class="summary-head">
-        <h3>Order Summary</h3>
-        <p>Updates as you fill the form</p>
-      </div>
+      <div class="summary-head"><h3>Order Summary</h3><p>Updates as you fill the form</p></div>
       <div class="summary-body">
         <div class="summary-row"><span class="sr-label">Occasion</span><span class="sr-value" id="sum-occasion">Birthday</span></div>
         <div class="summary-row"><span class="sr-label">Size</span><span class="sr-value" id="sum-size">—</span></div>
         <div class="summary-row"><span class="sr-label">Tiers</span><span class="sr-value" id="sum-tiers">1 Tier</span></div>
         <div class="summary-row"><span class="sr-label">Flavour</span><span class="sr-value" id="sum-flavour">Chocolate</span></div>
+        <div class="summary-row"><span class="sr-label">Finish</span><span class="sr-value" id="sum-finish">Cream Finish</span></div>
         <div class="summary-row"><span class="sr-label">Theme</span><span class="sr-value" id="sum-theme">Kids & Characters</span></div>
-        <div class="summary-row"><span class="sr-label">Cake Message</span><span class="sr-value" id="sum-message">—</span></div>
+        <div class="summary-row"><span class="sr-label">Guests</span><span class="sr-value" id="sum-guests">—</span></div>
         <div class="summary-row"><span class="sr-label">Delivery Date</span><span class="sr-value" id="sum-date">—</span></div>
         <div class="summary-row"><span class="sr-label">Delivery Time</span><span class="sr-value" id="sum-time">Morning (9–12)</span></div>
-        <div class="summary-row"><span class="sr-label">Customer</span><span class="sr-value" id="sum-name">—</span></div>
+        <div class="summary-row"><span class="sr-label">Name</span><span class="sr-value" id="sum-name">—</span></div>
         <div class="summary-row"><span class="sr-label">Phone</span><span class="sr-value" id="sum-phone">—</span></div>
         <div class="summary-row"><span class="sr-label">Address</span><span class="sr-value" id="sum-address">—</span></div>
-        <div class="summary-row"><span class="sr-label">Budget</span><span class="sr-value" id="sum-budget">—</span></div>
       </div>
-      <div class="summary-total">
-        <span>Pricing</span>
-        <span class="summary-total-price">On Confirmation</span>
-      </div>
-      <div class="summary-note">
-        💡 Exact pricing depends on size, design complexity & delivery. Akki will confirm pricing on WhatsApp before you pay.
-      </div>
+      <div class="summary-note">💡 Exact pricing confirmed by Akki on WhatsApp before you pay.</div>
     </div>
-
-    <div class="trust-badges">
+    <div class="trust-grid">
       <div class="trust-badge"><div class="trust-badge-icon">🌾</div><div class="trust-badge-text">No Maida<br>No Refined Sugar</div></div>
       <div class="trust-badge"><div class="trust-badge-icon">🚚</div><div class="trust-badge-text">Home Delivery<br>Available</div></div>
-      <div class="trust-badge"><div class="trust-badge-icon">📅</div><div class="trust-badge-text">Order 2 Days<br>in Advance</div></div>
+      <div class="trust-badge"><div class="trust-badge-icon">📅</div><div class="trust-badge-text">2 Days Advance<br>Order</div></div>
       <div class="trust-badge"><div class="trust-badge-icon">💬</div><div class="trust-badge-text">Confirm via<br>WhatsApp</div></div>
     </div>
   </div>
@@ -560,73 +568,29 @@ footer ul a:hover{color:#F5A623}
 <!-- HOW IT WORKS -->
 <div class="hiw-section">
   <div class="hiw-inner">
-    <h2 class="hiw-title reveal">How Custom Cake Orders Work</h2>
-    <p class="hiw-sub reveal">Simple, easy, and done entirely via WhatsApp</p>
+    <h2 class="hiw-title">How It Works</h2>
+    <p class="hiw-sub">Simple, easy, done on WhatsApp</p>
     <div class="hiw-steps">
-      <div class="hiw-step reveal">
-        <div class="hiw-step-num">1</div>
-        <div class="hiw-step-icon">📝</div>
-        <h3>Fill the Form</h3>
-        <p>Choose your occasion, theme, flavour, size, and delivery details above.</p>
-        <div class="hiw-arrow">›</div>
-      </div>
-      <div class="hiw-step reveal">
-        <div class="hiw-step-num">2</div>
-        <div class="hiw-step-icon">💬</div>
-        <h3>WhatsApp Confirmation</h3>
-        <p>Akki will reply within 2 hours to confirm details, share design samples, and quote pricing.</p>
-        <div class="hiw-arrow">›</div>
-      </div>
-      <div class="hiw-step reveal">
-        <div class="hiw-step-num">3</div>
-        <div class="hiw-step-icon">🧁</div>
-        <h3>We Bake with Love</h3>
-        <p>Your cake is baked fresh on your delivery date using whole wheat, ragi, and jaggery — no compromises.</p>
-        <div class="hiw-arrow">›</div>
-      </div>
-      <div class="hiw-step reveal">
-        <div class="hiw-step-num">4</div>
-        <div class="hiw-step-icon">🚚</div>
-        <h3>Delivered to You</h3>
-        <p>We deliver carefully to Hinjawadi, Wakad, Baner, Balewadi, and nearby Pune areas.</p>
-      </div>
+      <div class="hiw-step"><div class="hiw-step-num">1</div><div class="hiw-step-icon">📝</div><h3>Fill the Form</h3><p>Choose occasion, theme, flavour, size and delivery details above.</p></div>
+      <div class="hiw-step"><div class="hiw-step-num">2</div><div class="hiw-step-icon">💬</div><h3>WhatsApp Confirm</h3><p>Akki replies within 2 hours with pricing and design samples.</p></div>
+      <div class="hiw-step"><div class="hiw-step-num">3</div><div class="hiw-step-icon">🧁</div><h3>We Bake Fresh</h3><p>Your cake is baked on delivery day — whole wheat, ragi, jaggery.</p></div>
+      <div class="hiw-step"><div class="hiw-step-num">4</div><div class="hiw-step-icon">🚚</div><h3>Delivered to You</h3><p>Carefully delivered to Hinjawadi, Wakad, Baner and nearby Pune.</p></div>
     </div>
   </div>
 </div>
 
-<!-- PAST CUSTOM CAKES GALLERY -->
+<!-- PAST CAKES -->
 <div class="gallery-section">
   <div class="gallery-inner">
-    <h2 class="gallery-title reveal">Custom Cakes We've Made</h2>
-    <p class="gallery-sub reveal">Every cake is unique — here's some of what we've created for our customers</p>
-    <div class="cakes-grid reveal">
-      <div class="cake-item">
-        <div class="cake-item-inner" style="background:linear-gradient(135deg,#E8F5E9,#A5D6A7)">🦕</div>
-        <div class="cake-item-label"><h4>Dinosaur Theme</h4><span>2nd Birthday · Advik</span></div>
-      </div>
-      <div class="cake-item">
-        <div class="cake-item-inner" style="background:linear-gradient(135deg,#EDE7F6,#CE93D8)">⚡</div>
-        <div class="cake-item-label"><h4>Harry Potter</h4><span>Birthday · Saavi</span></div>
-      </div>
-      <div class="cake-item">
-        <div class="cake-item-inner" style="background:linear-gradient(135deg,#FFF8E1,#FFD54F)">🏎️</div>
-        <div class="cake-item-label"><h4>Ferrari Theme</h4><span>9th Birthday · Darsheel</span></div>
-      </div>
-      <div class="cake-item">
-        <div class="cake-item-inner" style="background:linear-gradient(135deg,#FCE4EC,#F48FB1)">🎤</div>
-        <div class="cake-item-label"><h4>K-Pop Demon Hunters</h4><span>Birthday · Shouri</span></div>
-      </div>
-      <div class="cake-item">
-        <div class="cake-item-inner" style="background:linear-gradient(135deg,#E3F2FD,#90CAF9)">👩‍👧‍👦</div>
-        <div class="cake-item-label"><h4>Mom's World Cake</h4><span>Birthday · Custom Message</span></div>
-      </div>
-      <div class="cake-item">
-        <div class="cake-item-inner" style="background:linear-gradient(135deg,#E8F5E9,#A5D6A7)">⚽</div>
-        <div class="cake-item-label"><h4>Football Theme</h4><span>6th Birthday · Yohaan</span></div>
-      </div>
-    </div>
-    <div style="text-align:center;margin-top:28px">
-      <a href="gallery.html" style="display:inline-block;border:2px solid var(--honey);color:var(--honey);padding:12px 28px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;transition:all .2s" onmouseover="this.style.background='var(--honey)';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color='var(--honey)'">View Full Gallery →</a>
+    <h2 class="gallery-title">Custom Cakes We've Made</h2>
+    <p class="gallery-sub">Every cake is unique — here's some of what we've created</p>
+    <div class="cakes-grid">
+      <div class="cake-item"><div class="cake-item-inner" style="background:linear-gradient(135deg,#E8F5E9,#A5D6A7)">🦕</div><div class="cake-label"><h4>Dinosaur Theme</h4><span>2nd Birthday · Advik</span></div></div>
+      <div class="cake-item"><div class="cake-item-inner" style="background:linear-gradient(135deg,#EDE7F6,#CE93D8)">⚡</div><div class="cake-label"><h4>Harry Potter</h4><span>Birthday · Saavi</span></div></div>
+      <div class="cake-item"><div class="cake-item-inner" style="background:linear-gradient(135deg,#FFF8E1,#FFD54F)">🏎️</div><div class="cake-label"><h4>Ferrari Theme</h4><span>9th Birthday · Darsheel</span></div></div>
+      <div class="cake-item"><div class="cake-item-inner" style="background:linear-gradient(135deg,#FCE4EC,#F48FB1)">🎤</div><div class="cake-label"><h4>K-Pop Demon Hunters</h4><span>Birthday · Shouri</span></div></div>
+      <div class="cake-item"><div class="cake-item-inner" style="background:linear-gradient(135deg,#E3F2FD,#90CAF9)">👩‍👧‍👦</div><div class="cake-label"><h4>Mom's World Cake</h4><span>Birthday · Custom</span></div></div>
+      <div class="cake-item"><div class="cake-item-inner" style="background:linear-gradient(135deg,#E8F5E9,#A5D6A7)">⚽</div><div class="cake-label"><h4>Football Theme</h4><span>6th Birthday · Yohaan</span></div></div>
     </div>
   </div>
 </div>
@@ -636,43 +600,201 @@ footer ul a:hover{color:#F5A623}
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
-          <span class="footer-logo-text">akkis Healthy Baking</span>
-        </div>
+        <div class="footer-logo"><img src="images/logo.png" alt="logo" onerror="this.style.display='none'"><span class="footer-logo-text">Akki's Healthy Baking</span></div>
         <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
       </div>
-      <div><h4>Pages</h4><ul>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="custom-cake.html">Custom Cakes</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-      </ul></div>
-      <div><h4>More</h4><ul>
-        <li><a href="blog.html">Blog / Health Tips</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul></div>
-      <div><h4>Visit Us</h4><ul>
-        <li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Bhanuse Wasti, Marunji Rd, Hinjawadi Phase II, Pune 411057</a></li>
-        <li><a href="tel:+917795076412">+91 77950 76412</a></li>
-        <li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li>
-      </ul></div>
+      <div><h4>Pages</h4><ul><li><a href="about.html">About Us</a></li><li><a href="menu.html">Menu</a></li><li><a href="products.html">Products</a></li><li><a href="custom-cake.html">Custom Cakes</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+      <div><h4>More</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Visit Us</h4><ul><li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Hinjawadi Phase II, Pune 411057</a></li><li><a href="tel:+917795076412">+91 77950 76412</a></li><li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 akkis Healthy Baking. All rights reserved.</p>
-      <div class="footer-social">
-        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link">📸</a>
-        <a href="https://wa.me/917795076412" target="_blank" class="social-link">💬</a>
-        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-link">📍</a>
-      </div>
+      <p>© 2025 Akki's Healthy Baking. All rights reserved.</p>
+      <div class="footer-social"><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="fsocial">📸</a><a href="https://wa.me/917795076412" target="_blank" class="fsocial">💬</a><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="fsocial">📍</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-/* ── ORDER LOG → CSV/EXCEL ── */
+/* ── STATE ── */
+let selections = { occasion:'Birthday', flavour:'Chocolate', finish:'Cream Finish', topper:"Akki's Choice", time:'Morning (9–12)' };
+let selectedTheme = 'Kids & Characters';
+let refImageName  = '';
+
+/* ── CHIP SELECT ── */
+function selectChip(el, group) {
+  el.closest('.chip-group').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selections[group] = el.textContent.trim();
+
+  // Show/hide occasion extras
+  if (group === 'occasion') {
+    document.getElementById('birthdayExtras').classList.toggle('show', selections.occasion === '🎂 Birthday');
+    document.getElementById('anniversaryExtras').classList.toggle('show', selections.occasion === '💍 Anniversary');
+  }
+  updateSummary();
+}
+
+function selectTheme(el, name) {
+  document.querySelectorAll('.theme-chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedTheme = name;
+  updateSummary();
+}
+
+/* ── IMAGE UPLOAD ── */
+function handleImageUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { alert('Image too large! Please upload under 5MB.'); input.value = ''; return; }
+  refImageName = file.name;
+  const reader = new FileReader();
+  reader.onload = e => {
+    document.getElementById('previewImg').src = e.target.result;
+    document.getElementById('uploadPreview').style.display = 'block';
+    document.getElementById('uploadBox').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeImage() {
+  document.getElementById('refImage').value = '';
+  document.getElementById('uploadPreview').style.display = 'none';
+  document.getElementById('uploadBox').style.display = 'block';
+  refImageName = '';
+}
+
+/* ── SUMMARY ── */
+function updateSummary() {
+  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val || '—'; };
+  set('sum-occasion', selections.occasion);
+  set('sum-size',     document.getElementById('cakeSize').value);
+  set('sum-tiers',    document.getElementById('cakeTiers').value);
+  set('sum-flavour',  selections.flavour);
+  set('sum-finish',   selections.finish);
+  set('sum-theme',    selectedTheme);
+  const adults = document.getElementById('guestsAdults').value;
+  const kids   = document.getElementById('guestsKids').value;
+  set('sum-guests', adults || kids ? `${adults||0} Adults, ${kids||0} Kids` : '—');
+  const dateVal = document.getElementById('deliveryDate').value;
+  set('sum-date', dateVal ? new Date(dateVal).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '—');
+  set('sum-time',    selections.time);
+  set('sum-name',    document.getElementById('custName').value);
+  set('sum-phone',   document.getElementById('custPhone').value);
+  const addr = document.getElementById('custAddress').value;
+  set('sum-address', addr.length > 40 ? addr.slice(0,40)+'…' : addr);
+}
+
+/* ── VALIDATION ── */
+function validate() {
+  let ok = true;
+  const checks = [
+    { id:'cakeSize',     err:'err-size',    },
+    { id:'deliveryDate', err:'err-date',    },
+    { id:'custName',     err:'err-name',    },
+    { id:'custPhone',    err:'err-phone',   },
+    { id:'custAddress',  err:'err-address', },
+  ];
+  checks.forEach(c => {
+    const el  = document.getElementById(c.id);
+    const err = document.getElementById(c.err);
+    if (!el.value.trim()) { el.classList.add('err'); err.classList.add('show'); ok = false; }
+    else                  { el.classList.remove('err'); err.classList.remove('show'); }
+  });
+  return ok;
+}
+
+/* ── SUBMIT ── */
+function submitOrder() {
+  if (!validate()) {
+    document.querySelector('.field input.err, .field select.err')
+      ?.scrollIntoView({ behavior:'smooth', block:'center' });
+    return;
+  }
+
+  const size     = document.getElementById('cakeSize').value;
+  const tiers    = document.getElementById('cakeTiers').value;
+  const dateVal  = document.getElementById('deliveryDate').value;
+  const date     = dateVal ? new Date(dateVal).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '—';
+  const design   = document.getElementById('designDesc').value;
+  const colour   = document.getElementById('colourPref').value;
+  const name     = document.getElementById('custName').value;
+  const phone    = document.getElementById('custPhone').value;
+  const address  = document.getElementById('custAddress').value;
+  const allergies= document.getElementById('allergies').value;
+  const insta    = document.getElementById('instaHandle').value;
+  const adults   = document.getElementById('guestsAdults').value;
+  const kids     = document.getElementById('guestsKids').value;
+
+  // Birthday fields
+  const nameOnCake    = document.getElementById('nameOnCake').value;
+  const bdayNum       = document.getElementById('birthdayNumber').value;
+  const numberCandle  = document.getElementById('numberCandle').checked;
+  const cakeKnife     = document.getElementById('cakeKnife').checked;
+
+  // Anniversary fields
+  const annivText    = document.getElementById('anniversaryText').value;
+  const annivKnife   = document.getElementById('anniversaryKnife').checked;
+
+  // Build message
+  let msg = `Hello Akki! Custom Cake Order\n\n`;
+  msg += `OCCASION: ${selections.occasion}\n`;
+
+  if (selections.occasion === '🎂 Birthday') {
+    if (nameOnCake)   msg += `Name on Cake: ${nameOnCake}\n`;
+    if (bdayNum)      msg += `Age / Number: ${bdayNum}\n`;
+    msg += `Number Candle: ${numberCandle ? 'Yes' : 'No'}\n`;
+    msg += `Cake Knife: ${cakeKnife ? 'Yes' : 'No'}\n`;
+  }
+  if (selections.occasion === '💍 Anniversary') {
+    if (annivText)    msg += `Anniversary Details: ${annivText}\n`;
+    msg += `Cake Knife: ${annivKnife ? 'Yes' : 'No'}\n`;
+  }
+
+  msg += `\nCAKE DETAILS\n`;
+  msg += `Size / Weight: ${size}\n`;
+  msg += `Tiers: ${tiers}\n`;
+  msg += `Flavour: ${selections.flavour}\n`;
+  msg += `Finish: ${selections.finish}\n`;
+  msg += `Topper: ${selections.topper}\n`;
+  if (adults || kids) msg += `Guests: ${adults||0} Adults, ${kids||0} Kids\n`;
+
+  msg += `\nTHEME & DESIGN\n`;
+  msg += `Theme: ${selectedTheme}\n`;
+  if (design)  msg += `Design Idea: ${design}\n`;
+  if (colour)  msg += `Colour Preference: ${colour}\n`;
+  if (refImageName) msg += `Reference Image: ${refImageName} (will send on WhatsApp)\n`;
+
+  msg += `\nDELIVERY\n`;
+  msg += `Date: ${date}\n`;
+  msg += `Time: ${selections.time}\n`;
+  msg += `Address: ${address}\n`;
+
+  msg += `\nCUSTOMER DETAILS\n`;
+  msg += `Name: ${name}\n`;
+  msg += `Phone: ${phone}\n`;
+  if (insta)     msg += `Instagram: ${insta}\n`;
+  if (allergies) msg += `Allergies / Instructions: ${allergies}\n`;
+
+  msg += `\nPlease confirm availability and pricing. Thank you!`;
+
+  // Save to order log
+  saveOrderToLog({ date: new Date().toLocaleString('en-IN'), name, phone, address,
+    occasion: selections.occasion, size, tiers, flavour: selections.flavour,
+    finish: selections.finish, theme: selectedTheme, design: design||'—',
+    colour: colour||'—', topper: selections.topper,
+    guests: `${adults||0} Adults, ${kids||0} Kids`,
+    deliveryDate: date, deliveryTime: selections.time,
+    nameOnCake: nameOnCake||'—', birthdayNum: bdayNum||'—',
+    numberCandle: numberCandle?'Yes':'No', cakeKnife: (cakeKnife||annivKnife)?'Yes':'No',
+    allergies: allergies||'None', instagram: insta||'—',
+    refImage: refImageName||'None'
+  });
+
+  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(msg)}`, '_blank');
+  document.getElementById('successModal').classList.add('show');
+}
+
+/* ── ORDER LOG ── */
 function saveOrderToLog(order) {
   try {
     const existing = JSON.parse(localStorage.getItem('akkis_orders') || '[]');
@@ -685,185 +807,39 @@ function downloadOrdersExcel() {
   try {
     const orders = JSON.parse(localStorage.getItem('akkis_orders') || '[]');
     if (!orders.length) { alert('No orders saved yet! Submit an order first.'); return; }
-    const headers = ['Date','Name','Phone','Address','Occasion','Size','Tiers','Flavour',
-      'Cake Message','Delivery Date','Delivery Time','Theme','Design Idea',
-      'Colour','Topper','Budget','Special Requests'];
+    const headers = ['Date','Name','Phone','Address','Occasion','Size','Tiers','Flavour','Finish',
+      'Theme','Design Idea','Colour','Topper','Guests','Delivery Date','Delivery Time',
+      'Name on Cake','Birthday Number','Number Candle','Cake Knife','Allergies','Instagram','Ref Image'];
     let csv = '\uFEFF' + headers.join(',') + '\n';
     orders.forEach(o => {
       const row = [o.date,o.name,o.phone,o.address,o.occasion,o.size,o.tiers,o.flavour,
-        o.cakeMessage,o.deliveryDate,o.deliveryTime,o.theme,o.designIdea,
-        o.colour,o.topper,o.budget,o.specialRequests];
-      csv += row.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',') + '\n';
+        o.finish,o.theme,o.design,o.colour,o.topper,o.guests,o.deliveryDate,o.deliveryTime,
+        o.nameOnCake,o.birthdayNum,o.numberCandle,o.cakeKnife,o.allergies,o.instagram,o.refImage];
+      csv += row.map(v => `"${String(v||'').replace(/"/g,'""')}"`).join(',') + '\n';
     });
-    const blob = new Blob([csv],{type:'text/csv;charset=utf-8;'});
-    const url  = URL.createObjectURL(blob);
-    const a    = document.createElement('a');
-    a.href = url;
+    const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
     a.download = `Akkis_Orders_${new Date().toLocaleDateString('en-IN').replace(/\//g,'-')}.csv`;
     a.click();
-    URL.revokeObjectURL(url);
   } catch(e) { alert('Download failed. Please try again.'); }
 }
 
 function clearOrderLog() {
-  if(confirm('Clear all saved orders? This cannot be undone.')) {
+  if (confirm('Clear all saved orders? This cannot be undone.')) {
     localStorage.removeItem('akkis_orders');
-    alert('All orders cleared.');
+    alert('Order log cleared.');
   }
-}
-
-/* ── CHIP SELECTION ── */
-let selections = { occasion:'Birthday', flavour:'Chocolate', topper:'Our Choice', time:'Morning (9–12)' };
-let selectedTheme = 'Kids & Characters';
-
-function selectChip(el, group) {
-  el.closest('.chip-group').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selections[group] = el.textContent.trim();
-  updateSummary();
-}
-
-function selectTheme(el, name) {
-  document.querySelectorAll('.theme-chip').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedTheme = name;
-  updateSummary();
-}
-
-/* ── SUMMARY UPDATE ── */
-function updateSummary() {
-  setText('sum-occasion', selections.occasion || '—');
-  setText('sum-size',     document.getElementById('cakeSize').value || '—');
-  setText('sum-tiers',    document.getElementById('cakeTiers').value || '1 Tier');
-  setText('sum-flavour',  selections.flavour || '—');
-  setText('sum-theme',    selectedTheme || '—');
-  const msg = document.getElementById('cakeMessage').value;
-  setText('sum-message',  msg || '—');
-  const dateVal = document.getElementById('deliveryDate').value;
-  setText('sum-date', dateVal ? new Date(dateVal).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '—');
-  setText('sum-time',    selections.time || '—');
-  setText('sum-name',    document.getElementById('custName').value || '—');
-  setText('sum-phone',   document.getElementById('custPhone').value || '—');
-  const addr = document.getElementById('custAddress').value;
-  setText('sum-address', addr.length > 40 ? addr.slice(0,40)+'…' : addr || '—');
-  setText('sum-budget',  document.getElementById('custBudget').value || '—');
-}
-
-function setText(id, val) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = val;
-}
-
-/* ── VALIDATION ── */
-function validate() {
-  let ok = true;
-  const checks = [
-    { id:'cakeSize',     err:'err-size',     msg:'Please select a size' },
-    { id:'deliveryDate', err:'err-date',      msg:'Please select a delivery date' },
-    { id:'custName',     err:'err-name',      msg:'Please enter your name' },
-    { id:'custPhone',    err:'err-phone',     msg:'Please enter a valid phone number' },
-    { id:'custAddress',  err:'err-address',   msg:'Please enter delivery address' },
-  ];
-  checks.forEach(c => {
-    const el  = document.getElementById(c.id);
-    const err = document.getElementById(c.err);
-    if (!el.value.trim()) {
-      el.classList.add('err'); err.classList.add('show'); ok = false;
-    } else {
-      el.classList.remove('err'); err.classList.remove('show');
-    }
-  });
-  return ok;
-}
-
-/* ── SUBMIT ── */
-function submitOrder() {
-  if (!validate()) {
-    document.querySelector('.field input.err, .field select.err')?.scrollIntoView({behavior:'smooth',block:'center'});
-    return;
-  }
-  const size     = document.getElementById('cakeSize').value;
-  const tiers    = document.getElementById('cakeTiers').value;
-  const msg      = document.getElementById('cakeMessage').value;
-  const dateVal  = document.getElementById('deliveryDate').value;
-  const date     = dateVal ? new Date(dateVal).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}) : '—';
-  const design   = document.getElementById('designDesc').value;
-  const colour   = document.getElementById('colourPref').value;
-  const name     = document.getElementById('custName').value;
-  const phone    = document.getElementById('custPhone').value;
-  const address  = document.getElementById('custAddress').value;
-  const budget   = document.getElementById('custBudget').value;
-  const special  = document.getElementById('custSpecial').value;
-  const topper   = selections.topper || 'Our Choice';
-  const occasion = selections.occasion || 'Birthday';
-  const flavour  = selections.flavour || 'Chocolate';
-  const time     = selections.time || 'Morning (9-12)';
-
-  // Build plain text message — encodeURIComponent handles all special chars
-  const plainMsg =
-`Hello Akki! Custom Cake Order Request
-
-CAKE DETAILS
-Occasion: ${occasion}
-Size: ${size}
-Tiers: ${tiers}
-Flavour: ${flavour}
-Cake Message: ${msg || 'None'}
-Delivery Date: ${date}
-Delivery Time: ${time}
-
-THEME & DESIGN
-Theme: ${selectedTheme}
-Design Idea: ${design || 'Not specified'}
-Colour Preference: ${colour || 'Not specified'}
-Topper: ${topper}
-
-CUSTOMER DETAILS
-Name: ${name}
-Phone: ${phone}
-Address: ${address}
-Budget: ${budget || 'Flexible'}
-Special Requests: ${special || 'None'}
-
-Please confirm availability and pricing. Thank you!`;
-
-  // Save to localStorage as order log (Excel download available)
-  saveOrderToLog({
-    date: new Date().toLocaleString('en-IN'),
-    name, phone, address,
-    occasion, size, tiers, flavour,
-    cakeMessage: msg || 'None',
-    deliveryDate: date, deliveryTime: time,
-    theme: selectedTheme,
-    designIdea: design || 'Not specified',
-    colour: colour || 'Not specified',
-    topper,
-    budget: budget || 'Flexible',
-    specialRequests: special || 'None'
-  });
-
-  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(plainMsg)}`, '_blank');
-  document.getElementById('successModal').classList.add('show');
 }
 
 /* ── MIN DATE ── */
 const dateInput = document.getElementById('deliveryDate');
-const min = new Date(); min.setDate(min.getDate() + 2);
-dateInput.min = min.toISOString().split('T')[0];
-
-/* ── REVEAL ── */
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+const minDate = new Date(); minDate.setDate(minDate.getDate() + 2);
+dateInput.min = minDate.toISOString().split('T')[0];
 
 /* ── HAMBURGER ── */
-document.querySelector('.nav-hamburger').addEventListener('click', function () {
-  const nav = document.querySelector('.nav-links');
-  nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
-  if (nav.style.display === 'flex') {
-    nav.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99';
-  }
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
 });
 
 /* ── INIT ── */
