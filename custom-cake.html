@@ -777,6 +777,19 @@ function submitOrder() {
 
   msg += `\nPlease confirm availability and pricing. Thank you!`;
 
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwlT6i1fG8U3EkRm_tP9dnlnu5VxqEUU57A1rtDCLaFItqj_Ji3vvMinVM8hcJSfBzD/exec';
+
+function saveToGoogleSheet(order) {
+  fetch(GOOGLE_SHEET_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(order)
+  }).catch(err => console.log('Sheet error:', err));
+}
+
+
+  
   // Save to order log
   saveOrderToLog({ date: new Date().toLocaleString('en-IN'), name, phone, address,
     occasion: selections.occasion, size, tiers, flavour: selections.flavour,
@@ -794,6 +807,19 @@ function submitOrder() {
   document.getElementById('successModal').classList.add('show');
 }
 
+saveToGoogleSheet({ date: new Date().toLocaleString('en-IN'), name, phone, address,
+  occasion: selections.occasion, size, tiers, flavour: selections.flavour,
+  finish: selections.finish, theme: selectedTheme, design: design||'—',
+  colour: colour||'—', topper: selections.topper,
+  guests: `${adults||0} Adults, ${kids||0} Kids`,
+  deliveryDate: date, deliveryTime: selections.time,
+  nameOnCake: nameOnCake||'—', birthdayNum: bdayNum||'—',
+  numberCandle: numberCandle?'Yes':'No', cakeKnife: (cakeKnife||annivKnife)?'Yes':'No',
+  allergies: allergies||'None', instagram: insta||'—',
+  refImage: refImageName||'None'
+});
+
+  
 /* ── ORDER LOG ── */
 function saveOrderToLog(order) {
   try {
