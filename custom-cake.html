@@ -342,23 +342,25 @@ footer ul a:hover{color:#F5A623}
       <div class="field-row">
         <div class="field">
           <label>Weight / Size <span class="req">*</span></label>
-          <select id="cakeSize" onchange="updateSummary()">
+          <select id="cakeSize" onchange="handleSizeChange()">
             <option value="">Select size</option>
-            <option>500g – Half Kg (Serves 4–6)</option>
-            <option>1kg – One Kg (Serves 8–12)</option>
-            <option>1.5kg – 1.5 Kg (Serves 12–16)</option>
-            <option>2kg – Two Kg (Serves 16–22)</option>
-            <option>Custom Size – Let us discuss</option>
+            <option value="Bento – 300g (Serves 1–2)">Bento – 300g (Serves 1–2)</option>
+            <option value="500g – Half Kg (Serves 4–6)">500g – Half Kg (Serves 4–6)</option>
+            <option value="1kg – One Kg (Serves 8–12)">1kg – One Kg (Serves 8–12)</option>
+            <option value="1.5kg – 1.5 Kg (Serves 12–16)">1.5kg – 1.5 Kg (Serves 12–16)</option>
+            <option value="2kg – Two Kg (Serves 16–22)">2kg – Two Kg (Serves 16–22)</option>
+            <option value="Custom Size – Let us discuss">Custom Size – Let us discuss</option>
           </select>
           <div class="err-msg" id="err-size">Please select a size</div>
         </div>
-        <div class="field">
+        <div class="field" id="tiersField">
           <label>Number of Tiers</label>
           <select id="cakeTiers" onchange="updateSummary()">
             <option>1 Tier</option>
             <option>2 Tiers</option>
             <option>3 Tiers</option>
           </select>
+          <div class="field-hint" id="tiersNote" style="display:none;color:#C0392B">⚠️ Multiple tiers available only for 2kg and above</div>
         </div>
       </div>
 
@@ -447,7 +449,7 @@ footer ul a:hover{color:#F5A623}
           <img id="previewImg" src="" alt="Reference">
           <button class="upload-remove" onclick="removeImage()" title="Remove">✕</button>
         </div>
-        <div class="field-hint">📌 This image will be noted in your order. You can also send it directly on WhatsApp after submitting.</div>
+        <div class="field-hint">📌 After clicking "Send via WhatsApp" — WhatsApp will open with your order message. Then tap the <strong>📎 attachment icon</strong> in WhatsApp to attach this reference image directly in the same chat.</div>
       </div>
 
       <div class="field">
@@ -488,6 +490,17 @@ footer ul a:hover{color:#F5A623}
         <textarea id="custAddress" placeholder="Flat No, Building Name, Street, Area, Pune — Pincode" style="min-height:70px" oninput="updateSummary()"></textarea>
         <div class="err-msg" id="err-address">Please enter complete delivery address</div>
         <div class="field-hint">Please include flat number, building name, and pincode for smooth delivery.</div>
+
+        <!-- LOCATION OPTIONS -->
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button type="button" onclick="getMyLocation()" style="display:flex;align-items:center;gap:6px;background:var(--green-pale);border:1.5px solid rgba(59,110,42,.3);color:var(--green);padding:8px 14px;border-radius:50px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s">
+            📍 Use My Current Location
+          </button>
+          <a href="https://maps.google.com" target="_blank" style="display:flex;align-items:center;gap:6px;background:var(--honey-pale);border:1.5px solid rgba(212,120,10,.3);color:var(--honey);padding:8px 14px;border-radius:50px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s">
+            🗺️ Pick on Google Maps
+          </a>
+        </div>
+        <div id="locationStatus" style="font-size:12px;color:var(--green);margin-top:6px;display:none"></div>
       </div>
     </div>
 
@@ -620,6 +633,75 @@ let selections = { occasion:'Birthday', flavour:'Chocolate', finish:'Cream Finis
 let selectedTheme = 'Kids & Characters';
 let refImageName  = '';
 
+/* ── GET LOCATION ── */
+function getMyLocation() {
+  const status = document.getElementById('locationStatus');
+  const addr   = document.getElementById('custAddress');
+
+  if (!navigator.geolocation) {
+    status.style.display = 'block';
+    status.style.color   = 'var(--error)';
+    status.textContent   = '❌ Location not supported on this browser.';
+    return;
+  }
+
+  status.style.display = 'block';
+  status.style.color   = 'var(--text-muted)';
+  status.textContent   = '⏳ Getting your location…';
+
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      const lat = pos.coords.latitude.toFixed(6);
+      const lng = pos.coords.longitude.toFixed(6);
+      const mapsLink = `https://maps.google.com/?q=${lat},${lng}`;
+
+      // Add coordinates + maps link to address field
+      const current = addr.value.trim();
+      const locLine  = `\nLocation: ${mapsLink}`;
+      if (!addr.value.includes('maps.google.com')) {
+        addr.value = current + locLine;
+      }
+
+      status.style.color   = 'var(--green)';
+      status.textContent   = `✅ Location added! (${lat}, ${lng})`;
+      updateSummary();
+    },
+    err => {
+      status.style.color = 'var(--error)';
+      if (err.code === 1) {
+        status.textContent = '❌ Permission denied. Please allow location access.';
+      } else {
+        status.textContent = '❌ Could not get location. Please type address manually.';
+      }
+    },
+    { timeout: 10000 }
+  );
+}
+
+/* ── SIZE → TIER LOGIC ── */
+function handleSizeChange() {
+  const size = document.getElementById('cakeSize').value;
+  const tiersSelect = document.getElementById('cakeTiers');
+  const tiersField  = document.getElementById('tiersField');
+  const tiersNote   = document.getElementById('tiersNote');
+
+  // Sizes where multi-tier is NOT allowed
+  const singleTierOnly = ['Bento – 300g (Serves 1–2)', '500g – Half Kg (Serves 4–6)',
+    '1kg – One Kg (Serves 8–12)', '1.5kg – 1.5 Kg (Serves 12–16)'];
+
+  if (singleTierOnly.includes(size)) {
+    tiersSelect.value = '1 Tier';
+    tiersSelect.disabled = true;
+    tiersSelect.style.opacity = '0.5';
+    tiersNote.style.display = 'block';
+  } else {
+    tiersSelect.disabled = false;
+    tiersSelect.style.opacity = '1';
+    tiersNote.style.display = 'none';
+  }
+  updateSummary();
+}
+
 /* ── CHIP SELECT ── */
 function selectChip(el, group) {
   el.closest('.chip-group').querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
@@ -736,60 +818,67 @@ function submitOrder() {
   const annivKnife   = document.getElementById('anniversaryKnife').checked;
 
   // Build message
-  let msg = `Hello Akki! Custom Cake Order\n\n`;
-  msg += `OCCASION: ${selections.occasion}\n`;
+  // Clean emoji from text fields
+  const cleanOccasion = selections.occasion.replace(/[^\w\s&]/g,'').trim();
+  const cleanFlavour  = selections.flavour.replace(/[^\w\s&]/g,'').trim();
+  const cleanFinish   = selections.finish.replace(/[^\w\s&\/]/g,'').trim();
+  const cleanTopper   = selections.topper.replace(/[^\w\s&\']/g,'').trim();
+  const cleanTime     = selections.time.replace(/[^\w\s\(\)\-]/g,'').trim();
 
+  let msg = `Hello Akki! New Custom Cake Order\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n\n`;
+
+  // 1. CUSTOMER DETAILS
+  msg += `CUSTOMER DETAILS\n`;
+  msg += `Name: ${name}\n`;
+  msg += `Phone: ${phone}\n`;
+  if (insta) msg += `Instagram: ${insta}\n`;
+  msg += `\n`;
+
+  // 2. DELIVERY
+  msg += `DELIVERY\n`;
+  msg += `Date: ${date}\n`;
+  msg += `Time: ${cleanTime}\n`;
+  msg += `Address: ${address}\n`;
+  msg += `\n`;
+
+  // 3. OCCASION
+  msg += `OCCASION: ${cleanOccasion}\n`;
   if (selections.occasion === '🎂 Birthday') {
-    if (nameOnCake)   msg += `Name on Cake: ${nameOnCake}\n`;
-    if (bdayNum)      msg += `Age / Number: ${bdayNum}\n`;
+    if (nameOnCake) msg += `Name on Cake: ${nameOnCake}\n`;
+    if (bdayNum)    msg += `Age / Number: ${bdayNum}\n`;
     msg += `Number Candle: ${numberCandle ? 'Yes' : 'No'}\n`;
     msg += `Cake Knife: ${cakeKnife ? 'Yes' : 'No'}\n`;
   }
   if (selections.occasion === '💍 Anniversary') {
-    if (annivText)    msg += `Anniversary Details: ${annivText}\n`;
+    if (annivText) msg += `Anniversary Details: ${annivText}\n`;
     msg += `Cake Knife: ${annivKnife ? 'Yes' : 'No'}\n`;
   }
+  msg += `\n`;
 
-  msg += `\nCAKE DETAILS\n`;
+  // 4. CAKE DETAILS
+  msg += `CAKE DETAILS\n`;
   msg += `Size / Weight: ${size}\n`;
   msg += `Tiers: ${tiers}\n`;
-  msg += `Flavour: ${selections.flavour}\n`;
-  msg += `Finish: ${selections.finish}\n`;
-  msg += `Topper: ${selections.topper}\n`;
+  msg += `Flavour: ${cleanFlavour}\n`;
+  msg += `Finish: ${cleanFinish}\n`;
+  msg += `Topper: ${cleanTopper}\n`;
   if (adults || kids) msg += `Guests: ${adults||0} Adults, ${kids||0} Kids\n`;
+  msg += `\n`;
 
-  msg += `\nTHEME & DESIGN\n`;
+  // 5. THEME & DESIGN
+  msg += `THEME & DESIGN\n`;
   msg += `Theme: ${selectedTheme}\n`;
-  if (design)  msg += `Design Idea: ${design}\n`;
-  if (colour)  msg += `Colour Preference: ${colour}\n`;
-  if (refImageName) msg += `Reference Image: ${refImageName} (will send on WhatsApp)\n`;
+  if (design)       msg += `Design Idea: ${design}\n`;
+  if (colour)       msg += `Colour Preference: ${colour}\n`;
+  if (refImageName) msg += `Reference Image: ${refImageName} (sending on WhatsApp)\n`;
+  msg += `\n`;
 
-  msg += `\nDELIVERY\n`;
-  msg += `Date: ${date}\n`;
-  msg += `Time: ${selections.time}\n`;
-  msg += `Address: ${address}\n`;
+  if (allergies) msg += `ALLERGIES / INSTRUCTIONS\n${allergies}\n\n`;
 
-  msg += `\nCUSTOMER DETAILS\n`;
-  msg += `Name: ${name}\n`;
-  msg += `Phone: ${phone}\n`;
-  if (insta)     msg += `Instagram: ${insta}\n`;
-  if (allergies) msg += `Allergies / Instructions: ${allergies}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━\n`;
+  msg += `Please confirm availability and pricing. Thank you!`;
 
-  msg += `\nPlease confirm availability and pricing. Thank you!`;
-
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwlT6i1fG8U3EkRm_tP9dnlnu5VxqEUU57A1rtDCLaFItqj_Ji3vvMinVM8hcJSfBzD/exec?name=Test&phone=9999999999&date=29-Jul-2025';
-
-function saveToGoogleSheet(order) {
-  fetch(GOOGLE_SHEET_URL, {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(order)
-  }).catch(err => console.log('Sheet error:', err));
-}
-
-
-  
   // Save to order log
   saveOrderToLog({ date: new Date().toLocaleString('en-IN'), name, phone, address,
     occasion: selections.occasion, size, tiers, flavour: selections.flavour,
@@ -807,26 +896,39 @@ function saveToGoogleSheet(order) {
   document.getElementById('successModal').classList.add('show');
 }
 
-saveToGoogleSheet({ date: new Date().toLocaleString('en-IN'), name, phone, address,
-  occasion: selections.occasion, size, tiers, flavour: selections.flavour,
-  finish: selections.finish, theme: selectedTheme, design: design||'—',
-  colour: colour||'—', topper: selections.topper,
-  guests: `${adults||0} Adults, ${kids||0} Kids`,
-  deliveryDate: date, deliveryTime: selections.time,
-  nameOnCake: nameOnCake||'—', birthdayNum: bdayNum||'—',
-  numberCandle: numberCandle?'Yes':'No', cakeKnife: (cakeKnife||annivKnife)?'Yes':'No',
-  allergies: allergies||'None', instagram: insta||'—',
-  refImage: refImageName||'None'
-});
-
-  
 /* ── ORDER LOG ── */
+/* ── GOOGLE SHEETS ── */
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbwlT6i1fG8U3EkRm_tP9dnlnu5VxqEUU57A1rtDCLaFItqj_Ji3vvMinVM8hcJSfBzD/exec';
+
+function saveToGoogleSheet(order) {
+  // Use image tag trick to bypass CORS — works with no-cors Apps Script
+  const params = Object.keys(order)
+    .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(order[k] || ''))
+    .join('&');
+
+  // Method 1: fetch with no-cors (fires and forgets — always works)
+  fetch(SHEET_URL + '?' + params, {
+    method: 'GET',
+    mode: 'no-cors'
+  }).catch(() => {});
+
+  // Method 2: fallback iframe trick
+  try {
+    const img = new Image();
+    img.src = SHEET_URL + '?' + params;
+  } catch(e) {}
+}
+
 function saveOrderToLog(order) {
+  // Save locally
   try {
     const existing = JSON.parse(localStorage.getItem('akkis_orders') || '[]');
     existing.push(order);
     localStorage.setItem('akkis_orders', JSON.stringify(existing));
   } catch(e) {}
+
+  // Save to Google Sheet
+  saveToGoogleSheet(order);
 }
 
 function downloadOrdersExcel() {
