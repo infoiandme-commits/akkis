@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,7 +13,7 @@
 <meta property="og:image" content="images/cake_loaf.webp">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.akkishealthybaking.com/index.html">
-    
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -372,10 +373,12 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
+
 </head>
 <body>
 
 <!-- NAV -->
+
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="images/logo.png" alt="Akkis Healthy Baking logo" onerror="this.style.display='none'">
@@ -401,6 +404,7 @@
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
@@ -432,6 +436,7 @@
 </section>
 
 <!-- MARQUEE -->
+
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="marquee-item">No Maida</span>
@@ -455,6 +460,7 @@
 </div>
 
 <!-- WHY US -->
+
 <section class="why-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
@@ -488,6 +494,7 @@
 </section>
 
 <!-- FEATURED PRODUCTS -->
+
 <section class="products-bg">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -564,6 +571,7 @@
 </section>
 
 <!-- LOAF HIGHLIGHT -->
+
 <section class="loaf-section">
   <div class="section-inner">
     <div class="loaf-inner">
@@ -595,6 +603,7 @@
 </section>
 
 <!-- TESTIMONIALS -->
+
 <section class="testimonials-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
@@ -631,6 +640,7 @@
 </section>
 
 <!-- GALLERY STRIP -->
+
 <section class="gallery-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
@@ -659,6 +669,7 @@
 </section>
 
 <!-- BLOG -->
+
 <section class="blog-bg">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -696,6 +707,7 @@
 </section>
 
 <!-- CONTACT STRIP -->
+
 <div class="contact-strip">
   <div class="contact-inner">
     <div class="contact-text">
@@ -710,6 +722,7 @@
 </div>
 
 <!-- FOOTER -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
@@ -759,6 +772,7 @@
 </footer>
 
 <!-- CART FAB -->
+
 <button class="cart-fab" onclick="toggleCart()" aria-label="Cart">
   🛒<span class="cart-badge" id="homeBadge">0</span>
 </button>
@@ -777,68 +791,6 @@
   </div>
 </div>
 
-<div style="margin:20px 0">
-
-<h4 style="margin-bottom:10px">
-Customer Details
-</h4>
-
-<input
-id="custName"
-type="text"
-placeholder="Full Name"
-style="width:100%;padding:12px;margin-bottom:10px">
-
-<input
-id="custPhone"
-type="tel"
-placeholder="Mobile Number"
-style="width:100%;padding:12px;margin-bottom:10px">
-
-<textarea
-id="custAddress"
-placeholder="Full Address"
-style="width:100%;padding:12px;margin-bottom:10px;height:80px"></textarea>
-
-<input
-id="custLandmark"
-type="text"
-placeholder="Landmark (Optional)"
-style="width:100%;padding:12px">
-
-</div>
-
-<div style="
-background:#FFF7E7;
-padding:12px;
-border-radius:8px;
-font-size:13px;
-margin-bottom:15px">
-
-🚚 <b>Delivery Information</b>
-
-<br><br>
-
-✅ Free Delivery within 2 KM
-
-<br><br>
-
-📦 Beyond 2 KM
-
-Porter Delivery
-
-<br>
-
-Porter Charges
-
-50% Customer
-
-50% Akkis Healthy Baking
-
-</div>
-
-
-    
 <script>
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
@@ -851,7 +803,7 @@ reveals.forEach(el=>observer.observe(el));
 
 // ── HOME PAGE CART ──
 const HOME_PRODUCTS = {
-  'Ragi Dutch Truffles Cake': {emoji:'🍫', price:1214},
+  'Ragi Dark Chocolate Truffles Cake': {emoji:'🍫', price:1214},
   'Pineapple Cream Cake':              {emoji:'🍍', price:1011},
   'Blueberry Cream Cake':              {emoji:'🫐', price:1011},
   'Hot Choco Lava':                    {emoji:'🌋', price:149},
@@ -933,96 +885,14 @@ function toggleCart(){
 }
 
 function homeCheckout(){
-
-    if(Object.keys(homeCart).length===0){
-    alert("Your cart is empty!");
-    return;
+  const keys=Object.keys(homeCart);
+  if(!keys.length) return;
+  const total=keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
+  let msg="Hello! I'd like to order from Akkis Healthy Baking:%0A%0A";
+  keys.forEach(k=>{const i=homeCart[k];msg+=`• ${i.name} x${i.qty} — ₹${i.price*i.qty}%0A`;});
+  msg+=`%0ATotal: ₹${total}%0A%0APlease confirm availability and delivery. Thank you!`;
+  window.open(`https://wa.me/917795076412?text=${msg}`,'_blank');
 }
-    const name=document.getElementById("custName").value.trim();
-    const phone=document.getElementById("custPhone").value.trim();
-    const address=document.getElementById("custAddress").value.trim();
-    const landmark=document.getElementById("custLandmark").value.trim();
-
-    if(name==""){
-        alert("Please enter your name.");
-        document.getElementById("custName").focus();
-        return;
-    }
-
-    if(phone==""){
-        alert("Please enter your mobile number.");
-        document.getElementById("custPhone").focus();
-        return;
-    }
-
-    if(!/^[0-9]{10}$/.test(phone)){
-        alert("Please enter a valid 10 digit mobile number.");
-        document.getElementById("custPhone").focus();
-        return;
-    }
-
-    if(address==""){
-        alert("Please enter your address.");
-        document.getElementById("custAddress").focus();
-        return;
-    }
-
-localStorage.setItem("custName", name);
-localStorage.setItem("custPhone", phone);
-localStorage.setItem("custAddress", address);
-localStorage.setItem("custLandmark", landmark);
-
-    let msg="🧁 *New Cake Order*%0A%0A";
-
-    msg+="*Customer Details*%0A";
-    msg+="👤 Name : "+name+"%0A";
-    msg+="📞 Mobile : "+phone+"%0A";
-    msg+="📍 Address : "+address+"%0A";
-
-    if(landmark!=""){
-        msg+="📌 Landmark : "+landmark+"%0A";
-    }
-
-    msg+="%0A------------------------%0A";
-    msg+="*Order Details*%0A";
-
-   Object.values(homeCart).forEach(item => {
-
-    msg += "🍰 " + item.name;
-    msg += "%0AQty : " + item.qty;
-    msg += "%0APrice : ₹" + (item.price * item.qty);
-    msg += "%0A--------------------%0A";
-
-});
-    msg+="------------------------%0A";
-const total = Object.values(homeCart).reduce((sum,item)=>{
-    return sum + (item.price * item.qty);
-},0);
-    
-   msg+="💰 Total : ₹"+total.toLocaleString("en-IN")+"%0A%0A";
-
-    msg+="🚚 *Delivery Information*%0A";
-    msg+="✅ Free Delivery within 2 KM%0A%0A";
-    msg+="📦 Beyond 2 KM delivery will be done through Porter.%0A";
-    msg+="Porter charges:%0A";
-    msg+="50% Customer%0A";
-    msg+="50% Akkis Healthy Baking";
-
-    window.open(
-        "https://wa.me/+917795076412?text="+msg,
-        "_blank"
-    );
-// WhatsApp open zhalyavar cart clear
-homeCart = {};
-renderHomeCart();
-
-document.getElementById("custName").value = "";
-document.getElementById("custPhone").value = "";
-document.getElementById("custAddress").value = "";
-document.getElementById("custLandmark").value = "";
-}
-
-    
 
 // Mobile hamburger (basic toggle)
 document.querySelector('.nav-hamburger').addEventListener('click',function(){
@@ -1031,5 +901,6 @@ document.querySelector('.nav-hamburger').addEventListener('click',function(){
   else{nav.style.cssText='display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99'}
 });
 </script>
+
 </body>
 </html>
