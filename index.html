@@ -933,13 +933,77 @@ function toggleCart(){
 }
 
 function homeCheckout(){
-  const keys=Object.keys(homeCart);
-  if(!keys.length) return;
-  const total=keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
-  let msg="Hello! I'd like to order from Akkis Healthy Baking:%0A%0A";
-  keys.forEach(k=>{const i=homeCart[k];msg+=`• ${i.name} x${i.qty} — ₹${i.price*i.qty}%0A`;});
-  msg+=`%0ATotal: ₹${total}%0A%0APlease confirm availability and delivery. Thank you!`;
-  window.open(`https://wa.me/917795076412?text=${msg}`,'_blank');
+
+    if(homeCart.length===0){
+        alert("Your cart is empty!");
+        return;
+    }
+
+    const name=document.getElementById("custName").value.trim();
+    const phone=document.getElementById("custPhone").value.trim();
+    const address=document.getElementById("custAddress").value.trim();
+    const landmark=document.getElementById("custLandmark").value.trim();
+
+    if(name==""){
+        alert("Please enter your name.");
+        document.getElementById("custName").focus();
+        return;
+    }
+
+    if(phone==""){
+        alert("Please enter your mobile number.");
+        document.getElementById("custPhone").focus();
+        return;
+    }
+
+    if(!/^[0-9]{10}$/.test(phone)){
+        alert("Please enter a valid 10 digit mobile number.");
+        document.getElementById("custPhone").focus();
+        return;
+    }
+
+    if(address==""){
+        alert("Please enter your address.");
+        document.getElementById("custAddress").focus();
+        return;
+    }
+
+    let msg="🧁 *New Cake Order*%0A%0A";
+
+    msg+="*Customer Details*%0A";
+    msg+="👤 Name : "+name+"%0A";
+    msg+="📞 Mobile : "+phone+"%0A";
+    msg+="📍 Address : "+address+"%0A";
+
+    if(landmark!=""){
+        msg+="📌 Landmark : "+landmark+"%0A";
+    }
+
+    msg+="%0A------------------------%0A";
+    msg+="*Order Details*%0A";
+
+    homeCart.forEach(item=>{
+        msg+="🍰 "+item.name;
+        msg+="%0AQty : "+item.qty;
+        msg+="%0APrice : ₹"+(item.price*item.qty);
+        msg+="%0A%0A";
+    });
+
+    msg+="------------------------%0A";
+    msg+="💰 Total : ₹"+homeTotal()+"%0A%0A";
+
+    msg+="🚚 *Delivery Information*%0A";
+    msg+="✅ Free Delivery within 2 KM%0A%0A";
+    msg+="📦 Beyond 2 KM delivery will be done through Porter.%0A";
+    msg+="Porter charges:%0A";
+    msg+="50% Customer%0A";
+    msg+="50% Akkis Healthy Baking";
+
+    window.open(
+        "https://wa.me/91YOURNUMBER?text="+msg,
+        "_blank"
+    );
+
 }
 
 // Mobile hamburger (basic toggle)
