@@ -934,11 +934,10 @@ function toggleCart(){
 
 function homeCheckout(){
 
-    if(homeCart.length===0){
-        alert("Your cart is empty!");
-        return;
-    }
-
+    if(Object.keys(homeCart).length===0){
+    alert("Your cart is empty!");
+    return;
+}
     const name=document.getElementById("custName").value.trim();
     const phone=document.getElementById("custPhone").value.trim();
     const address=document.getElementById("custAddress").value.trim();
@@ -987,15 +986,20 @@ localStorage.setItem("custLandmark", landmark);
     msg+="%0A------------------------%0A";
     msg+="*Order Details*%0A";
 
-    homeCart.forEach(item=>{
-        msg+="🍰 "+item.name;
-        msg+="%0AQty : "+item.qty;
-        msg+="%0APrice : ₹"+(item.price*item.qty);
-        msg+="%0A%0A";
-    });
+   Object.values(homeCart).forEach(item => {
 
+    msg += "🍰 " + item.name;
+    msg += "%0AQty : " + item.qty;
+    msg += "%0APrice : ₹" + (item.price * item.qty);
+    msg += "%0A--------------------%0A";
+
+});
     msg+="------------------------%0A";
-    msg+="💰 Total : ₹"+homeTotal()+"%0A%0A";
+const total = Object.values(homeCart).reduce((sum,item)=>{
+    return sum + (item.price * item.qty);
+},0);
+    
+   msg+="💰 Total : ₹"+total.toLocaleString("en-IN")+"%0A%0A";
 
     msg+="🚚 *Delivery Information*%0A";
     msg+="✅ Free Delivery within 2 KM%0A%0A";
@@ -1005,11 +1009,11 @@ localStorage.setItem("custLandmark", landmark);
     msg+="50% Akkis Healthy Baking";
 
     window.open(
-        "https://wa.me/+9177950 76412?text="+msg,
+        "https://wa.me/+917795076412?text="+msg,
         "_blank"
     );
 // WhatsApp open zhalyavar cart clear
-homeCart = [];
+homeCart = {};
 renderHomeCart();
 
 document.getElementById("custName").value = "";
