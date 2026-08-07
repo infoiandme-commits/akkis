@@ -968,6 +968,11 @@ function homeCheckout(){
         return;
     }
 
+localStorage.setItem("custName", name);
+localStorage.setItem("custPhone", phone);
+localStorage.setItem("custAddress", address);
+localStorage.setItem("custLandmark", landmark);
+
     let msg="🧁 *New Cake Order*%0A%0A";
 
     msg+="*Customer Details*%0A";
