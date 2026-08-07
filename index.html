@@ -1003,8 +1003,17 @@ function homeCheckout(){
         "https://wa.me/+9177950 76412?text="+msg,
         "_blank"
     );
+// WhatsApp open zhalyavar cart clear
+homeCart = [];
+renderHomeCart();
 
+document.getElementById("custName").value = "";
+document.getElementById("custPhone").value = "";
+document.getElementById("custAddress").value = "";
+document.getElementById("custLandmark").value = "";
 }
+
+    
 
 // Mobile hamburger (basic toggle)
 document.querySelector('.nav-hamburger').addEventListener('click',function(){
