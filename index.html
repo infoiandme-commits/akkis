@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -234,6 +233,7 @@
     transition:background .2s,transform .15s;
   }
   .product-add:hover{background:var(--brown-mid);transform:scale(1.05)}
+  .product-add.small{padding:6px 14px;font-size:12px;white-space:nowrap}
   .view-all-wrap{text-align:center;margin-top:44px}
 
   /* ── LOAF HIGHLIGHT ── */
@@ -242,8 +242,12 @@
   .loaf-img{width:100%;border-radius:var(--radius-lg);box-shadow:0 16px 48px rgba(59,31,10,0.15)}
   .loaf-tag-list{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
   .tag{background:rgba(212,120,10,0.12);color:var(--honey);padding:5px 12px;border-radius:50px;font-size:12px;font-weight:600}
-  .loaf-features{margin:24px 0;display:flex;flex-direction:column;gap:10px}
+  .loaf-features{margin:24px 0;display:flex;flex-direction:column;gap:12px}
   .loaf-feat{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
+  .loaf-feat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(255,255,255,0.5);padding:8px 12px;border-radius:12px}
+  .loaf-feat-row .loaf-feat{flex:1;min-width:180px}
+  .loaf-feat-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+  .loaf-price{font-size:14px;font-weight:700;color:var(--honey);white-space:nowrap}
   .feat-check{width:22px;height:22px;background:var(--green-fresh);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .feat-check::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
 
@@ -361,7 +365,39 @@
   .qbtn{background:var(--honey-pale);border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;color:var(--brown-dark);font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s}
   .qbtn:hover{background:var(--honey);color:#fff}
   .qnum{font-size:14px;font-weight:600;min-width:20px;text-align:center}
-  .cart-foot{padding:20px 24px;border-top:1px solid var(--border)}
+  .cart-foot{padding:18px 24px 22px;border-top:1px solid var(--border);overflow-y:auto;max-height:70vh}
+
+  /* ── Delivery details form inside cart ── */
+  .cart-form-title{font-size:13px;font-weight:700;color:var(--brown-dark);letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px}
+  .cart-input{
+    width:100%;
+    padding:12px 16px;
+    border:1px solid var(--border);
+    border-radius:50px;
+    font-family:'DM Sans',sans-serif;
+    font-size:13px;
+    color:var(--text);
+    background:var(--cream);
+    margin-bottom:10px;
+    outline:none;
+    transition:border-color .2s,background .2s;
+  }
+  .cart-input:focus{border-color:var(--honey);background:#fff}
+  .cart-input.textarea{border-radius:16px;resize:none;min-height:56px;font-family:inherit}
+  .cart-divider{border:none;border-top:1px dashed var(--border);margin:14px 0}
+  .delivery-note{
+    background:var(--green-pale);
+    color:var(--green-fresh);
+    font-size:12px;
+    padding:10px 14px;
+    border-radius:12px;
+    margin-bottom:14px;
+    line-height:1.55;
+    display:flex;
+    gap:8px;
+    align-items:flex-start;
+  }
+  .form-error{color:#C0392B;font-size:12px;margin:-4px 0 10px;display:none}
   .cart-total-row{display:flex;justify-content:space-between;margin-bottom:16px}
   .cart-total-row span:first-child{font-size:15px;color:var(--text-muted)}
   .cart-total-row span:last-child{font-size:20px;font-weight:700;color:var(--brown-dark)}
@@ -514,7 +550,7 @@
           <div class="product-weight">500 G</div>
           <div class="product-footer">
             <span class="product-price">₹899</span>
-            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+            <button class="product-add" data-product="Ragi Dutch Truffles Cake" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -529,7 +565,7 @@
           <div class="product-weight">500 G</div>
           <div class="product-footer">
             <span class="product-price">₹749</span>
-            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+            <button class="product-add" data-product="Pineapple Cream Cake" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -544,7 +580,7 @@
           <div class="product-weight">500 G</div>
           <div class="product-footer">
             <span class="product-price">₹749</span>
-            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+            <button class="product-add" data-product="Blueberry Cream Cake" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -559,7 +595,7 @@
           <div class="product-weight">100 G</div>
           <div class="product-footer">
             <span class="product-price">₹110</span>
-            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
+            <button class="product-add" data-product="Hot Choco Lava" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -590,10 +626,34 @@
         </div>
         <p style="color:var(--text-muted);font-size:15px;line-height:1.7">Our signature loaves use Alphonso mangoes with pistachios, or ripe bananas with walnuts — baked in whole wheat and ragi with jaggery sweetness.</p>
         <div class="loaf-features">
-          <div class="loaf-feat"><div class="feat-check"></div> Hearty Ragi Banana Walnut Loaf — ₹350</div>
-          <div class="loaf-feat"><div class="feat-check"></div> Sweet Wheat Mango Pistachio Loaf — ₹350</div>
-            <div class="loaf-feat"><div class="feat-check"></div> Wheat Oats Carrot Honey Loaf — ₹350</div>
-            <div class="loaf-feat"><div class="feat-check"></div> Wheat Rawa Mawa Loaf — ₹350</div>
+          <div class="loaf-feat-row">
+            <div class="loaf-feat"><div class="feat-check"></div> Hearty Ragi Banana Walnut Loaf</div>
+            <div class="loaf-feat-right">
+              <span class="loaf-price">₹350</span>
+              <button class="product-add small" data-product="Ragi Banana Walnut Loaf" onclick="addToCart(this)">Add</button>
+            </div>
+          </div>
+          <div class="loaf-feat-row">
+            <div class="loaf-feat"><div class="feat-check"></div> Sweet Wheat Mango Pistachio Loaf</div>
+            <div class="loaf-feat-right">
+              <span class="loaf-price">₹350</span>
+              <button class="product-add small" data-product="Wheat Mango Pistachio Loaf" onclick="addToCart(this)">Add</button>
+            </div>
+          </div>
+          <div class="loaf-feat-row">
+            <div class="loaf-feat"><div class="feat-check"></div> Wheat Oats Carrot Honey Loaf</div>
+            <div class="loaf-feat-right">
+              <span class="loaf-price">₹350</span>
+              <button class="product-add small" data-product="Wheat Oats Carrot Honey Loaf" onclick="addToCart(this)">Add</button>
+            </div>
+          </div>
+          <div class="loaf-feat-row">
+            <div class="loaf-feat"><div class="feat-check"></div> Wheat Rawa Mawa Loaf</div>
+            <div class="loaf-feat-right">
+              <span class="loaf-price">₹350</span>
+              <button class="product-add small" data-product="Wheat Rawa Mawa Loaf" onclick="addToCart(this)">Add</button>
+            </div>
+          </div>
           <div class="loaf-feat"><div class="feat-check"></div> Freshly baked on order</div>
         </div>
         <a href="products.html" class="btn-primary" style="display:inline-block;margin-top:8px">Order a Loaf</a>
@@ -786,8 +846,16 @@
     <div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>
   </div>
   <div class="cart-foot" id="homeCartFoot" style="display:none">
-    <div class="cart-total-row"><span>Total</span><span id="homeTotal">₹0</span></div>
-    <button class="checkout-btn" onclick="homeCheckout()">💬 Order via WhatsApp</button>
+    <div class="cart-form-title">Delivery Details</div>
+    <input type="text" class="cart-input" id="cfName" placeholder="Full Name">
+    <input type="tel" class="cart-input" id="cfPhone" placeholder="Phone Number" maxlength="10">
+    <textarea class="cart-input textarea" id="cfAddress" placeholder="Address (House No, Street, Area)"></textarea>
+    <input type="text" class="cart-input" id="cfLandmark" placeholder="Landmark (optional)">
+    <div class="form-error" id="cfError">Please fill in your Name, Phone and Address to continue.</div>
+    <hr class="cart-divider">
+    <div class="delivery-note">🚚 <span>First <strong>2 km</strong> delivery is <strong>FREE</strong>. Beyond 2 km, Porter delivery charges apply and are shared <strong>50:50</strong> between you and us — we'll confirm the exact amount on WhatsApp.</span></div>
+    <div class="cart-total-row"><span>Item Total</span><span id="homeTotal">₹0</span></div>
+    <button class="checkout-btn" onclick="homeCheckout()">💬 Place Order on WhatsApp</button>
   </div>
 </div>
 
@@ -802,26 +870,42 @@ const observer = new IntersectionObserver(entries=>{
 reveals.forEach(el=>observer.observe(el));
 
 // ── HOME PAGE CART ──
+// All products on this page (Featured Products + Loaf section) live here.
 const HOME_PRODUCTS = {
-  'Ragi Dutch Truffles Cake': {emoji:'🍫', price:1214},
-  'Pineapple Cream Cake':              {emoji:'🍍', price:1011},
-  'Blueberry Cream Cake':              {emoji:'🫐', price:1011},
-  'Hot Choco Lava':                    {emoji:'🌋', price:149},
+  'Ragi Dutch Truffles Cake':        {emoji:'🍫', price:899},
+  'Pineapple Cream Cake':            {emoji:'🍍', price:749},
+  'Blueberry Cream Cake':            {emoji:'🫐', price:749},
+  'Hot Choco Lava':                  {emoji:'🌋', price:110},
+  'Ragi Banana Walnut Loaf':         {emoji:'🍌', price:350},
+  'Wheat Mango Pistachio Loaf':      {emoji:'🥭', price:350},
+  'Wheat Oats Carrot Honey Loaf':    {emoji:'🥕', price:350},
+  'Wheat Rawa Mawa Loaf':            {emoji:'🍞', price:350},
 };
 let homeCart = {};
 
 function addToCart(btn){
-  // Get product name from parent card
-  const card = btn.closest('.product-card');
-  const name = card.querySelector('.product-name').textContent.trim();
+  const name = btn.dataset.product;
   const p = HOME_PRODUCTS[name];
   if(!p) return;
   homeCart[name] = homeCart[name]
     ? {...homeCart[name], qty: homeCart[name].qty+1}
     : {...p, name, qty:1};
-  btn.textContent = `In Cart (${homeCart[name].qty})`;
-  btn.style.background = '#3B6E2A';
+  updateProductButtons(name);
   renderHomeCart();
+}
+
+function updateProductButtons(name){
+  document.querySelectorAll(`[data-product]`).forEach(btn=>{
+    if(btn.dataset.product !== name) return;
+    const inCart = homeCart[name];
+    if(inCart){
+      btn.textContent = btn.classList.contains('small') ? `Added (${inCart.qty})` : `In Cart (${inCart.qty})`;
+      btn.style.background = '#3B6E2A';
+    } else {
+      btn.textContent = btn.classList.contains('small') ? 'Add' : 'Add to Cart';
+      btn.style.background = '';
+    }
+  });
 }
 
 function renderHomeCart(){
@@ -848,9 +932,9 @@ function renderHomeCart(){
         <div class="ci-price">₹${(i.price*i.qty).toLocaleString('en-IN')}</div>
       </div>
       <div class="qty-wrap">
-        <button class="qbtn" onclick="homeQty('${k}',-1)">−</button>
+        <button class="qbtn" onclick="homeQty('${k.replace(/'/g,"\\'")}',-1)">−</button>
         <span class="qnum">${i.qty}</span>
-        <button class="qbtn" onclick="homeQty('${k}',1)">+</button>
+        <button class="qbtn" onclick="homeQty('${k.replace(/'/g,"\\'")}',1)">+</button>
       </div>
     </div>`;
   }).join('');
@@ -861,21 +945,8 @@ function homeQty(name,delta){
   homeCart[name].qty+=delta;
   if(homeCart[name].qty<=0){
     delete homeCart[name];
-    // Reset button text
-    document.querySelectorAll('.product-card').forEach(card=>{
-      if(card.querySelector('.product-name')?.textContent.trim()===name){
-        const btn=card.querySelector('.product-add');
-        if(btn){btn.textContent='Add to Cart';btn.style.background='';}
-      }
-    });
-  } else {
-    document.querySelectorAll('.product-card').forEach(card=>{
-      if(card.querySelector('.product-name')?.textContent.trim()===name){
-        const btn=card.querySelector('.product-add');
-        if(btn) btn.textContent=`In Cart (${homeCart[name].qty})`;
-      }
-    });
   }
+  updateProductButtons(name);
   renderHomeCart();
 }
 
@@ -887,11 +958,37 @@ function toggleCart(){
 function homeCheckout(){
   const keys=Object.keys(homeCart);
   if(!keys.length) return;
+
+  const name = document.getElementById('cfName').value.trim();
+  const phone = document.getElementById('cfPhone').value.trim();
+  const address = document.getElementById('cfAddress').value.trim();
+  const landmark = document.getElementById('cfLandmark').value.trim();
+  const errorEl = document.getElementById('cfError');
+
+  if(!name || !phone || !address){
+    errorEl.style.display='block';
+    if(!name) document.getElementById('cfName').focus();
+    else if(!phone) document.getElementById('cfPhone').focus();
+    else document.getElementById('cfAddress').focus();
+    return;
+  }
+  errorEl.style.display='none';
+
   const total=keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
-  let msg="Hello! I'd like to order from Akkis Healthy Baking:%0A%0A";
-  keys.forEach(k=>{const i=homeCart[k];msg+=`• ${i.name} x${i.qty} — ₹${i.price*i.qty}%0A`;});
-  msg+=`%0ATotal: ₹${total}%0A%0APlease confirm availability and delivery. Thank you!`;
-  window.open(`https://wa.me/917795076412?text=${msg}`,'_blank');
+
+  let msg = `Hello Akkis Healthy Baking! I'd like to place an order:\n\n`;
+  msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}`;
+  if(landmark) msg += `\n*Landmark:* ${landmark}`;
+  msg += `\n\n*Order Details:*\n`;
+  keys.forEach(k=>{
+    const i=homeCart[k];
+    msg += `• ${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString('en-IN')}\n`;
+  });
+  msg += `\n*Item Total:* ₹${total.toLocaleString('en-IN')}`;
+  msg += `\n\nNote: First 2 km delivery is FREE. Beyond 2 km, Porter delivery charges will apply and will be shared 50:50 between me and the shop.`;
+  msg += `\n\nPlease confirm availability and delivery. Thank you! 🙏`;
+
+  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
 // Mobile hamburger (basic toggle)
