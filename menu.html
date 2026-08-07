@@ -218,17 +218,51 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,
 .qty-btn{background:var(--honey-pale);border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;color:var(--brown-dark);font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s}
 .qty-btn:hover{background:var(--honey);color:#fff}
 .qty-num{font-size:14px;font-weight:600;min-width:20px;text-align:center}
-.cart-footer{padding:20px 24px;border-top:1px solid var(--border)}
+.cart-footer{padding:18px 24px 22px;border-top:1px solid var(--border);overflow-y:auto;max-height:70vh}
+
+/* Delivery details form inside cart (same as home page) */
+.cart-form-title{font-size:13px;font-weight:700;color:var(--brown-dark);letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px}
+.cart-input{
+  width:100%;
+  padding:12px 16px;
+  border:1px solid var(--border);
+  border-radius:50px;
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;
+  color:var(--text);
+  background:var(--cream);
+  margin-bottom:10px;
+  outline:none;
+  transition:border-color .2s,background .2s;
+}
+.cart-input:focus{border-color:var(--honey);background:#fff}
+.cart-input.textarea{border-radius:16px;resize:none;min-height:56px;font-family:inherit}
+.cart-divider{border:none;border-top:1px dashed var(--border);margin:14px 0}
+.delivery-note{
+  background:var(--green-pale);
+  color:var(--green);
+  font-size:12px;
+  padding:10px 14px;
+  border-radius:12px;
+  margin-bottom:14px;
+  line-height:1.55;
+  display:flex;
+  gap:8px;
+  align-items:flex-start;
+}
+.form-error{color:#C0392B;font-size:12px;margin:-4px 0 10px;display:none}
+
 .cart-total{display:flex;justify-content:space-between;margin-bottom:16px}
 .cart-total span:first-child{font-size:15px;color:var(--text-muted)}
 .cart-total span:last-child{font-size:20px;font-weight:700;color:var(--brown-dark)}
 .checkout-btn{
-  width:100%;background:var(--honey);color:#fff;border:none;cursor:pointer;
+  width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;
   padding:14px;border-radius:50px;font-size:15px;font-weight:600;
   font-family:'DM Sans',sans-serif;
   transition:background .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
 }
-.checkout-btn:hover{background:var(--brown-mid)}
+.checkout-btn:hover{background:#1ebe5d}
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:250;opacity:0;pointer-events:none;transition:opacity .3s}
 .overlay.show{opacity:1;pointer-events:all}
 
@@ -332,8 +366,16 @@ footer ul a:hover{color:#F5A623}
     <div class="cart-empty"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>
   </div>
   <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="cart-total"><span>Total</span><span id="cartTotal">₹0</span></div>
-    <button class="checkout-btn" onclick="checkout()">Proceed to Order via WhatsApp 💬</button>
+    <div class="cart-form-title">Delivery Details</div>
+    <input type="text" class="cart-input" id="cfName" placeholder="Full Name">
+    <input type="tel" class="cart-input" id="cfPhone" placeholder="Phone Number" maxlength="10">
+    <textarea class="cart-input textarea" id="cfAddress" placeholder="Address (House No, Street, Area)"></textarea>
+    <input type="text" class="cart-input" id="cfLandmark" placeholder="Landmark (optional)">
+    <div class="form-error" id="cfError">Please fill in your Name, Phone and Address to continue.</div>
+    <hr class="cart-divider">
+    <div class="delivery-note">🚚 <span>First <strong>2 km</strong> delivery is <strong>FREE</strong>. Beyond 2 km, Porter delivery charges apply and are shared <strong>50:50</strong> between you and us — we'll confirm the exact amount on WhatsApp.</span></div>
+    <div class="cart-total"><span>Item Total</span><span id="cartTotal">₹0</span></div>
+    <button class="checkout-btn" onclick="checkout()">💬 Place Order on WhatsApp</button>
   </div>
 </div>
 
@@ -918,9 +960,9 @@ function renderCart() {
         <div class="cart-item-price">₹${(item.price * item.qty).toLocaleString('en-IN')}</div>
       </div>
       <div class="cart-qty">
-        <button class="qty-btn" onclick="changeQty('${k}',-1)">−</button>
+        <button class="qty-btn" onclick="changeQty('${k.replace(/'/g,"\\'")}',-1)">−</button>
         <span class="qty-num">${item.qty}</span>
-        <button class="qty-btn" onclick="changeQty('${k}',1)">+</button>
+        <button class="qty-btn" onclick="changeQty('${k.replace(/'/g,"\\'")}',1)">+</button>
       </div>
     </div>`;
   }).join('');
@@ -941,11 +983,37 @@ function toggleCart() {
 function checkout() {
   const keys = Object.keys(cart);
   if (!keys.length) return;
+
+  const name = document.getElementById('cfName').value.trim();
+  const phone = document.getElementById('cfPhone').value.trim();
+  const address = document.getElementById('cfAddress').value.trim();
+  const landmark = document.getElementById('cfLandmark').value.trim();
+  const errorEl = document.getElementById('cfError');
+
+  if (!name || !phone || !address) {
+    errorEl.style.display = 'block';
+    if (!name) document.getElementById('cfName').focus();
+    else if (!phone) document.getElementById('cfPhone').focus();
+    else document.getElementById('cfAddress').focus();
+    return;
+  }
+  errorEl.style.display = 'none';
+
   const total = keys.reduce((s, k) => s + cart[k].price * cart[k].qty, 0);
-  let msg = 'Hello! I would like to place an order from Akki\'s Healthy Baking:%0A%0A';
-  keys.forEach(k => { msg += `• ${cart[k].name} x${cart[k].qty} — ₹${cart[k].price * cart[k].qty}%0A`; });
-  msg += `%0ATotal: ₹${total}%0A%0APlease confirm availability and delivery. Thank you!`;
-  window.open(`https://wa.me/917795076412?text=${msg}`, '_blank');
+
+  let msg = `Hello Akkis Healthy Baking! I'd like to place an order:\n\n`;
+  msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}`;
+  if (landmark) msg += `\n*Landmark:* ${landmark}`;
+  msg += `\n\n*Order Details:*\n`;
+  keys.forEach(k => {
+    const item = cart[k];
+    msg += `• ${item.name} x${item.qty} — ₹${(item.price * item.qty).toLocaleString('en-IN')}\n`;
+  });
+  msg += `\n*Item Total:* ₹${total.toLocaleString('en-IN')}`;
+  msg += `\n\nNote: First 2 km delivery is FREE. Beyond 2 km, Porter delivery charges will apply and will be shared 50:50 between me and the shop.`;
+  msg += `\n\nPlease confirm availability and delivery. Thank you! 🙏`;
+
+  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(msg)}`, '_blank');
 }
 
 // ── CATEGORY NAV SCROLL ──
