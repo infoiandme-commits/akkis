@@ -12,409 +12,249 @@
 <meta property="og:image" content="images/cake_loaf.webp">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://www.akkishealthybaking.com/index.html">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
-
-
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --honey:#D4780A;
-    --honey-light:#F5A623;
-    --honey-pale:#FEF3E2;
-    --brown-dark:#3B1F0A;
-    --brown-mid:#7A4010;
-    --cream:#FFFBF4;
-    --white:#FFFFFF;
-    --text:#2C1810;
-    --text-muted:#6B4C3B;
-    --green-fresh:#3B6E2A;
-    --green-pale:#EFF7EA;
-    --border:#E8D5B0;
-    --radius:12px;
-    --radius-lg:20px;
-  }
-  html{scroll-behavior:smooth}
-  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
-
-  /* ── NAV ── */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    background:rgba(255,251,244,0.92);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--border);
-    padding:0 5%;
-    display:flex;align-items:center;justify-content:space-between;
-    height:68px;
-  }
-  .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-  .nav-logo img{height:44px;width:44px;border-radius:50%;object-fit:cover}
-  .nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
-  .nav-logo-text span:first-child{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--brown-dark)}
-  .nav-logo-text span:last-child{font-size:11px;color:var(--honey);font-weight:500;letter-spacing:0.5px}
-  .nav-links{display:flex;gap:28px;list-style:none}
-  .nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-muted);transition:color .2s}
-  .nav-links a:hover{color:var(--honey)}
-  .nav-cta{
-    background:var(--honey);color:#fff;
-    padding:9px 22px;border-radius:50px;
-    text-decoration:none;font-size:13px;font-weight:600;
-    transition:background .2s,transform .15s;
-  }
-  .nav-cta:hover{background:var(--brown-mid);transform:scale(1.02)}
-  .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
-  .nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
-
-  /* ── HERO ── */
-  .hero{
-    min-height:100vh;
-    display:flex;align-items:center;
-    padding:100px 5% 60px;
-    background:linear-gradient(135deg,var(--cream) 0%,#FEF0D4 100%);
-    position:relative;overflow:hidden;
-  }
-  .hero::before{
-    content:'';position:absolute;
-    width:600px;height:600px;border-radius:50%;
-    background:radial-gradient(circle,rgba(212,120,10,0.08) 0%,transparent 70%);
-    right:-100px;top:50%;transform:translateY(-50%);
-    pointer-events:none;
-  }
-  .hero-inner{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .hero-badge{
-    display:inline-flex;align-items:center;gap:6px;
-    background:var(--green-pale);color:var(--green-fresh);
-    border:1px solid rgba(59,110,42,0.2);
-    padding:6px 14px;border-radius:50px;
-    font-size:12px;font-weight:600;letter-spacing:0.4px;
-    margin-bottom:20px;
-  }
-  .hero-badge::before{content:'✦';font-size:10px}
-  h1{
-    font-family:'Playfair Display',serif;
-    font-size:clamp(36px,4.5vw,58px);
-    font-weight:700;line-height:1.15;
-    color:var(--brown-dark);
-    margin-bottom:20px;
-  }
-  h1 em{font-style:italic;color:var(--honey)}
-  .hero-sub{font-size:17px;color:var(--text-muted);margin-bottom:32px;line-height:1.7;max-width:440px}
-  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-  .btn-primary{
-    background:var(--honey);color:#fff;
-    padding:14px 32px;border-radius:50px;
-    text-decoration:none;font-size:15px;font-weight:600;
-    transition:background .2s,transform .15s,box-shadow .15s;
-    box-shadow:0 4px 16px rgba(212,120,10,0.3);
-  }
-  .btn-primary:hover{background:var(--brown-mid);transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,120,10,0.4)}
-  .btn-outline{
-    border:2px solid var(--honey);color:var(--honey);
-    padding:13px 30px;border-radius:50px;
-    text-decoration:none;font-size:15px;font-weight:600;
-    transition:all .2s;
-  }
-  .btn-outline:hover{background:var(--honey);color:#fff}
-  .hero-trust{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
-  .trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted)}
-  .trust-icon{width:32px;height:32px;border-radius:50%;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:15px}
-  
-  .hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
-  .hero-img-main{
-    width:100%;max-width:460px;
-    border-radius:var(--radius-lg);
-    box-shadow:0 20px 60px rgba(59,31,10,0.2);
-    object-fit:cover;
-  }
-  .hero-float-card{
-    position:absolute;
-    background:#fff;
-    border-radius:var(--radius);
-    padding:14px 18px;
-    box-shadow:0 8px 32px rgba(0,0,0,0.12);
-    display:flex;align-items:center;gap:12px;
-    min-width:160px;
-  }
-  .hero-float-card.left{left:-20px;bottom:60px}
-  .hero-float-card.right{right:-10px;top:80px}
-  .float-icon{width:40px;height:40px;border-radius:10px;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-  .float-text strong{display:block;font-size:14px;font-weight:600;color:var(--brown-dark)}
-  .float-text span{font-size:11px;color:var(--text-muted)}
-
-  /* ── MARQUEE ── */
-  .marquee-wrap{background:var(--honey);padding:14px 0;overflow:hidden}
-  .marquee-track{display:flex;gap:0;animation:marquee 20s linear infinite;width:max-content}
-  .marquee-item{white-space:nowrap;padding:0 40px;font-size:13px;font-weight:600;color:#fff;letter-spacing:0.5px}
-  .marquee-item::before{content:'♥  ';opacity:0.7}
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-  /* ── SECTION COMMON ── */
-  section{padding:80px 5%}
-  .section-inner{max-width:1200px;margin:0 auto}
-  .section-tag{font-size:12px;font-weight:600;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
-  .section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--brown-dark);margin-bottom:14px;line-height:1.25}
-  .section-sub{font-size:16px;color:var(--text-muted);max-width:520px;line-height:1.7}
-  .section-header{margin-bottom:50px}
-  .section-header.center{text-align:center}
-  .section-header.center .section-sub{margin:0 auto}
-
-  /* ── WHY US ── */
-  .why-bg{background:var(--white)}
-  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
-  .why-card{
-    background:var(--cream);
-    border:1px solid var(--border);
-    border-radius:var(--radius-lg);
-    padding:28px 24px;
-    transition:transform .2s,box-shadow .2s;
-  }
-  .why-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(59,31,10,0.1)}
-  .why-card-icon{width:52px;height:52px;border-radius:14px;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
-  .why-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown-dark);margin-bottom:8px}
-  .why-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
-
-  /* ── FEATURED PRODUCTS ── */
-
-    .product-img{
-    width:100%;
-    height:300px;
-    overflow:hidden;
-    border-radius:20px 20px 0 0;
-    background:#fff8ef;
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --honey:#D4780A;--honey-light:#F5A623;--honey-pale:#FEF3E2;
+  --brown-dark:#3B1F0A;--brown-mid:#7A4010;--cream:#FFFBF4;
+  --white:#FFFFFF;--text:#2C1810;--text-muted:#6B4C3B;
+  --green-fresh:#3B6E2A;--green-pale:#EFF7EA;--border:#E8D5B0;
+  --radius:12px;--radius-lg:20px;
 }
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);line-height:1.6}
 
-.product-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:0.4s;
-}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,251,244,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:68px}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo img{height:44px;width:44px;border-radius:50%;object-fit:cover}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-text span:first-child{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--brown-dark)}
+.nav-logo-text span:last-child{font-size:11px;color:var(--honey);font-weight:500;letter-spacing:0.5px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-size:14px;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav-links a:hover{color:var(--honey)}
+.nav-cta{background:var(--honey);color:#fff;padding:9px 22px;border-radius:50px;text-decoration:none;font-size:13px;font-weight:600;transition:background .2s,transform .15s}
+.nav-cta:hover{background:var(--brown-mid);transform:scale(1.02)}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
 
-.product-card:hover .product-img img{
-    transform:scale(1.05);
-}
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;background:linear-gradient(135deg,var(--cream) 0%,#FEF0D4 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(212,120,10,0.08) 0%,transparent 70%);right:-100px;top:50%;transform:translateY(-50%);pointer-events:none}
+.hero-inner{max-width:1200px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-pale);color:var(--green-fresh);border:1px solid rgba(59,110,42,0.2);padding:6px 14px;border-radius:50px;font-size:12px;font-weight:600;letter-spacing:0.4px;margin-bottom:20px}
+.hero-badge::before{content:'✦';font-size:10px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(36px,4.5vw,58px);font-weight:700;line-height:1.15;color:var(--brown-dark);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--honey)}
+.hero-sub{font-size:17px;color:var(--text-muted);margin-bottom:32px;line-height:1.7;max-width:440px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{background:var(--honey);color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-size:15px;font-weight:600;transition:background .2s,transform .15s,box-shadow .15s;box-shadow:0 4px 16px rgba(212,120,10,0.3)}
+.btn-primary:hover{background:var(--brown-mid);transform:translateY(-2px);box-shadow:0 6px 20px rgba(212,120,10,0.4)}
+.btn-outline{border:2px solid var(--honey);color:var(--honey);padding:13px 30px;border-radius:50px;text-decoration:none;font-size:15px;font-weight:600;transition:all .2s}
+.btn-outline:hover{background:var(--honey);color:#fff}
+.hero-trust{display:flex;gap:28px;margin-top:36px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted)}
+.trust-icon{width:32px;height:32px;border-radius:50%;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:15px}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-img-main{width:100%;max-width:460px;border-radius:var(--radius-lg);box-shadow:0 20px 60px rgba(59,31,10,0.2);object-fit:cover}
+.hero-float-card{position:absolute;background:#fff;border-radius:var(--radius);padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.12);display:flex;align-items:center;gap:12px;min-width:160px}
+.hero-float-card.left{left:-20px;bottom:60px}
+.hero-float-card.right{right:-10px;top:80px}
+.float-icon{width:40px;height:40px;border-radius:10px;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.float-text strong{display:block;font-size:14px;font-weight:600;color:var(--brown-dark)}
+.float-text span{font-size:11px;color:var(--text-muted)}
 
+/* MARQUEE */
+.marquee-wrap{background:var(--honey);padding:14px 0;overflow:hidden}
+.marquee-track{display:flex;animation:marquee 20s linear infinite;width:max-content}
+.marquee-item{white-space:nowrap;padding:0 40px;font-size:13px;font-weight:600;color:#fff;letter-spacing:0.5px}
+.marquee-item::before{content:'♥  ';opacity:0.7}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* SECTIONS */
+section{padding:80px 5%}
+.section-inner{max-width:1200px;margin:0 auto}
+.section-tag{font-size:12px;font-weight:600;color:var(--honey);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--brown-dark);margin-bottom:14px;line-height:1.25}
+.section-sub{font-size:16px;color:var(--text-muted);max-width:520px;line-height:1.7}
+.section-header{margin-bottom:50px}
+.section-header.center{text-align:center}
+.section-header.center .section-sub{margin:0 auto}
 
+/* WHY US */
+.why-bg{background:var(--white)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+.why-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;transition:transform .2s,box-shadow .2s}
+.why-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(59,31,10,0.1)}
+.why-card-icon{width:52px;height:52px;border-radius:14px;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
+.why-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown-dark);margin-bottom:8px}
+.why-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
 
-    
-  .products-bg{background:var(--cream)}
-  .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
-  .product-card{
-    background:var(--white);
-    border:1px solid var(--border);
-    border-radius:var(--radius-lg);
-    overflow:hidden;
-    transition:transform .2s,box-shadow .2s;
-  }
-  .product-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(59,31,10,0.12)}
-  .product-img{
-    width:100%;height:200px;object-fit:cover;
-    background:linear-gradient(135deg,#FEF0D4,#F5D9A8);
-    display:flex;align-items:center;justify-content:center;font-size:60px;
-  }
-  .product-info{padding:18px 20px}
-  .product-veg{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--green-fresh);font-weight:600;margin-bottom:6px}
-  .veg-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--green-fresh);display:inline-flex;align-items:center;justify-content:center}
-  .veg-dot::after{content:'';width:5px;height:5px;background:var(--green-fresh);border-radius:50%;display:block}
-  .product-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--brown-dark);margin-bottom:4px;line-height:1.3}
-  .product-weight{font-size:12px;color:var(--text-muted);margin-bottom:12px}
-  .product-footer{display:flex;align-items:center;justify-content:space-between}
-  .product-price{font-size:20px;font-weight:700;color:var(--honey)}
-  .product-add{
-    background:var(--honey);color:#fff;
-    border:none;cursor:pointer;
-    padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;
-    transition:background .2s,transform .15s;
-  }
-  .product-add:hover{background:var(--brown-mid);transform:scale(1.05)}
-  .product-add.small{padding:6px 14px;font-size:12px;white-space:nowrap}
-  .view-all-wrap{text-align:center;margin-top:44px}
+/* PRODUCTS */
+.products-bg{background:var(--cream)}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
+.product-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:transform .2s,box-shadow .2s}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(59,31,10,0.12)}
+.product-img{width:100%;height:220px;overflow:hidden;background:linear-gradient(135deg,#FEF0D4,#F5D9A8)}
+.product-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.product-card:hover .product-img img{transform:scale(1.05)}
+.product-info{padding:18px 20px}
+.product-veg{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--green-fresh);font-weight:600;margin-bottom:6px}
+.veg-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--green-fresh);display:inline-flex;align-items:center;justify-content:center}
+.veg-dot::after{content:'';width:5px;height:5px;background:var(--green-fresh);border-radius:50%;display:block}
+.product-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--brown-dark);margin-bottom:4px;line-height:1.3}
+.product-weight{font-size:12px;color:var(--text-muted);margin-bottom:12px}
+.product-footer{display:flex;align-items:center;justify-content:space-between}
+.product-price{font-size:20px;font-weight:700;color:var(--honey)}
+.product-add{background:var(--honey);color:#fff;border:none;cursor:pointer;padding:8px 18px;border-radius:50px;font-size:13px;font-weight:600;transition:background .2s,transform .15s}
+.product-add:hover{background:var(--brown-mid);transform:scale(1.05)}
+.product-add.small{padding:6px 14px;font-size:12px;white-space:nowrap}
+.view-all-wrap{text-align:center;margin-top:44px}
 
-  /* ── LOAF HIGHLIGHT ── */
-  .loaf-section{background:var(--honey-pale)}
-  .loaf-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-  .loaf-img{width:100%;border-radius:var(--radius-lg);box-shadow:0 16px 48px rgba(59,31,10,0.15)}
-  .loaf-tag-list{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-  .tag{background:rgba(212,120,10,0.12);color:var(--honey);padding:5px 12px;border-radius:50px;font-size:12px;font-weight:600}
-  .loaf-features{margin:24px 0;display:flex;flex-direction:column;gap:12px}
-  .loaf-feat{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
-  .loaf-feat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(255,255,255,0.5);padding:8px 12px;border-radius:12px}
-  .loaf-feat-row .loaf-feat{flex:1;min-width:180px}
-  .loaf-feat-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-  .loaf-price{font-size:14px;font-weight:700;color:var(--honey);white-space:nowrap}
-  .feat-check{width:22px;height:22px;background:var(--green-fresh);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .feat-check::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+/* LOAF */
+.loaf-section{background:var(--honey-pale)}
+.loaf-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.loaf-img{width:100%;border-radius:var(--radius-lg);box-shadow:0 16px 48px rgba(59,31,10,0.15)}
+.loaf-tag-list{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.tag{background:rgba(212,120,10,0.12);color:var(--honey);padding:5px 12px;border-radius:50px;font-size:12px;font-weight:600}
+.loaf-features{margin:24px 0;display:flex;flex-direction:column;gap:12px}
+.loaf-feat{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
+.loaf-feat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(255,255,255,0.5);padding:8px 12px;border-radius:12px}
+.loaf-feat-row .loaf-feat{flex:1;min-width:180px}
+.loaf-feat-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.loaf-price{font-size:14px;font-weight:700;color:var(--honey);white-space:nowrap}
+.feat-check{width:22px;height:22px;background:var(--green-fresh);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feat-check::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
 
-  /* ── TESTIMONIALS ── */
-  .testimonials-bg{background:var(--white)}
-  .test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-  .test-card{
-    background:var(--cream);
-    border:1px solid var(--border);
-    border-radius:var(--radius-lg);
-    padding:24px;
-  }
-  .test-stars{color:var(--honey-light);font-size:14px;margin-bottom:12px;letter-spacing:2px}
-  .test-text{font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;font-style:italic}
-  .test-author{display:flex;align-items:center;gap:10px}
-  .test-avatar{width:38px;height:38px;border-radius:50%;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--honey);flex-shrink:0}
-  .test-name{font-size:14px;font-weight:600;color:var(--brown-dark)}
-  .test-loc{font-size:12px;color:var(--text-muted)}
+/* TESTIMONIALS */
+.testimonials-bg{background:var(--white)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.test-card{background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.test-stars{color:var(--honey-light);font-size:14px;margin-bottom:12px;letter-spacing:2px}
+.test-text{font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:10px}
+.test-avatar{width:38px;height:38px;border-radius:50%;background:var(--honey-pale);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--honey);flex-shrink:0}
+.test-name{font-size:14px;font-weight:600;color:var(--brown-dark)}
+.test-loc{font-size:12px;color:var(--text-muted)}
 
-  /* ── GALLERY STRIP ── */
-  .gallery-bg{background:var(--cream)}
-  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .gallery-item{border-radius:var(--radius);overflow:hidden;aspect-ratio:1;position:relative;cursor:pointer}
-  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
-  .gallery-item:hover img{transform:scale(1.06)}
+/* GALLERY */
+.gallery-bg{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-item{border-radius:var(--radius);overflow:hidden;aspect-ratio:1;position:relative;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gallery-item:hover img{transform:scale(1.06)}
 
-  /* ── BLOG ── */
-  .blog-bg{background:var(--honey-pale)}
-  .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
-  .blog-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:transform .2s,box-shadow .2s}
-  .blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(59,31,10,0.1)}
-  .blog-tag{display:inline-block;background:var(--honey-pale);color:var(--honey);padding:4px 12px;border-radius:50px;font-size:11px;font-weight:600;margin-bottom:10px}
-  .blog-card-body{padding:22px}
-  .blog-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown-dark);margin-bottom:8px;line-height:1.35}
-  .blog-card p{font-size:14px;color:var(--text-muted);line-height:1.65;margin-bottom:16px}
-  .blog-read{font-size:13px;font-weight:600;color:var(--honey);text-decoration:none}
-  .blog-read:hover{color:var(--brown-mid)}
+/* BLOG */
+.blog-bg{background:var(--honey-pale)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.blog-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);transition:transform .2s,box-shadow .2s}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(59,31,10,0.1)}
+.blog-tag{display:inline-block;background:var(--honey-pale);color:var(--honey);padding:4px 12px;border-radius:50px;font-size:11px;font-weight:600;margin-bottom:10px}
+.blog-card-body{padding:22px}
+.blog-card h3{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--brown-dark);margin-bottom:8px;line-height:1.35}
+.blog-card p{font-size:14px;color:var(--text-muted);line-height:1.65;margin-bottom:16px}
+.blog-read{font-size:13px;font-weight:600;color:var(--honey);text-decoration:none}
+.blog-read:hover{color:var(--brown-mid)}
 
-  /* ── CONTACT STRIP ── */
-  .contact-strip{background:var(--brown-dark);padding:60px 5%}
-  .contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
-  .contact-text h2{font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:8px}
-  .contact-text p{color:rgba(255,255,255,0.65);font-size:16px}
-  .contact-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-  .contact-btn{
-    background:var(--honey);color:#fff;padding:13px 28px;
-    border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;
-    transition:background .2s;white-space:nowrap;
-  }
-  .contact-btn:hover{background:var(--honey-light)}
-  .contact-btn.outline{background:transparent;border:2px solid rgba(255,255,255,0.4);color:#fff}
-  .contact-btn.outline:hover{background:rgba(255,255,255,0.1)}
+/* CONTACT STRIP */
+.contact-strip{background:var(--brown-dark);padding:60px 5%}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+.contact-text h2{font-family:'Playfair Display',serif;font-size:32px;color:#fff;margin-bottom:8px}
+.contact-text p{color:rgba(255,255,255,0.65);font-size:16px}
+.contact-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.contact-btn{background:var(--honey);color:#fff;padding:13px 28px;border-radius:50px;text-decoration:none;font-size:14px;font-weight:600;transition:background .2s;white-space:nowrap}
+.contact-btn:hover{background:var(--honey-light)}
+.contact-btn.outline{background:transparent;border:2px solid rgba(255,255,255,0.4);color:#fff}
+.contact-btn.outline:hover{background:rgba(255,255,255,0.1)}
 
-  /* ── FOOTER ── */
-  footer{background:#2C1810;padding:50px 5% 30px}
-  .footer-inner{max-width:1200px;margin:0 auto}
-  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-  .footer-brand p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-top:12px;max-width:260px}
-  .footer-logo{display:flex;align-items:center;gap:10px}
-  .footer-logo img{height:40px;width:40px;border-radius:50%}
-  .footer-logo-text{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff}
-  footer h4{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:0.5px;margin-bottom:16px;text-transform:uppercase}
-  footer ul{list-style:none}
-  footer ul li{margin-bottom:10px}
-  footer ul a{text-decoration:none;font-size:14px;color:rgba(255,255,255,0.5);transition:color .2s}
-  footer ul a:hover{color:var(--honey-light)}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap 14px}
-  .footer-bottom p{font-size:13px;color:rgba(255,255,255,0.35)}
-  .footer-social{display:flex;gap:12px}
-  .social-link{
-    width:36px;height:36px;border-radius:50%;
-    border:1px solid rgba(255,255,255,0.2);
-    display:flex;align-items:center;justify-content:center;
-    color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none;
-    transition:border-color .2s,color .2s;
-  }
-  .social-link:hover{border-color:var(--honey-light);color:var(--honey-light)}
+/* FOOTER */
+footer{background:#2C1810;padding:50px 5% 30px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.7;margin-top:12px;max-width:260px}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-logo img{height:40px;width:40px;border-radius:50%}
+.footer-logo-text{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:#fff}
+footer h4{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:0.5px;margin-bottom:16px;text-transform:uppercase}
+footer ul{list-style:none}
+footer ul li{margin-bottom:10px}
+footer ul a{text-decoration:none;font-size:14px;color:rgba(255,255,255,0.5);transition:color .2s}
+footer ul a:hover{color:var(--honey-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.footer-bottom p{font-size:13px;color:rgba(255,255,255,0.35)}
+.footer-social{display:flex;gap:12px}
+.social-link{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.6);font-size:14px;text-decoration:none;transition:border-color .2s,color .2s}
+.social-link:hover{border-color:var(--honey-light);color:var(--honey-light)}
 
-  /* ── MOBILE ── */
-  @media(max-width:900px){
-    .hero-inner{grid-template-columns:1fr}
-    .hero-visual{display:none}
-    .loaf-inner{grid-template-columns:1fr}
-    .footer-grid{grid-template-columns:1fr 1fr}
-    .contact-inner{grid-template-columns:1fr}
-  }
-  @media(max-width:640px){
-    .nav-links,.nav-cta{display:none}
-    .nav-hamburger{display:block}
-    section{padding:60px 5%}
-    .hero-float-card{display:none}
-    .gallery-grid{grid-template-columns:repeat(2,1fr)}
-    .footer-grid{grid-template-columns:1fr}
-    .contact-inner{gap:24px}
-  }
+/* MOBILE */
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}.loaf-inner{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}.contact-inner{grid-template-columns:1fr}}
+@media(max-width:640px){.nav-links,.nav-cta{display:none}.nav-hamburger{display:block}section{padding:60px 5%}.hero-float-card{display:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}.footer-grid{grid-template-columns:1fr}.contact-inner{gap:24px}}
 
-  /* ── CART FAB ── */
-  .cart-fab{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--honey);color:#fff;border:none;cursor:pointer;width:60px;height:60px;border-radius:50%;font-size:24px;box-shadow:0 6px 24px rgba(212,120,10,.45);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
-  .cart-fab:hover{background:var(--brown-mid);transform:scale(1.08)}
-  .cart-badge{position:absolute;top:-4px;right:-4px;background:#C0392B;color:#fff;width:20px;height:20px;border-radius:50%;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;display:none}
-  .cart-panel{position:fixed;top:0;right:-400px;width:360px;height:100vh;background:var(--white);box-shadow:-8px 0 40px rgba(0,0,0,.15);z-index:300;transition:right .3s ease;display:flex;flex-direction:column}
-  .cart-panel.open{right:0}
-  .cart-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-  .cart-header h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--brown-dark)}
-  .cart-close{background:none;border:none;cursor:pointer;font-size:22px;color:var(--text-muted)}
-  .cart-body{flex:1;overflow-y:auto;padding:16px 24px}
-  .cart-empty-msg{text-align:center;padding:40px 20px;color:var(--text-muted)}
-  .cart-empty-msg div{font-size:48px;margin-bottom:12px}
-  .cart-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
-  .ci-emoji{width:40px;height:40px;background:var(--honey-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-  .ci-info{flex:1;min-width:0}
-  .ci-name{font-size:13px;font-weight:600;color:var(--brown-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .ci-price{font-size:13px;color:var(--honey);font-weight:600}
-  .qty-wrap{display:flex;align-items:center;gap:8px}
-  .qbtn{background:var(--honey-pale);border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;color:var(--brown-dark);font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s}
-  .qbtn:hover{background:var(--honey);color:#fff}
-  .qnum{font-size:14px;font-weight:600;min-width:20px;text-align:center}
-  .cart-foot{padding:18px 24px 22px;border-top:1px solid var(--border);overflow-y:auto;max-height:70vh}
+/* CART FAB */
+.cart-fab{position:fixed;bottom:28px;right:28px;z-index:200;background:var(--honey);color:#fff;border:none;cursor:pointer;width:60px;height:60px;border-radius:50%;font-size:24px;box-shadow:0 6px 24px rgba(212,120,10,.45);display:flex;align-items:center;justify-content:center;transition:transform .15s,background .2s}
+.cart-fab:hover{background:var(--brown-mid);transform:scale(1.08)}
+.cart-badge{position:absolute;top:-4px;right:-4px;background:#C0392B;color:#fff;width:20px;height:20px;border-radius:50%;font-size:11px;font-weight:700;display:none;align-items:center;justify-content:center}
+.cart-panel{position:fixed;top:0;right:-400px;width:min(360px,100vw);height:100vh;background:var(--white);box-shadow:-8px 0 40px rgba(0,0,0,.15);z-index:300;transition:right .3s ease;display:flex;flex-direction:column}
+.cart-panel.open{right:0}
+.cart-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.cart-header h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--brown-dark)}
+.cart-close{background:none;border:none;cursor:pointer;font-size:22px;color:var(--text-muted)}
+.cart-body{flex:1;overflow-y:auto;padding:16px 24px}
+.cart-empty-msg{text-align:center;padding:40px 20px;color:var(--text-muted)}
+.cart-empty-msg div{font-size:48px;margin-bottom:12px}
+.cart-item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.ci-emoji{width:40px;height:40px;background:var(--honey-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.ci-info{flex:1;min-width:0}
+.ci-name{font-size:13px;font-weight:600;color:var(--brown-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci-price{font-size:13px;color:var(--honey);font-weight:600}
+.qty-wrap{display:flex;align-items:center;gap:8px}
+.qbtn{background:var(--honey-pale);border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;color:var(--brown-dark);font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s}
+.qbtn:hover{background:var(--honey);color:#fff}
+.qnum{font-size:14px;font-weight:600;min-width:20px;text-align:center}
+.cart-foot{padding:18px 24px;border-top:1px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;margin-bottom:16px}
+.cart-total-row span:first-child{font-size:15px;color:var(--text-muted)}
+.cart-total-row span:last-child{font-size:20px;font-weight:700;color:var(--brown-dark)}
+.checkout-btn{width:100%;background:var(--honey);color:#fff;border:none;cursor:pointer;padding:14px;border-radius:50px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.checkout-btn:hover{background:var(--brown-mid)}
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:250;opacity:0;pointer-events:none;transition:opacity .3s}
+.cart-overlay.show{opacity:1;pointer-events:all}
 
-  /* ── Delivery details form inside cart ── */
-  .cart-form-title{font-size:13px;font-weight:700;color:var(--brown-dark);letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px}
-  .cart-input{
-    width:100%;
-    padding:12px 16px;
-    border:1px solid var(--border);
-    border-radius:50px;
-    font-family:'DM Sans',sans-serif;
-    font-size:13px;
-    color:var(--text);
-    background:var(--cream);
-    margin-bottom:10px;
-    outline:none;
-    transition:border-color .2s,background .2s;
-  }
-  .cart-input:focus{border-color:var(--honey);background:#fff}
-  .cart-input.textarea{border-radius:16px;resize:none;min-height:56px;font-family:inherit}
-  .cart-divider{border:none;border-top:1px dashed var(--border);margin:14px 0}
-  .delivery-note{
-    background:var(--green-pale);
-    color:var(--green-fresh);
-    font-size:12px;
-    padding:10px 14px;
-    border-radius:12px;
-    margin-bottom:14px;
-    line-height:1.55;
-    display:flex;
-    gap:8px;
-    align-items:flex-start;
-  }
-  .form-error{color:#C0392B;font-size:12px;margin:-4px 0 10px;display:none}
-  .cart-total-row{display:flex;justify-content:space-between;margin-bottom:16px}
-  .cart-total-row span:first-child{font-size:15px;color:var(--text-muted)}
-  .cart-total-row span:last-child{font-size:20px;font-weight:700;color:var(--brown-dark)}
-  .checkout-btn{width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;padding:14px;border-radius:50px;font-size:15px;font-weight:600;font-family:'DM Sans',sans-serif;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px}
-  .checkout-btn:hover{background:#1ebe5d}
-  .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:250;opacity:0;pointer-events:none;transition:opacity .3s}
-  .cart-overlay.show{opacity:1;pointer-events:all}
-  /* ── SCROLL ANIMATION ── */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
-  .reveal.visible{opacity:1;transform:translateY(0)}
+/* CHECKOUT MODAL */
+.co-modal-wrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;padding:16px}
+.co-modal-wrap.open{display:flex}
+.co-modal{background:#fff;border-radius:20px;padding:28px 24px;max-width:420px;width:100%;max-height:92vh;overflow-y:auto;position:relative}
+.co-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-muted);line-height:1}
+.co-modal h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--brown-dark);margin-bottom:4px}
+.co-modal-sub{font-size:13px;color:var(--text-muted);margin-bottom:20px}
+.co-field{margin-bottom:13px}
+.co-field label{display:block;font-size:12px;font-weight:600;color:var(--brown-dark);margin-bottom:5px}
+.co-field input,.co-field textarea{width:100%;border:1.5px solid var(--border);border-radius:10px;padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:var(--cream);outline:none;transition:border-color .2s}
+.co-field input:focus,.co-field textarea:focus{border-color:var(--honey)}
+.co-field input.err{border-color:#C0392B}
+.co-err{font-size:11px;color:#C0392B;margin-top:3px;display:none}
+.co-err.show{display:block}
+.co-field textarea{resize:vertical;min-height:64px}
+.co-summary{background:var(--honey-pale);border-radius:12px;padding:13px 15px;margin:16px 0;font-size:13px}
+.co-summary-title{font-weight:700;color:var(--honey);margin-bottom:8px}
+.co-summary-row{display:flex;justify-content:space-between;color:var(--text-muted);margin-bottom:4px}
+.co-summary-total{display:flex;justify-content:space-between;font-weight:700;color:var(--brown-dark);padding-top:8px;border-top:1px solid var(--border);margin-top:6px}
+.co-delivery-note{background:var(--green-pale);border:1px solid rgba(59,110,42,.2);border-radius:10px;padding:10px 13px;font-size:12px;color:var(--green-fresh);line-height:1.6;margin-bottom:16px}
+.co-send-btn{width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;padding:14px;border-radius:50px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .2s}
+.co-send-btn:hover{background:#1ebe5d}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 </style>
-
 </head>
 <body>
 
 <!-- NAV -->
-
 <nav>
   <a href="index.html" class="nav-logo">
     <img src="images/logo.png" alt="Akkis Healthy Baking logo" onerror="this.style.display='none'">
@@ -440,7 +280,6 @@
 </nav>
 
 <!-- HERO -->
-
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
@@ -472,31 +311,20 @@
 </section>
 
 <!-- MARQUEE -->
-
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span class="marquee-item">No Maida</span>
-    <span class="marquee-item">No Refined Sugar</span>
-    <span class="marquee-item">Ragi &amp; Whole Wheat</span>
-    <span class="marquee-item">Jaggery Sweetened</span>
-    <span class="marquee-item">Freshly Baked Daily</span>
-    <span class="marquee-item">Home Delivery Available</span>
-    <span class="marquee-item">100% Vegetarian</span>
-    <span class="marquee-item">Custom Cakes</span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item">No Maida</span>
-    <span class="marquee-item">No Refined Sugar</span>
-    <span class="marquee-item">Ragi &amp; Whole Wheat</span>
-    <span class="marquee-item">Jaggery Sweetened</span>
-    <span class="marquee-item">Freshly Baked Daily</span>
-    <span class="marquee-item">Home Delivery Available</span>
-    <span class="marquee-item">100% Vegetarian</span>
-    <span class="marquee-item">Custom Cakes</span>
+    <span class="marquee-item">No Maida</span><span class="marquee-item">No Refined Sugar</span>
+    <span class="marquee-item">Ragi &amp; Whole Wheat</span><span class="marquee-item">Jaggery Sweetened</span>
+    <span class="marquee-item">Freshly Baked Daily</span><span class="marquee-item">Home Delivery Available</span>
+    <span class="marquee-item">100% Vegetarian</span><span class="marquee-item">Custom Cakes</span>
+    <span class="marquee-item">No Maida</span><span class="marquee-item">No Refined Sugar</span>
+    <span class="marquee-item">Ragi &amp; Whole Wheat</span><span class="marquee-item">Jaggery Sweetened</span>
+    <span class="marquee-item">Freshly Baked Daily</span><span class="marquee-item">Home Delivery Available</span>
+    <span class="marquee-item">100% Vegetarian</span><span class="marquee-item">Custom Cakes</span>
   </div>
 </div>
 
 <!-- WHY US -->
-
 <section class="why-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
@@ -505,32 +333,15 @@
       <p class="section-sub">Every ingredient is chosen for taste and nourishment. No shortcuts, no compromise.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-card-icon">🌾</div>
-        <h3>Whole Grain Flours</h3>
-        <p>We use whole wheat and ragi (finger millet) instead of refined maida — keeping fibre, minerals, and flavour intact.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-card-icon">🍯</div>
-        <h3>Natural Sweeteners</h3>
-        <p>Jaggery and organic honey replace refined sugar, adding iron and a warm, earthy sweetness to every bite.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-card-icon">🥭</div>
-        <h3>Real, Seasonal Fruits</h3>
-        <p>Alphonso mangoes, fresh bananas, and handpicked berries go in whole — no extracts, no artificial flavours.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-card-icon">👩‍🍳</div>
-        <h3>Freshly Baked Daily</h3>
-        <p>No preservatives means everything is baked fresh each morning. What you taste is what was made today.</p>
-      </div>
+      <div class="why-card reveal"><div class="why-card-icon">🌾</div><h3>Whole Grain Flours</h3><p>We use whole wheat and ragi (finger millet) instead of refined maida — keeping fibre, minerals, and flavour intact.</p></div>
+      <div class="why-card reveal"><div class="why-card-icon">🍯</div><h3>Natural Sweeteners</h3><p>Jaggery and organic honey replace refined sugar, adding iron and a warm, earthy sweetness to every bite.</p></div>
+      <div class="why-card reveal"><div class="why-card-icon">🥭</div><h3>Real, Seasonal Fruits</h3><p>Alphonso mangoes, fresh bananas, and handpicked berries go in whole — no extracts, no artificial flavours.</p></div>
+      <div class="why-card reveal"><div class="why-card-icon">👩‍🍳</div><h3>Freshly Baked Daily</h3><p>No preservatives means everything is baked fresh each morning. What you taste is what was made today.</p></div>
     </div>
   </div>
 </section>
 
 <!-- FEATURED PRODUCTS -->
-
 <section class="products-bg">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -540,10 +351,7 @@
     </div>
     <div class="products-grid">
       <div class="product-card reveal">
-        <div class="product-img">
-             <img src="images/ragi-dark-chocolate-truffles-cake.webp"
-         alt="Ragi Dutch Truffles Cake">
-        </div>
+        <div class="product-img"><img src="images/ragi-dark-chocolate-truffles-cake.webp" alt="Ragi Dutch Truffles Cake"></div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
           <div class="product-name">Ragi Dutch Truffles Cake</div>
@@ -555,10 +363,7 @@
         </div>
       </div>
       <div class="product-card reveal">
-        <div class="product-img">
-            <img src="images/pineapple-cream-cake.webp"
-         alt="Pineapple cream Cake">
-        </div>
+        <div class="product-img"><img src="images/pineapple-cream-cake.webp" alt="Pineapple Cream Cake"></div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
           <div class="product-name">Pineapple Cream Cake</div>
@@ -570,10 +375,7 @@
         </div>
       </div>
       <div class="product-card reveal">
-        <div class="product-img">
-            <img src="images/blueberry-cream-cake.webp"
-         alt="Blueberry cream cake">
-        </div>
+        <div class="product-img"><img src="images/blueberry-cream-cake.webp" alt="Blueberry Cream Cake"></div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
           <div class="product-name">Blueberry Cream Cake</div>
@@ -585,10 +387,7 @@
         </div>
       </div>
       <div class="product-card reveal">
-        <div class="product-img">
-            <img src="images/hot-choco-lava.webp"
-         alt="Hot Choco Lava Cake">
-        </div>
+        <div class="product-img"><img src="images/hot-choco-lava.webp" alt="Hot Choco Lava"></div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
           <div class="product-name">Hot Choco Lava</div>
@@ -607,7 +406,6 @@
 </section>
 
 <!-- LOAF HIGHLIGHT -->
-
 <section class="loaf-section">
   <div class="section-inner">
     <div class="loaf-inner">
@@ -618,41 +416,27 @@
         <p class="section-tag">New &amp; Exclusive</p>
         <h2 class="section-title">Wholesome Loaves,<br><em>Nothing to Regret</em></h2>
         <div class="loaf-tag-list">
-          <span class="tag">Wheat</span>
-          <span class="tag">Ragi</span>
-          <span class="tag">Oats</span>
-          <span class="tag">Jaggery & Honey</span>
-            <span class="tag">NoMaida NoSugar</span>
+          <span class="tag">Wheat</span><span class="tag">Ragi</span>
+          <span class="tag">Oats</span><span class="tag">Jaggery &amp; Honey</span>
+          <span class="tag">NoMaida NoSugar</span>
         </div>
         <p style="color:var(--text-muted);font-size:15px;line-height:1.7">Our signature loaves use Alphonso mangoes with pistachios, or ripe bananas with walnuts — baked in whole wheat and ragi with jaggery sweetness.</p>
         <div class="loaf-features">
           <div class="loaf-feat-row">
             <div class="loaf-feat"><div class="feat-check"></div> Hearty Ragi Banana Walnut Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Ragi Banana Walnut Loaf" onclick="addToCart(this)">Add</button>
-            </div>
+            <div class="loaf-feat-right"><span class="loaf-price">₹350</span><button class="product-add small" data-product="Ragi Banana Walnut Loaf" onclick="addToCart(this)">Add</button></div>
           </div>
           <div class="loaf-feat-row">
             <div class="loaf-feat"><div class="feat-check"></div> Sweet Wheat Mango Pistachio Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Wheat Mango Pistachio Loaf" onclick="addToCart(this)">Add</button>
-            </div>
+            <div class="loaf-feat-right"><span class="loaf-price">₹350</span><button class="product-add small" data-product="Wheat Mango Pistachio Loaf" onclick="addToCart(this)">Add</button></div>
           </div>
           <div class="loaf-feat-row">
             <div class="loaf-feat"><div class="feat-check"></div> Wheat Oats Carrot Honey Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Wheat Oats Carrot Honey Loaf" onclick="addToCart(this)">Add</button>
-            </div>
+            <div class="loaf-feat-right"><span class="loaf-price">₹350</span><button class="product-add small" data-product="Wheat Oats Carrot Honey Loaf" onclick="addToCart(this)">Add</button></div>
           </div>
           <div class="loaf-feat-row">
             <div class="loaf-feat"><div class="feat-check"></div> Wheat Rawa Mawa Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Wheat Rawa Mawa Loaf" onclick="addToCart(this)">Add</button>
-            </div>
+            <div class="loaf-feat-right"><span class="loaf-price">₹350</span><button class="product-add small" data-product="Wheat Rawa Mawa Loaf" onclick="addToCart(this)">Add</button></div>
           </div>
           <div class="loaf-feat"><div class="feat-check"></div> Freshly baked on order</div>
         </div>
@@ -663,7 +447,6 @@
 </section>
 
 <!-- TESTIMONIALS -->
-
 <section class="testimonials-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
@@ -671,57 +454,25 @@
       <h2 class="section-title">People love what they taste</h2>
     </div>
     <div class="test-grid">
-      <div class="test-card reveal">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"Finally a bakery where I can enjoy cake without worrying about maida or sugar. The Ragi Chocolate Cake is incredible — my kids devoured it!"</p>
-        <div class="test-author">
-          <div class="test-avatar">P</div>
-          <div><div class="test-name">Priya Sharma</div><div class="test-loc">Hinjawadi, Pune</div></div>
-        </div>
-      </div>
-      <div class="test-card reveal">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"Ordered a custom birthday cake for my daughter — she wanted Harry Potter theme and Akki nailed it perfectly. Tasted amazing and healthy too!"</p>
-        <div class="test-author">
-          <div class="test-avatar">R</div>
-          <div><div class="test-name">Rahul Desai</div><div class="test-loc">Wakad, Pune</div></div>
-        </div>
-      </div>
-      <div class="test-card reveal">
-        <div class="test-stars">★★★★★</div>
-        <p class="test-text">"The Mango Pistachio loaf is my weekend favourite. Knowing it's made with Alphonso mangoes and jaggery makes every slice guilt-free joy."</p>
-        <div class="test-author">
-          <div class="test-avatar">S</div>
-          <div><div class="test-name">Snehal Kulkarni</div><div class="test-loc">Marunji, Pune</div></div>
-        </div>
-      </div>
+      <div class="test-card reveal"><div class="test-stars">★★★★★</div><p class="test-text">"Finally a bakery where I can enjoy cake without worrying about maida or sugar. The Ragi Chocolate Cake is incredible — my kids devoured it!"</p><div class="test-author"><div class="test-avatar">P</div><div><div class="test-name">Priya Sharma</div><div class="test-loc">Hinjawadi, Pune</div></div></div></div>
+      <div class="test-card reveal"><div class="test-stars">★★★★★</div><p class="test-text">"Ordered a custom birthday cake for my daughter — she wanted Harry Potter theme and Akki nailed it perfectly. Tasted amazing and healthy too!"</p><div class="test-author"><div class="test-avatar">R</div><div><div class="test-name">Rahul Desai</div><div class="test-loc">Wakad, Pune</div></div></div></div>
+      <div class="test-card reveal"><div class="test-stars">★★★★★</div><p class="test-text">"The Mango Pistachio loaf is my weekend favourite. Knowing it's made with Alphonso mangoes and jaggery makes every slice guilt-free joy."</p><div class="test-author"><div class="test-avatar">S</div><div><div class="test-name">Snehal Kulkarni</div><div class="test-loc">Marunji, Pune</div></div></div></div>
     </div>
   </div>
 </section>
 
 <!-- GALLERY STRIP -->
-
 <section class="gallery-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
       <p class="section-tag">Gallery</p>
       <h2 class="section-title">Made with love, looks it too</h2>
     </div>
-   <div class="gallery-grid reveal">
-
-  <div class="gallery-item">
-    <img src="images/Cake.webp" alt="Healthy Cake">
-  </div>
-
-  <div class="gallery-item">
-    <img src="images/bento-cake.webp" alt="Healthy Brownies">
-  </div>
-
-  <div class="gallery-item">
-    <img src="images/banana-bread.webp" alt="Healthy Cookies">
-  </div>
-
-</div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><img src="images/Cake.webp" alt="Healthy Cake"></div>
+      <div class="gallery-item"><img src="images/bento-cake.webp" alt="Bento Cake"></div>
+      <div class="gallery-item"><img src="images/banana-bread.webp" alt="Banana Bread"></div>
+    </div>
     <div class="view-all-wrap reveal" style="margin-top:28px">
       <a href="gallery.html" class="btn-outline">See Full Gallery</a>
     </div>
@@ -729,7 +480,6 @@
 </section>
 
 <!-- BLOG -->
-
 <section class="blog-bg">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -738,36 +488,14 @@
       <p class="section-sub">Simple reads on healthy baking, millets, and mindful eating.</p>
     </div>
     <div class="blog-grid">
-      <div class="blog-card reveal">
-        <div class="blog-card-body">
-          <span class="blog-tag">Millets</span>
-          <h3>Why Ragi (Finger Millet) is a Superfood for Your Family</h3>
-          <p>Ragi is rich in calcium, iron, and essential amino acids — making it perfect for kids, elders, and everyone in between.</p>
-          <a href="blog.html" class="blog-read">Read more →</a>
-        </div>
-      </div>
-      <div class="blog-card reveal">
-        <div class="blog-card-body">
-          <span class="blog-tag">Sweeteners</span>
-          <h3>Jaggery vs Sugar: What Really Happens Inside Your Body</h3>
-          <p>Refined sugar spikes blood glucose fast. Jaggery is absorbed slowly, supplies minerals, and tastes richer too.</p>
-          <a href="blog.html" class="blog-read">Read more →</a>
-        </div>
-      </div>
-      <div class="blog-card reveal">
-        <div class="blog-card-body">
-          <span class="blog-tag">Baking Tips</span>
-          <h3>How to Make Whole Wheat Cakes Soft — Our Secret Techniques</h3>
-          <p>Whole wheat can feel dense if not handled right. We share the method that keeps every loaf light and moist.</p>
-          <a href="blog.html" class="blog-read">Read more →</a>
-        </div>
-      </div>
+      <div class="blog-card reveal"><div class="blog-card-body"><span class="blog-tag">Millets</span><h3>Why Ragi (Finger Millet) is a Superfood for Your Family</h3><p>Ragi is rich in calcium, iron, and essential amino acids — making it perfect for kids, elders, and everyone in between.</p><a href="blog.html" class="blog-read">Read more →</a></div></div>
+      <div class="blog-card reveal"><div class="blog-card-body"><span class="blog-tag">Sweeteners</span><h3>Jaggery vs Sugar: What Really Happens Inside Your Body</h3><p>Refined sugar spikes blood glucose fast. Jaggery is absorbed slowly, supplies minerals, and tastes richer too.</p><a href="blog.html" class="blog-read">Read more →</a></div></div>
+      <div class="blog-card reveal"><div class="blog-card-body"><span class="blog-tag">Baking Tips</span><h3>How to Make Whole Wheat Cakes Soft — Our Secret Techniques</h3><p>Whole wheat can feel dense if not handled right. We share the method that keeps every loaf light and moist.</p><a href="blog.html" class="blog-read">Read more →</a></div></div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT STRIP -->
-
 <div class="contact-strip">
   <div class="contact-inner">
     <div class="contact-text">
@@ -782,57 +510,29 @@
 </div>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">
-          <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
-          <span class="footer-logo-text">Akkis Healthy Baking</span>
-        </div>
+        <div class="footer-logo"><img src="images/logo.png" alt="logo" onerror="this.style.display='none'"><span class="footer-logo-text">Akkis Healthy Baking</span></div>
         <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
       </div>
-      <div>
-        <h4>Pages</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="menu.html">Menu</a></li>
-          <li><a href="products.html">Products</a></li>
-          <li><a href="custom-cake.html">Custom Cakes</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>More</h4>
-        <ul>
-          <li><a href="blog.html">Blog / Health Tips</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Visit Us</h4>
-        <ul>
-          <li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Bhanuse Wasti, Marunji Rd, Hinjawadi Phase II, Pune 411057</a></li>
-          <li><a href="tel:+917795076412">+91 77950 76412</a></li>
-          <li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li>
-        </ul>
-      </div>
+      <div><h4>Pages</h4><ul><li><a href="about.html">About Us</a></li><li><a href="menu.html">Menu</a></li><li><a href="products.html">Products</a></li><li><a href="custom-cake.html">Custom Cakes</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+      <div><h4>More</h4><ul><li><a href="blog.html">Blog / Health Tips</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+      <div><h4>Visit Us</h4><ul><li><a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank">Bhanuse Wasti, Marunji Rd, Hinjawadi Phase II, Pune 411057</a></li><li><a href="tel:+917795076412">+91 77950 76412</a></li><li><a href="https://www.instagram.com/akkis.healthy.baking" target="_blank">@akkis.healthy.baking</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <p>© 2025 Akkis Healthy Baking. All rights reserved.</p>
       <div class="footer-social">
-        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link" aria-label="Instagram">📸</a>
-        <a href="https://wa.me/917795076412" target="_blank" class="social-link" aria-label="WhatsApp">💬</a>
-        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-link" aria-label="Map">📍</a>
+        <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link">📸</a>
+        <a href="https://wa.me/917795076412" target="_blank" class="social-link">💬</a>
+        <a href="https://maps.app.goo.gl/Lsqre9ApSAATwPhP6" target="_blank" class="social-link">📍</a>
       </div>
     </div>
   </div>
 </footer>
 
 <!-- CART FAB -->
-
 <button class="cart-fab" onclick="toggleCart()" aria-label="Cart">
   🛒<span class="cart-badge" id="homeBadge">0</span>
 </button>
@@ -846,158 +546,229 @@
     <div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>
   </div>
   <div class="cart-foot" id="homeCartFoot" style="display:none">
-    <div class="cart-form-title">Delivery Details</div>
-    <input type="text" class="cart-input" id="cfName" placeholder="Full Name">
-    <input type="tel" class="cart-input" id="cfPhone" placeholder="Phone Number" maxlength="10">
-    <textarea class="cart-input textarea" id="cfAddress" placeholder="Address (House No, Street, Area)"></textarea>
-    <input type="text" class="cart-input" id="cfLandmark" placeholder="Landmark (optional)">
-    <div class="form-error" id="cfError">Please fill in your Name, Phone and Address to continue.</div>
-    <hr class="cart-divider">
-    <div class="delivery-note">🚚 <span>First <strong>2 km</strong> delivery is <strong>FREE</strong>. Beyond 2 km, Porter delivery charges apply and are shared <strong>50:50</strong> between you and us — we'll confirm the exact amount on WhatsApp.</span></div>
     <div class="cart-total-row"><span>Item Total</span><span id="homeTotal">₹0</span></div>
-    <button class="checkout-btn" onclick="homeCheckout()">💬 Place Order on WhatsApp</button>
+    <button class="checkout-btn" onclick="openCheckoutModal()">📦 Proceed to Order</button>
+  </div>
+</div>
+
+<!-- CHECKOUT POPUP MODAL -->
+<div class="co-modal-wrap" id="coModalWrap">
+  <div class="co-modal">
+    <button class="co-modal-close" onclick="closeCheckoutModal()">✕</button>
+    <div style="font-size:28px;margin-bottom:8px">📦</div>
+    <h3>Almost done!</h3>
+    <p class="co-modal-sub">Enter your details — your order will go directly on WhatsApp</p>
+
+    <div class="co-field">
+      <label>Your Name <span style="color:#C0392B">*</span></label>
+      <input type="text" id="coName" placeholder="Full name">
+      <div class="co-err" id="err-coName">Please enter your name</div>
+    </div>
+    <div class="co-field">
+      <label>WhatsApp Number <span style="color:#C0392B">*</span></label>
+      <input type="tel" id="coPhone" placeholder="+91 9876543210">
+      <div class="co-err" id="err-coPhone">Please enter your phone number</div>
+    </div>
+    <div class="co-field">
+      <label>Delivery Address <span style="color:#C0392B">*</span></label>
+      <textarea id="coAddress" placeholder="Flat No, Building, Area, Pune — Pincode"></textarea>
+      <div class="co-err" id="err-coAddress">Please enter your delivery address</div>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div class="co-summary">
+      <div class="co-summary-title">Order Summary</div>
+      <div id="coItems"></div>
+      <div class="co-summary-total"><span>Item Total</span><span id="coTotal">₹0</span></div>
+    </div>
+
+    <!-- DELIVERY NOTE -->
+    <div class="co-delivery-note">
+      🚚 <strong>Delivery:</strong> First 2 km is <strong>FREE</strong>. Beyond 2 km, Porter delivery charges apply — shared <strong>50:50</strong> between you and us. Exact amount will be confirmed on WhatsApp before delivery.
+    </div>
+
+    <button class="co-send-btn" onclick="sendOrderWhatsApp()">
+      <span style="font-size:18px">💬</span> Send Order via WhatsApp
+    </button>
   </div>
 </div>
 
 <script>
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}
-  });
-},{threshold:0.1});
-reveals.forEach(el=>observer.observe(el));
-
-// ── HOME PAGE CART ──
-// All products on this page (Featured Products + Loaf section) live here.
+// ── PRODUCTS ──
 const HOME_PRODUCTS = {
-  'Ragi Dutch Truffles Cake':        {emoji:'🍫', price:899},
-  'Pineapple Cream Cake':            {emoji:'🍍', price:749},
-  'Blueberry Cream Cake':            {emoji:'🫐', price:749},
-  'Hot Choco Lava':                  {emoji:'🌋', price:110},
-  'Ragi Banana Walnut Loaf':         {emoji:'🍌', price:350},
-  'Wheat Mango Pistachio Loaf':      {emoji:'🥭', price:350},
-  'Wheat Oats Carrot Honey Loaf':    {emoji:'🥕', price:350},
-  'Wheat Rawa Mawa Loaf':            {emoji:'🍞', price:350},
+  'Ragi Dutch Truffles Cake':     {emoji:'🍫', price:899},
+  'Pineapple Cream Cake':         {emoji:'🍍', price:749},
+  'Blueberry Cream Cake':         {emoji:'🫐', price:749},
+  'Hot Choco Lava':               {emoji:'🌋', price:110},
+  'Ragi Banana Walnut Loaf':      {emoji:'🍌', price:350},
+  'Wheat Mango Pistachio Loaf':   {emoji:'🥭', price:350},
+  'Wheat Oats Carrot Honey Loaf': {emoji:'🥕', price:350},
+  'Wheat Rawa Mawa Loaf':         {emoji:'🍞', price:350},
 };
 let homeCart = {};
 
-function addToCart(btn){
+// ── ADD TO CART ──
+function addToCart(btn) {
   const name = btn.dataset.product;
   const p = HOME_PRODUCTS[name];
-  if(!p) return;
+  if (!p) return;
   homeCart[name] = homeCart[name]
-    ? {...homeCart[name], qty: homeCart[name].qty+1}
-    : {...p, name, qty:1};
-  updateProductButtons(name);
+    ? { ...homeCart[name], qty: homeCart[name].qty + 1 }
+    : { ...p, name, qty: 1 };
+  updateAllButtons(name);
   renderHomeCart();
 }
 
-function updateProductButtons(name){
-  document.querySelectorAll(`[data-product]`).forEach(btn=>{
-    if(btn.dataset.product !== name) return;
+function updateAllButtons(name) {
+  document.querySelectorAll(`[data-product]`).forEach(btn => {
+    if (btn.dataset.product !== name) return;
     const inCart = homeCart[name];
-    if(inCart){
-      btn.textContent = btn.classList.contains('small') ? `Added (${inCart.qty})` : `In Cart (${inCart.qty})`;
+    const isSmall = btn.classList.contains('small');
+    if (inCart) {
+      btn.textContent = isSmall ? `Added (${inCart.qty})` : `In Cart (${inCart.qty})`;
       btn.style.background = '#3B6E2A';
     } else {
-      btn.textContent = btn.classList.contains('small') ? 'Add' : 'Add to Cart';
+      btn.textContent = isSmall ? 'Add' : 'Add to Cart';
       btn.style.background = '';
     }
   });
 }
 
-function renderHomeCart(){
-  const keys = Object.keys(homeCart);
-  const count = keys.reduce((s,k)=>s+homeCart[k].qty,0);
-  const total = keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
+// ── RENDER CART ──
+function renderHomeCart() {
+  const keys  = Object.keys(homeCart);
+  const count = keys.reduce((s,k) => s + homeCart[k].qty, 0);
+  const total = keys.reduce((s,k) => s + homeCart[k].price * homeCart[k].qty, 0);
+
   const badge = document.getElementById('homeBadge');
-  if(count>0){badge.textContent=count;badge.style.display='flex';}
-  else{badge.style.display='none';}
+  badge.textContent = count;
+  badge.style.display = count > 0 ? 'flex' : 'none';
+
   const foot = document.getElementById('homeCartFoot');
   const body = document.getElementById('homeCartBody');
-  document.getElementById('homeTotal').textContent = '₹'+total.toLocaleString('en-IN');
-  if(!keys.length){
-    body.innerHTML='<div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>';
-    foot.style.display='none'; return;
+  document.getElementById('homeTotal').textContent = '₹' + total.toLocaleString('en-IN');
+
+  if (!keys.length) {
+    body.innerHTML = '<div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>';
+    foot.style.display = 'none';
+    return;
   }
-  foot.style.display='block';
-  body.innerHTML = keys.map(k=>{
-    const i=homeCart[k];
+
+  foot.style.display = 'block';
+  body.innerHTML = keys.map(k => {
+    const i = homeCart[k];
+    const esc = k.replace(/'/g, "\\'");
     return `<div class="cart-item">
       <div class="ci-emoji">${i.emoji}</div>
       <div class="ci-info">
         <div class="ci-name">${i.name}</div>
-        <div class="ci-price">₹${(i.price*i.qty).toLocaleString('en-IN')}</div>
+        <div class="ci-price">₹${(i.price * i.qty).toLocaleString('en-IN')}</div>
       </div>
       <div class="qty-wrap">
-        <button class="qbtn" onclick="homeQty('${k.replace(/'/g,"\\'")}',-1)">−</button>
+        <button class="qbtn" onclick="homeQty('${esc}',-1)">−</button>
         <span class="qnum">${i.qty}</span>
-        <button class="qbtn" onclick="homeQty('${k.replace(/'/g,"\\'")}',1)">+</button>
+        <button class="qbtn" onclick="homeQty('${esc}',1)">+</button>
       </div>
     </div>`;
   }).join('');
 }
 
-function homeQty(name,delta){
-  if(!homeCart[name]) return;
-  homeCart[name].qty+=delta;
-  if(homeCart[name].qty<=0){
-    delete homeCart[name];
-  }
-  updateProductButtons(name);
+function homeQty(name, delta) {
+  if (!homeCart[name]) return;
+  homeCart[name].qty += delta;
+  if (homeCart[name].qty <= 0) delete homeCart[name];
+  updateAllButtons(name);
   renderHomeCart();
 }
 
-function toggleCart(){
+function toggleCart() {
   document.getElementById('homeCartPanel').classList.toggle('open');
   document.getElementById('homeOverlay').classList.toggle('show');
 }
 
-function homeCheckout(){
-  const keys=Object.keys(homeCart);
-  if(!keys.length) return;
+// ── CHECKOUT MODAL ──
+function openCheckoutModal() {
+  const keys  = Object.keys(homeCart);
+  if (!keys.length) return;
+  const total = keys.reduce((s,k) => s + homeCart[k].price * homeCart[k].qty, 0);
 
-  const name = document.getElementById('cfName').value.trim();
-  const phone = document.getElementById('cfPhone').value.trim();
-  const address = document.getElementById('cfAddress').value.trim();
-  const landmark = document.getElementById('cfLandmark').value.trim();
-  const errorEl = document.getElementById('cfError');
+  // Fill summary
+  document.getElementById('coItems').innerHTML = keys.map(k => {
+    const i = homeCart[k];
+    return `<div class="co-summary-row"><span>${i.name} x${i.qty}</span><span>₹${(i.price*i.qty).toLocaleString('en-IN')}</span></div>`;
+  }).join('');
+  document.getElementById('coTotal').textContent = '₹' + total.toLocaleString('en-IN');
 
-  if(!name || !phone || !address){
-    errorEl.style.display='block';
-    if(!name) document.getElementById('cfName').focus();
-    else if(!phone) document.getElementById('cfPhone').focus();
-    else document.getElementById('cfAddress').focus();
-    return;
-  }
-  errorEl.style.display='none';
-
-  const total=keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
-
-  let msg = `Hello Akkis Healthy Baking! I'd like to place an order:\n\n`;
-  msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}`;
-  if(landmark) msg += `\n*Landmark:* ${landmark}`;
-  msg += `\n\n*Order Details:*\n`;
-  keys.forEach(k=>{
-    const i=homeCart[k];
-    msg += `• ${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString('en-IN')}\n`;
-  });
-  msg += `\n*Item Total:* ₹${total.toLocaleString('en-IN')}`;
-  msg += `\n\nNote: First 2 km delivery is FREE. Beyond 2 km, Porter delivery charges will apply and will be shared 50:50 between me and the shop.`;
-  msg += `\n\nPlease confirm availability and delivery. Thank you! 🙏`;
-
-  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(msg)}`,'_blank');
+  document.getElementById('coModalWrap').classList.add('open');
+  // Close cart panel
+  document.getElementById('homeCartPanel').classList.remove('open');
+  document.getElementById('homeOverlay').classList.remove('show');
 }
 
-// Mobile hamburger (basic toggle)
-document.querySelector('.nav-hamburger').addEventListener('click',function(){
+function closeCheckoutModal() {
+  document.getElementById('coModalWrap').classList.remove('open');
+}
+
+// Close modal on background click
+document.getElementById('coModalWrap').addEventListener('click', function(e) {
+  if (e.target === this) closeCheckoutModal();
+});
+
+// ── SEND ORDER ──
+function sendOrderWhatsApp() {
+  const name    = document.getElementById('coName').value.trim();
+  const phone   = document.getElementById('coPhone').value.trim();
+  const address = document.getElementById('coAddress').value.trim();
+
+  // Validate
+  let ok = true;
+  [['coName','err-coName'], ['coPhone','err-coPhone'], ['coAddress','err-coAddress']].forEach(([id, errId]) => {
+    const el  = document.getElementById(id);
+    const err = document.getElementById(errId);
+    if (!el.value.trim()) { el.classList.add('err'); err.classList.add('show'); ok = false; }
+    else                   { el.classList.remove('err'); err.classList.remove('show'); }
+  });
+  if (!ok) return;
+
+  const keys  = Object.keys(homeCart);
+  const total = keys.reduce((s,k) => s + homeCart[k].price * homeCart[k].qty, 0);
+
+  let msg = `Hello Akkis Healthy Baking! New Order\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n\n`;
+  msg += `CUSTOMER DETAILS\n`;
+  msg += `Name: ${name}\n`;
+  msg += `Phone: ${phone}\n`;
+  msg += `Address: ${address}\n\n`;
+  msg += `ORDER ITEMS\n`;
+  keys.forEach(k => {
+    const i = homeCart[k];
+    msg += `• ${i.name} x${i.qty} — ₹${(i.price * i.qty).toLocaleString('en-IN')}\n`;
+  });
+  msg += `\nItem Total: ₹${total.toLocaleString('en-IN')}\n\n`;
+  msg += `DELIVERY NOTE\n`;
+  msg += `First 2 km is FREE. Beyond 2 km, Porter charges apply (shared 50:50). Please confirm delivery charges on WhatsApp.\n\n`;
+  msg += `━━━━━━━━━━━━━━━━━━\n`;
+  msg += `Please confirm availability. Thank you! 🙏`;
+
+  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(msg)}`, '_blank');
+  closeCheckoutModal();
+}
+
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// ── HAMBURGER ──
+document.querySelector('.nav-hamburger').addEventListener('click', function() {
   const nav = document.querySelector('.nav-links');
-  if(nav.style.display==='flex'){nav.style.display='none'}
-  else{nav.style.cssText='display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99'}
+  if (nav.style.display === 'flex') { nav.style.display = 'none'; }
+  else { nav.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99'; }
 });
 </script>
-
 </body>
 </html>
