@@ -3,19 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akki's Healthy Baking – Guilt-Free Goodness | Hinjawadi Pune</title>
-<meta name="title" content="Akkis Healthy Baking – No Maida No Sugar Cakes in Hinjawadi Pune">
-<meta name="description" content="Akkis Healthy Baking offers guilt-free cakes, pastries, loaves and desserts made with whole wheat, ragi and jaggery. No maida, no refined sugar. Home delivery in Hinjawadi, Wakad, Baner, Pune.">
-<meta name="keywords" content="healthy bakery pune, no maida cake pune, eggless cake hinjawadi, ragi cake pune, jaggery cake, healthy birthday cake pune">
-<meta property="og:title" content="Akkis Healthy Baking – Guilt-Free Goodness">
-<meta property="og:description" content="No maida, no refined sugar. Fresh cakes, loaves and desserts baked daily in Hinjawadi, Pune.">
-<meta property="og:image" content="images/cake_loaf.webp">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.akkishealthybaking.com/index.html">
-
+<title>Akki's Healthy Baking – Guilt-Free Goodness</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap"></noscript>
 
 
@@ -178,31 +169,6 @@
   .why-card p{font-size:14px;color:var(--text-muted);line-height:1.65}
 
   /* ── FEATURED PRODUCTS ── */
-
-    .product-img{
-    width:100%;
-    height:300px;
-    overflow:hidden;
-    border-radius:20px 20px 0 0;
-    background:#fff8ef;
-}
-
-.product-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    transition:0.4s;
-}
-
-.product-card:hover .product-img img{
-    transform:scale(1.05);
-}
-
-
-
-
-    
   .products-bg{background:var(--cream)}
   .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px}
   .product-card{
@@ -233,7 +199,6 @@
     transition:background .2s,transform .15s;
   }
   .product-add:hover{background:var(--brown-mid);transform:scale(1.05)}
-  .product-add.small{padding:6px 14px;font-size:12px;white-space:nowrap}
   .view-all-wrap{text-align:center;margin-top:44px}
 
   /* ── LOAF HIGHLIGHT ── */
@@ -242,12 +207,8 @@
   .loaf-img{width:100%;border-radius:var(--radius-lg);box-shadow:0 16px 48px rgba(59,31,10,0.15)}
   .loaf-tag-list{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
   .tag{background:rgba(212,120,10,0.12);color:var(--honey);padding:5px 12px;border-radius:50px;font-size:12px;font-weight:600}
-  .loaf-features{margin:24px 0;display:flex;flex-direction:column;gap:12px}
+  .loaf-features{margin:24px 0;display:flex;flex-direction:column;gap:10px}
   .loaf-feat{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-muted)}
-  .loaf-feat-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:rgba(255,255,255,0.5);padding:8px 12px;border-radius:12px}
-  .loaf-feat-row .loaf-feat{flex:1;min-width:180px}
-  .loaf-feat-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
-  .loaf-price{font-size:14px;font-weight:700;color:var(--honey);white-space:nowrap}
   .feat-check{width:22px;height:22px;background:var(--green-fresh);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .feat-check::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
 
@@ -365,39 +326,7 @@
   .qbtn{background:var(--honey-pale);border:none;cursor:pointer;width:26px;height:26px;border-radius:50%;font-size:14px;color:var(--brown-dark);font-weight:700;display:flex;align-items:center;justify-content:center;transition:background .15s}
   .qbtn:hover{background:var(--honey);color:#fff}
   .qnum{font-size:14px;font-weight:600;min-width:20px;text-align:center}
-  .cart-foot{padding:18px 24px 22px;border-top:1px solid var(--border);overflow-y:auto;max-height:70vh}
-
-  /* ── Delivery details form inside cart ── */
-  .cart-form-title{font-size:13px;font-weight:700;color:var(--brown-dark);letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px}
-  .cart-input{
-    width:100%;
-    padding:12px 16px;
-    border:1px solid var(--border);
-    border-radius:50px;
-    font-family:'DM Sans',sans-serif;
-    font-size:13px;
-    color:var(--text);
-    background:var(--cream);
-    margin-bottom:10px;
-    outline:none;
-    transition:border-color .2s,background .2s;
-  }
-  .cart-input:focus{border-color:var(--honey);background:#fff}
-  .cart-input.textarea{border-radius:16px;resize:none;min-height:56px;font-family:inherit}
-  .cart-divider{border:none;border-top:1px dashed var(--border);margin:14px 0}
-  .delivery-note{
-    background:var(--green-pale);
-    color:var(--green-fresh);
-    font-size:12px;
-    padding:10px 14px;
-    border-radius:12px;
-    margin-bottom:14px;
-    line-height:1.55;
-    display:flex;
-    gap:8px;
-    align-items:flex-start;
-  }
-  .form-error{color:#C0392B;font-size:12px;margin:-4px 0 10px;display:none}
+  .cart-foot{padding:20px 24px;border-top:1px solid var(--border)}
   .cart-total-row{display:flex;justify-content:space-between;margin-bottom:16px}
   .cart-total-row span:first-child{font-size:15px;color:var(--text-muted)}
   .cart-total-row span:last-child{font-size:20px;font-weight:700;color:var(--brown-dark)}
@@ -409,17 +338,15 @@
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
 </style>
-
 </head>
 <body>
 
 <!-- NAV -->
-
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="images/logo.png" alt="Akkis Healthy Baking logo" onerror="this.style.display='none'">
+    <img src="images/logo.png" alt="Akki's Healthy Baking logo" onerror="this.style.display='none'">
     <div class="nav-logo-text">
-      <span>Akkis Healthy Baking</span>
+      <span>Akki's Healthy Baking</span>
       <span>The Secret is Love</span>
     </div>
   </a>
@@ -440,7 +367,6 @@
 </nav>
 
 <!-- HERO -->
-
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
@@ -458,7 +384,7 @@
       </div>
     </div>
     <div class="hero-visual">
-      <img class="hero-img-main" src="images/store.png" alt="Akkis Healthy Baking store" onerror="this.src='';this.style.background='linear-gradient(135deg,#FEF0D4,#F5D9A8)';this.style.minHeight='360px'">
+      <img class="hero-img-main" src="images/store.jpg" alt="Akki's Healthy Baking store" onerror="this.src='';this.style.background='linear-gradient(135deg,#FEF0D4,#F5D9A8)';this.style.minHeight='360px'">
       <div class="hero-float-card left">
         <div class="float-icon">🎂</div>
         <div class="float-text"><strong>Custom Cakes</strong><span>Made to order</span></div>
@@ -472,7 +398,6 @@
 </section>
 
 <!-- MARQUEE -->
-
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="marquee-item">No Maida</span>
@@ -496,11 +421,10 @@
 </div>
 
 <!-- WHY US -->
-
 <section class="why-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
-      <p class="section-tag">Why Akkis</p>
+      <p class="section-tag">Why Akki's</p>
       <h2 class="section-title">Baking that actually cares about you</h2>
       <p class="section-sub">Every ingredient is chosen for taste and nourishment. No shortcuts, no compromise.</p>
     </div>
@@ -530,7 +454,6 @@
 </section>
 
 <!-- FEATURED PRODUCTS -->
-
 <section class="products-bg">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -539,63 +462,51 @@
       <p class="section-sub">From celebration cakes to healthy snacks — find something for every craving.</p>
     </div>
     <div class="products-grid">
-      <div class="product-card reveal">
-        <div class="product-img">
-             <img src="images/ragi-dark-chocolate-truffles-cake.webp"
-         alt="Ragi Dutch Truffles Cake">
-        </div>
+      <div class="product-card reveal" data-name="Ragi Dark Chocolate Truffles Cake">
+        <div class="product-img">🍫</div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
-          <div class="product-name">Ragi Dutch Truffles Cake</div>
+          <div class="product-name">Ragi Dark Chocolate Truffles Cake</div>
           <div class="product-weight">500 G</div>
           <div class="product-footer">
-            <span class="product-price">₹899</span>
-            <button class="product-add" data-product="Ragi Dutch Truffles Cake" onclick="addToCart(this)">Add to Cart</button>
+            <span class="product-price">₹1,214</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
-      <div class="product-card reveal">
-        <div class="product-img">
-            <img src="images/pineapple-cream-cake.webp"
-         alt="Pineapple cream Cake">
-        </div>
+      <div class="product-card reveal" data-name="Pineapple Cream Cake">
+        <div class="product-img">🍍</div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
           <div class="product-name">Pineapple Cream Cake</div>
           <div class="product-weight">500 G</div>
           <div class="product-footer">
-            <span class="product-price">₹749</span>
-            <button class="product-add" data-product="Pineapple Cream Cake" onclick="addToCart(this)">Add to Cart</button>
+            <span class="product-price">₹1,011</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
-      <div class="product-card reveal">
-        <div class="product-img">
-            <img src="images/blueberry-cream-cake.webp"
-         alt="Blueberry cream cake">
-        </div>
+      <div class="product-card reveal" data-name="Blueberry Cream Cake">
+        <div class="product-img">🫐</div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
           <div class="product-name">Blueberry Cream Cake</div>
           <div class="product-weight">500 G</div>
           <div class="product-footer">
-            <span class="product-price">₹749</span>
-            <button class="product-add" data-product="Blueberry Cream Cake" onclick="addToCart(this)">Add to Cart</button>
+            <span class="product-price">₹1,011</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
-      <div class="product-card reveal">
-        <div class="product-img">
-            <img src="images/hot-choco-lava.webp"
-         alt="Hot Choco Lava Cake">
-        </div>
+      <div class="product-card reveal" data-name="Hot Choco Lava">
+        <div class="product-img">🌋</div>
         <div class="product-info">
           <div class="product-veg"><div class="veg-dot"></div> Vegetarian</div>
           <div class="product-name">Hot Choco Lava</div>
           <div class="product-weight">100 G</div>
           <div class="product-footer">
-            <span class="product-price">₹110</span>
-            <button class="product-add" data-product="Hot Choco Lava" onclick="addToCart(this)">Add to Cart</button>
+            <span class="product-price">₹149</span>
+            <button class="product-add" onclick="addToCart(this)">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -607,12 +518,11 @@
 </section>
 
 <!-- LOAF HIGHLIGHT -->
-
 <section class="loaf-section">
   <div class="section-inner">
     <div class="loaf-inner">
       <div class="reveal">
-        <img class="loaf-img" src="images/store-cakes.webp" alt="Healthy wheat loaf" onerror="this.style.display='none'">
+        <img class="loaf-img" src="images/loaf-product.jpg" alt="Healthy wheat loaf" onerror="this.style.display='none'">
       </div>
       <div class="reveal">
         <p class="section-tag">New &amp; Exclusive</p>
@@ -620,40 +530,13 @@
         <div class="loaf-tag-list">
           <span class="tag">Wheat</span>
           <span class="tag">Ragi</span>
-          <span class="tag">Oats</span>
-          <span class="tag">Jaggery & Honey</span>
-            <span class="tag">NoMaida NoSugar</span>
+          <span class="tag">Jaggery</span>
+          <span class="tag">No Sugar</span>
         </div>
         <p style="color:var(--text-muted);font-size:15px;line-height:1.7">Our signature loaves use Alphonso mangoes with pistachios, or ripe bananas with walnuts — baked in whole wheat and ragi with jaggery sweetness.</p>
         <div class="loaf-features">
-          <div class="loaf-feat-row">
-            <div class="loaf-feat"><div class="feat-check"></div> Hearty Ragi Banana Walnut Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Ragi Banana Walnut Loaf" onclick="addToCart(this)">Add</button>
-            </div>
-          </div>
-          <div class="loaf-feat-row">
-            <div class="loaf-feat"><div class="feat-check"></div> Sweet Wheat Mango Pistachio Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Wheat Mango Pistachio Loaf" onclick="addToCart(this)">Add</button>
-            </div>
-          </div>
-          <div class="loaf-feat-row">
-            <div class="loaf-feat"><div class="feat-check"></div> Wheat Oats Carrot Honey Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Wheat Oats Carrot Honey Loaf" onclick="addToCart(this)">Add</button>
-            </div>
-          </div>
-          <div class="loaf-feat-row">
-            <div class="loaf-feat"><div class="feat-check"></div> Wheat Rawa Mawa Loaf</div>
-            <div class="loaf-feat-right">
-              <span class="loaf-price">₹350</span>
-              <button class="product-add small" data-product="Wheat Rawa Mawa Loaf" onclick="addToCart(this)">Add</button>
-            </div>
-          </div>
+          <div class="loaf-feat"><div class="feat-check"></div> Hearty Ragi Banana Walnut Loaf — ₹404</div>
+          <div class="loaf-feat"><div class="feat-check"></div> Sweet Wheat Mango Pistachio Loaf — ₹404</div>
           <div class="loaf-feat"><div class="feat-check"></div> Freshly baked on order</div>
         </div>
         <a href="products.html" class="btn-primary" style="display:inline-block;margin-top:8px">Order a Loaf</a>
@@ -663,7 +546,6 @@
 </section>
 
 <!-- TESTIMONIALS -->
-
 <section class="testimonials-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
@@ -700,28 +582,17 @@
 </section>
 
 <!-- GALLERY STRIP -->
-
 <section class="gallery-bg">
   <div class="section-inner">
     <div class="section-header center reveal">
       <p class="section-tag">Gallery</p>
       <h2 class="section-title">Made with love, looks it too</h2>
     </div>
-   <div class="gallery-grid reveal">
-
-  <div class="gallery-item">
-    <img src="images/Cake.webp" alt="Healthy Cake">
-  </div>
-
-  <div class="gallery-item">
-    <img src="images/bento-cake.webp" alt="Healthy Brownies">
-  </div>
-
-  <div class="gallery-item">
-    <img src="images/banana-bread.webp" alt="Healthy Cookies">
-  </div>
-
-</div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item"><div style="width:100%;height:100%;background:linear-gradient(135deg,#FEF0D4,#F5D9A8);display:flex;align-items:center;justify-content:center;font-size:50px">🎂</div></div>
+      <div class="gallery-item"><div style="width:100%;height:100%;background:linear-gradient(135deg,#EFF7EA,#C0DD97);display:flex;align-items:center;justify-content:center;font-size:50px">🍰</div></div>
+      <div class="gallery-item"><div style="width:100%;height:100%;background:linear-gradient(135deg,#FEF3E2,#FAC775);display:flex;align-items:center;justify-content:center;font-size:50px">🥧</div></div>
+    </div>
     <div class="view-all-wrap reveal" style="margin-top:28px">
       <a href="gallery.html" class="btn-outline">See Full Gallery</a>
     </div>
@@ -729,7 +600,6 @@
 </section>
 
 <!-- BLOG -->
-
 <section class="blog-bg">
   <div class="section-inner">
     <div class="section-header reveal">
@@ -767,7 +637,6 @@
 </section>
 
 <!-- CONTACT STRIP -->
-
 <div class="contact-strip">
   <div class="contact-inner">
     <div class="contact-text">
@@ -782,14 +651,13 @@
 </div>
 
 <!-- FOOTER -->
-
 <footer>
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">
           <img src="images/logo.png" alt="logo" onerror="this.style.display='none'">
-          <span class="footer-logo-text">Akkis Healthy Baking</span>
+          <span class="footer-logo-text">Akki's Healthy Baking</span>
         </div>
         <p>Guilt-free goodness, baked fresh every day. No maida, no refined sugar — just wholesome ingredients and a whole lot of love.</p>
       </div>
@@ -821,7 +689,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Akkis Healthy Baking. All rights reserved.</p>
+      <p>© 2025 Akki's Healthy Baking. All rights reserved.</p>
       <div class="footer-social">
         <a href="https://www.instagram.com/akkis.healthy.baking" target="_blank" class="social-link" aria-label="Instagram">📸</a>
         <a href="https://wa.me/917795076412" target="_blank" class="social-link" aria-label="WhatsApp">💬</a>
@@ -832,7 +700,6 @@
 </footer>
 
 <!-- CART FAB -->
-
 <button class="cart-fab" onclick="toggleCart()" aria-label="Cart">
   🛒<span class="cart-badge" id="homeBadge">0</span>
 </button>
@@ -846,16 +713,60 @@
     <div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>
   </div>
   <div class="cart-foot" id="homeCartFoot" style="display:none">
-    <div class="cart-form-title">Delivery Details</div>
-    <input type="text" class="cart-input" id="cfName" placeholder="Full Name">
-    <input type="tel" class="cart-input" id="cfPhone" placeholder="Phone Number" maxlength="10">
-    <textarea class="cart-input textarea" id="cfAddress" placeholder="Address (House No, Street, Area)"></textarea>
-    <input type="text" class="cart-input" id="cfLandmark" placeholder="Landmark (optional)">
-    <div class="form-error" id="cfError">Please fill in your Name, Phone and Address to continue.</div>
-    <hr class="cart-divider">
-    <div class="delivery-note">🚚 <span>First <strong>2 km</strong> delivery is <strong>FREE</strong>. Beyond 2 km, Porter delivery charges apply and are shared <strong>50:50</strong> between you and us — we'll confirm the exact amount on WhatsApp.</span></div>
-    <div class="cart-total-row"><span>Item Total</span><span id="homeTotal">₹0</span></div>
-    <button class="checkout-btn" onclick="homeCheckout()">💬 Place Order on WhatsApp</button>
+    <div class="cart-total-row"><span>Total</span><span id="homeTotal">₹0</span></div>
+    <button class="checkout-btn" onclick="homeCheckout()">📦 Proceed to Order</button>
+  </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:500;align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;border-radius:20px;padding:32px 28px;max-width:420px;width:100%;max-height:90vh;overflow-y:auto;position:relative">
+    <button onclick="closeCheckoutModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#6B4C3B;line-height:1">✕</button>
+    <div style="font-size:28px;margin-bottom:8px">📦</div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#3B1F0A;margin-bottom:4px">Almost done!</div>
+    <div style="font-size:13px;color:#6B4C3B;margin-bottom:22px">Enter your details to complete the order</div>
+
+    <!-- NAME -->
+    <div style="margin-bottom:14px">
+      <label style="display:block;font-size:13px;font-weight:600;color:#3B1F0A;margin-bottom:6px">Your Name <span style="color:#C0392B">*</span></label>
+      <input id="coName" type="text" placeholder="Full name" style="width:100%;border:1.5px solid #E8D5B0;border-radius:12px;padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2C1810;background:#FFFBF4;outline:none">
+      <div id="err-coName" style="display:none;font-size:12px;color:#C0392B;margin-top:4px">Please enter your name</div>
+    </div>
+
+    <!-- PHONE -->
+    <div style="margin-bottom:14px">
+      <label style="display:block;font-size:13px;font-weight:600;color:#3B1F0A;margin-bottom:6px">WhatsApp Number <span style="color:#C0392B">*</span></label>
+      <input id="coPhone" type="tel" placeholder="+91 9876543210" style="width:100%;border:1.5px solid #E8D5B0;border-radius:12px;padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2C1810;background:#FFFBF4;outline:none">
+      <div id="err-coPhone" style="display:none;font-size:12px;color:#C0392B;margin-top:4px">Please enter your phone number</div>
+    </div>
+
+    <!-- ADDRESS -->
+    <div style="margin-bottom:20px">
+      <label style="display:block;font-size:13px;font-weight:600;color:#3B1F0A;margin-bottom:6px">Delivery Address <span style="color:#C0392B">*</span></label>
+      <textarea id="coAddress" placeholder="Flat No, Building, Area, Pune — Pincode" style="width:100%;border:1.5px solid #E8D5B0;border-radius:12px;padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#2C1810;background:#FFFBF4;outline:none;resize:vertical;min-height:70px"></textarea>
+      <div id="err-coAddress" style="display:none;font-size:12px;color:#C0392B;margin-top:4px">Please enter delivery address</div>
+    </div>
+
+    <!-- ORDER SUMMARY -->
+    <div style="background:#FEF3E2;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:13px">
+      <div style="font-weight:700;color:#D4780A;margin-bottom:8px">Order Summary</div>
+      <div style="display:flex;justify-content:space-between;color:#6B4C3B;margin-bottom:4px">
+        <span>Subtotal</span>
+        <span id="co-subtotal">₹0</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;color:#6B4C3B;margin-bottom:4px">
+        <span>Delivery (${selectedZone ? selectedZone.label : ''})</span>
+        <span id="co-delivery">Free</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-weight:700;color:#3B1F0A;padding-top:8px;border-top:1px solid #E8D5B0;margin-top:4px">
+        <span>Total</span>
+        <span id="co-total">₹0</span>
+      </div>
+    </div>
+
+    <button onclick="sendOrderWhatsApp()" style="width:100%;background:#25D366;color:#fff;border:none;cursor:pointer;padding:14px;border-radius:50px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px">
+      💬 Send Order via WhatsApp
+    </button>
   </div>
 </div>
 
@@ -870,42 +781,227 @@ const observer = new IntersectionObserver(entries=>{
 reveals.forEach(el=>observer.observe(el));
 
 // ── HOME PAGE CART ──
-// All products on this page (Featured Products + Loaf section) live here.
 const HOME_PRODUCTS = {
-  'Ragi Dutch Truffles Cake':        {emoji:'🍫', price:899},
-  'Pineapple Cream Cake':            {emoji:'🍍', price:749},
-  'Blueberry Cream Cake':            {emoji:'🫐', price:749},
-  'Hot Choco Lava':                  {emoji:'🌋', price:110},
-  'Ragi Banana Walnut Loaf':         {emoji:'🍌', price:350},
-  'Wheat Mango Pistachio Loaf':      {emoji:'🥭', price:350},
-  'Wheat Oats Carrot Honey Loaf':    {emoji:'🥕', price:350},
-  'Wheat Rawa Mawa Loaf':            {emoji:'🍞', price:350},
+  'Ragi Dark Chocolate Truffles Cake': {emoji:'🍫', price:1214},
+  'Pineapple Cream Cake':              {emoji:'🍍', price:1011},
+  'Blueberry Cream Cake':              {emoji:'🫐', price:1011},
+  'Hot Choco Lava':                    {emoji:'🌋', price:149},
 };
+
+// Delivery: 2km free, above 2km = ₹10 per km (flat zones)
+const DELIVERY_ZONES = [
+  { label:'Within 2 km (Free)',       km:2,  charge:0   },
+  { label:'2–4 km',                   km:4,  charge:20  },
+  { label:'4–6 km',                   km:6,  charge:40  },
+  { label:'6–8 km',                   km:8,  charge:60  },
+  { label:'8–10 km',                  km:10, charge:80  },
+  { label:'Above 10 km',              km:99, charge:100 },
+];
+
 let homeCart = {};
+let deliveryCharge = 0;
+let selectedZone = DELIVERY_ZONES[0];
+
+// ── FIX: use data-name attribute to avoid text mismatch ──
+function addToCart(btn) {
+  const card = btn.closest('.product-card');
+  // Try data-name first, fallback to .product-name text
+  const name = card.dataset.name || card.querySelector('.product-name')?.textContent.trim();
+  const p = HOME_PRODUCTS[name];
+  if (!p) { console.warn('Product not found:', name); return; }
+  homeCart[name] = homeCart[name]
+    ? { ...homeCart[name], qty: homeCart[name].qty + 1 }
+    : { ...p, name, qty: 1 };
+  btn.textContent = `In Cart (${homeCart[name].qty})`;
+  btn.style.background = '#3B6E2A';
+  renderHomeCart();
+}
+
+function renderHomeCart() {
+  const keys  = Object.keys(homeCart);
+  const count = keys.reduce((s,k) => s + homeCart[k].qty, 0);
+  const subtotal = keys.reduce((s,k) => s + homeCart[k].price * homeCart[k].qty, 0);
+  const total = subtotal + deliveryCharge;
+
+  // Badge
+  const badge = document.getElementById('homeBadge');
+  if (count > 0) { badge.textContent = count; badge.style.display = 'flex'; }
+  else           { badge.style.display = 'none'; }
+
+  const foot = document.getElementById('homeCartFoot');
+  const body = document.getElementById('homeCartBody');
+
+  if (!keys.length) {
+    body.innerHTML = '<div class="cart-empty-msg"><div>🍰</div><p>Your cart is empty.<br>Add something delicious!</p></div>';
+    foot.style.display = 'none';
+    return;
+  }
+
+  foot.style.display = 'block';
+
+  // Items
+  let itemsHTML = keys.map(k => {
+    const i = homeCart[k];
+    return `<div class="cart-item">
+      <div class="ci-emoji">${i.emoji}</div>
+      <div class="ci-info">
+        <div class="ci-name">${i.name}</div>
+        <div class="ci-price">₹${(i.price * i.qty).toLocaleString('en-IN')}</div>
+      </div>
+      <div class="qty-wrap">
+        <button class="qbtn" onclick="homeQty('${k}',-1)">−</button>
+        <span class="qnum">${i.qty}</span>
+        <button class="qbtn" onclick="homeQty('${k}',1)">+</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Delivery zone selector
+  itemsHTML += `
+    <div style="margin:14px 0 4px;padding-top:14px;border-top:1px solid var(--border)">
+      <div style="font-size:11px;font-weight:700;color:var(--honey);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Delivery Zone</div>
+      <select id="zoneSelect" onchange="updateZone(this.value)" style="width:100%;border:1.5px solid var(--border);border-radius:8px;padding:9px 12px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);background:var(--cream);outline:none">
+        ${DELIVERY_ZONES.map((z,i) => `<option value="${i}" ${selectedZone===z?'selected':''}>${z.label} — ${z.charge===0?'Free':'₹'+z.charge}</option>`).join('')}
+      </select>
+      <div style="font-size:11px;color:var(--text-muted);margin-top:5px">📍 Shop: Hinjawadi Phase II (Wipro Circle area). First 2km free, then ₹10/km.</div>
+    </div>
+  `;
+
+  // Totals
+  itemsHTML += `
+    <div style="margin-top:12px;padding:12px 0;border-top:1px solid var(--border)">
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);margin-bottom:5px">
+        <span>Subtotal</span><span>₹${subtotal.toLocaleString('en-IN')}</span>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--text-muted);margin-bottom:5px">
+        <span>Delivery</span><span>${deliveryCharge===0?'<span style="color:var(--green);font-weight:600">Free</span>':'₹'+deliveryCharge}</span>
+      </div>
+    </div>
+  `;
+
+  body.innerHTML = itemsHTML;
+  document.getElementById('homeTotal').textContent = '₹' + total.toLocaleString('en-IN');
+}
+
+function updateZone(idx) {
+  selectedZone = DELIVERY_ZONES[parseInt(idx)];
+  deliveryCharge = selectedZone.charge;
+  renderHomeCart();
+}
+
+function homeQty(name, delta) {
+  if (!homeCart[name]) return;
+  homeCart[name].qty += delta;
+  if (homeCart[name].qty <= 0) {
+    delete homeCart[name];
+    document.querySelectorAll('.product-card').forEach(card => {
+      const n = card.dataset.name || card.querySelector('.product-name')?.textContent.trim();
+      if (n === name) {
+        const btn = card.querySelector('.product-add');
+        if (btn) { btn.textContent = 'Add to Cart'; btn.style.background = ''; }
+      }
+    });
+  } else {
+    document.querySelectorAll('.product-card').forEach(card => {
+      const n = card.dataset.name || card.querySelector('.product-name')?.textContent.trim();
+      if (n === name) {
+        const btn = card.querySelector('.product-add');
+        if (btn) btn.textContent = `In Cart (${homeCart[name].qty})`;
+      }
+    });
+  }
+  renderHomeCart();
+}
+
+function toggleCart() {
+  document.getElementById('homeCartPanel').classList.toggle('open');
+  document.getElementById('homeOverlay').classList.toggle('show');
+}
+
+function homeCheckout() {
+  const keys = Object.keys(homeCart);
+  if (!keys.length) return;
+
+  // Update modal summary
+  const subtotal = keys.reduce((s,k) => s + homeCart[k].price * homeCart[k].qty, 0);
+  const total    = subtotal + deliveryCharge;
+  document.getElementById('co-subtotal').textContent = '₹' + subtotal.toLocaleString('en-IN');
+  document.getElementById('co-delivery').textContent = deliveryCharge === 0 ? 'Free' : '₹' + deliveryCharge;
+  document.getElementById('co-total').textContent    = '₹' + total.toLocaleString('en-IN');
+
+  const modal = document.getElementById('checkoutModal');
+  modal.style.display = 'flex';
+}
+
+function closeCheckoutModal() {
+  document.getElementById('checkoutModal').style.display = 'none';
+}
+
+function sendOrderWhatsApp() {
+  const cName  = document.getElementById('coName').value.trim();
+  const cPhone = document.getElementById('coPhone').value.trim();
+  const cAddr  = document.getElementById('coAddress').value.trim();
+
+  // Validation
+  let ok = true;
+  ['coName','coPhone','coAddress'].forEach(id => {
+    const el  = document.getElementById(id);
+    const err = document.getElementById('err-' + id);
+    if (!el.value.trim()) { el.style.borderColor='#C0392B'; err.style.display='block'; ok=false; }
+    else                   { el.style.borderColor=''; err.style.display='none'; }
+  });
+  if (!ok) return;
+
+  const keys     = Object.keys(homeCart);
+  const subtotal = keys.reduce((s,k) => s + homeCart[k].price * homeCart[k].qty, 0);
+  const total    = subtotal + deliveryCharge;
+
+  let msg = `Hello Akki! New Order from Website\n`;
+  msg += `━━━━━━━━━━━━━━━━━\n\n`;
+
+  msg += `CUSTOMER DETAILS\n`;
+  msg += `Name: ${cName}\n`;
+  msg += `Phone: ${cPhone}\n`;
+  msg += `Address: ${cAddr}\n\n`;
+
+  msg += `ORDER ITEMS\n`;
+  keys.forEach(k => {
+    const i = homeCart[k];
+    msg += `• ${i.name} x${i.qty} — ₹${(i.price * i.qty).toLocaleString('en-IN')}\n`;
+  });
+
+  msg += `\nPRICING\n`;
+  msg += `Subtotal: ₹${subtotal.toLocaleString('en-IN')}\n`;
+  msg += `Delivery Zone: ${selectedZone.label}\n`;
+  msg += `Delivery Charge: ${deliveryCharge === 0 ? 'Free' : '₹' + deliveryCharge}\n`;
+  msg += `Total: ₹${total.toLocaleString('en-IN')}\n\n`;
+
+  msg += `━━━━━━━━━━━━━━━━━\n`;
+  msg += `Please confirm availability. Thank you!`;
+
+  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(msg)}`, '_blank');
+  closeCheckoutModal();
+}
+
+// Mobile hamburger
+document.querySelector('.nav-hamburger').addEventListener('click', function() {
+  const nav = document.querySelector('.nav-links');
+  if (nav.style.display === 'flex') { nav.style.display = 'none'; }
+  else { nav.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99'; }
+});
 
 function addToCart(btn){
-  const name = btn.dataset.product;
+  // Get product name from parent card
+  const card = btn.closest('.product-card');
+  const name = card.querySelector('.product-name').textContent.trim();
   const p = HOME_PRODUCTS[name];
   if(!p) return;
   homeCart[name] = homeCart[name]
     ? {...homeCart[name], qty: homeCart[name].qty+1}
     : {...p, name, qty:1};
-  updateProductButtons(name);
+  btn.textContent = `In Cart (${homeCart[name].qty})`;
+  btn.style.background = '#3B6E2A';
   renderHomeCart();
-}
-
-function updateProductButtons(name){
-  document.querySelectorAll(`[data-product]`).forEach(btn=>{
-    if(btn.dataset.product !== name) return;
-    const inCart = homeCart[name];
-    if(inCart){
-      btn.textContent = btn.classList.contains('small') ? `Added (${inCart.qty})` : `In Cart (${inCart.qty})`;
-      btn.style.background = '#3B6E2A';
-    } else {
-      btn.textContent = btn.classList.contains('small') ? 'Add' : 'Add to Cart';
-      btn.style.background = '';
-    }
-  });
 }
 
 function renderHomeCart(){
@@ -932,9 +1028,9 @@ function renderHomeCart(){
         <div class="ci-price">₹${(i.price*i.qty).toLocaleString('en-IN')}</div>
       </div>
       <div class="qty-wrap">
-        <button class="qbtn" onclick="homeQty('${k.replace(/'/g,"\\'")}',-1)">−</button>
+        <button class="qbtn" onclick="homeQty('${k}',-1)">−</button>
         <span class="qnum">${i.qty}</span>
-        <button class="qbtn" onclick="homeQty('${k.replace(/'/g,"\\'")}',1)">+</button>
+        <button class="qbtn" onclick="homeQty('${k}',1)">+</button>
       </div>
     </div>`;
   }).join('');
@@ -945,50 +1041,22 @@ function homeQty(name,delta){
   homeCart[name].qty+=delta;
   if(homeCart[name].qty<=0){
     delete homeCart[name];
+    // Reset button text
+    document.querySelectorAll('.product-card').forEach(card=>{
+      if(card.querySelector('.product-name')?.textContent.trim()===name){
+        const btn=card.querySelector('.product-add');
+        if(btn){btn.textContent='Add to Cart';btn.style.background='';}
+      }
+    });
+  } else {
+    document.querySelectorAll('.product-card').forEach(card=>{
+      if(card.querySelector('.product-name')?.textContent.trim()===name){
+        const btn=card.querySelector('.product-add');
+        if(btn) btn.textContent=`In Cart (${homeCart[name].qty})`;
+      }
+    });
   }
-  updateProductButtons(name);
   renderHomeCart();
-}
-
-function toggleCart(){
-  document.getElementById('homeCartPanel').classList.toggle('open');
-  document.getElementById('homeOverlay').classList.toggle('show');
-}
-
-function homeCheckout(){
-  const keys=Object.keys(homeCart);
-  if(!keys.length) return;
-
-  const name = document.getElementById('cfName').value.trim();
-  const phone = document.getElementById('cfPhone').value.trim();
-  const address = document.getElementById('cfAddress').value.trim();
-  const landmark = document.getElementById('cfLandmark').value.trim();
-  const errorEl = document.getElementById('cfError');
-
-  if(!name || !phone || !address){
-    errorEl.style.display='block';
-    if(!name) document.getElementById('cfName').focus();
-    else if(!phone) document.getElementById('cfPhone').focus();
-    else document.getElementById('cfAddress').focus();
-    return;
-  }
-  errorEl.style.display='none';
-
-  const total=keys.reduce((s,k)=>s+homeCart[k].price*homeCart[k].qty,0);
-
-  let msg = `Hello Akkis Healthy Baking! I'd like to place an order:\n\n`;
-  msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}`;
-  if(landmark) msg += `\n*Landmark:* ${landmark}`;
-  msg += `\n\n*Order Details:*\n`;
-  keys.forEach(k=>{
-    const i=homeCart[k];
-    msg += `• ${i.name} x${i.qty} — ₹${(i.price*i.qty).toLocaleString('en-IN')}\n`;
-  });
-  msg += `\n*Item Total:* ₹${total.toLocaleString('en-IN')}`;
-  msg += `\n\nNote: First 2 km delivery is FREE. Beyond 2 km, Porter delivery charges will apply and will be shared 50:50 between me and the shop.`;
-  msg += `\n\nPlease confirm availability and delivery. Thank you! 🙏`;
-
-  window.open(`https://wa.me/917795076412?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
 // Mobile hamburger (basic toggle)
@@ -998,6 +1066,5 @@ document.querySelector('.nav-hamburger').addEventListener('click',function(){
   else{nav.style.cssText='display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--cream);padding:20px 5%;border-bottom:1px solid var(--border);gap:16px;z-index:99'}
 });
 </script>
-
 </body>
 </html>
